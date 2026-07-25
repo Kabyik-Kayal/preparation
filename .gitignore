@@ -1,0 +1,22 @@
+# MkDocs build output
+site/
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
