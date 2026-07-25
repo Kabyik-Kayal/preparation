@@ -9,28 +9,40 @@ description: A searchable knowledge and exam-preparation hub.
 > interview prep, and technical cheat sheets.
 
 Adding a page here is as simple as dropping a Markdown file into `docs/` and
-pushing to `main`. The site rebuilds and redeploys automatically.
+pushing to `main`. The site rebuilds and redeploys automatically, and the
+current content already lives under the subject folders below.
 
 ## Browse by subject
 
 <div class="grid cards" markdown>
 
--   :material-book-open-variant:{ .lg .middle } __MAD 2__
+-   :material-book-open-variant:{ .lg .middle } __MAD 2 Project__
 
     ---
 
-    Viva preparation and high-yield questions for Modern Application
-    Development 2.
+  TrekStar viva prep, module notes, and the Vue Router coding task guide.
 
-    [:octicons-arrow-right-24: MAD 2 viva prep](mad2-viva-preparation.md)
+  [:octicons-arrow-right-24: Viva preparation guide](MAD2-Project/preparation.md)
 
--   :material-database:{ .lg .middle } __DBMS__
+  [:octicons-arrow-right-24: Viva module notes](MAD2-Project/Viva-Preparation-Module.md)
+
+  [:octicons-arrow-right-24: Vue Router coding task](MAD2-Project/Viva-Coding-Task-VueRouter-Users.md)
+
+-   :material-function-variant:{ .lg .middle } __MLF__
 
     ---
 
-    Normalization, transactions, and query fundamentals.
+  Linear algebra quiz preparation built from the past papers.
 
-    [:octicons-arrow-right-24: DBMS normalization](dbms-normalization.md)
+  [:octicons-arrow-right-24: MLF Quiz 1 prep module](MLF/MLF_Quiz1_Prep_Module.md)
+
+-   :material-function-variant:{ .lg .middle } __MLT__
+
+  ---
+
+  Generated quiz prep module available as the published HTML page.
+
+  [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1_Prep_Module.html)
 
 </div>
 
