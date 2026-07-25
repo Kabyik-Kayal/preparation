@@ -42,7 +42,7 @@ current content already lives under the subject folders below.
 
   Generated quiz prep module available as the published HTML page.
 
-  [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1_Prep_Module.html)
+  [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1_Prep_Module.md)
 
 </div>
 
