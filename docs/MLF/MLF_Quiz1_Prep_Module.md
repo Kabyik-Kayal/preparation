@@ -53,15 +53,23 @@ where trace = sum of the diagonal and det = \(ad-bc\). To find the eigenvector f
 - \(A\) is**not invertible**\(\iff\) \(0\) is an eigenvalue \(\iff \det A = 0\).
 - Eigenvalues of a**real symmetric**matrix are always**real**, and its eigenvectors are orthogonal.
 - A real matrix can have**complex**eigenvalues (rotation matrices do).
-#### Exam Trick
-For a \(2\times2\), never expand determinants — jump straight to`λ² − (trace)λ + det = 0`. To test "is \(v\) an eigenvector of \(A\)?", just compute \(Av\) and check if the result is a scalar multiple of \(v\). Faster than solving anything.
-#### Solved PYQ — Mar26 Q16–18comprehension · 2 SA partsQuestion (verbatim, 3-part comprehension)Consider the matrix \(A=\begin{bmatrix}1&5\\4&2\end{bmatrix}\). Based on the above data, answer the given subquestions.\n**Q17 (SA, 2 marks):**If \(\lambda\) is the smallest eigenvalue of \(A\), enter the value of \(\lambda\). Your answer should be an integer.\n**Q18 (SA, 2 marks):**If \(v=(a,-1)\) is an eigenvector of \(A\) corresponding to that \(\lambda\), find \(a\). Enter your answer correct to two decimal places.
+!!! tip "Exam Trick"
+    For a \(2\times2\), never expand determinants — jump straight to`λ² − (trace)λ + det = 0`. To test "is \(v\) an eigenvector of \(A\)?", just compute \(Av\) and check if the result is a scalar multiple of \(v\). Faster than solving anything.
+#### Solved PYQ — Mar 2026 (Q16–18)
+
+**Type:** comprehension · 2 SA parts  
+**Question (verbatim):** Consider the matrix \(A=\begin{bmatrix}1&5\\4&2\end{bmatrix}\). Based on the above data, answer the given subquestions.\n**Q17 (SA, 2 marks):**If \(\lambda\) is the smallest eigenvalue of \(A\), enter the value of \(\lambda\). Your answer should be an integer.\n**Q18 (SA, 2 marks):**If \(v=(a,-1)\) is an eigenvector of \(A\) corresponding to that \(\lambda\), find \(a\). Enter your answer correct to two decimal places.
+
 1. Both sub-questions hang off the same \(2\times2\) matrix, so extract trace and determinant once and reuse them: trace \(=1+2=3\), det \(=1\cdot2-5\cdot4=-18\).
 2. Write the characteristic equation and factor it: \[ \lambda^2-3\lambda-18=0 \;\Rightarrow\; (\lambda-6)(\lambda+3)=0 \;\Rightarrow\; \lambda=6 \text{ or } -3. \] Sanity check: \(6+(-3)=3=\)trace ✓ and \(6\times(-3)=-18=\)det ✓ — if these two checks don't match, you've made an arithmetic slip and should redo the factoring before moving on.
 3. Q17 asks specifically for the*smaller*root, so \(\lambda=-3\) — not \(6\). This is the single most common way to lose these two marks: solving correctly but reporting the wrong root because you didn't reread which one was asked for.
 4. Q18 needs the eigenvector for that same \(\lambda=-3\). Solve \((A-\lambda I)v=0\), i.e. \((A+3I)v=0\): \[ A+3I=\begin{bmatrix}4&5\\4&5\end{bmatrix}, \qquad \begin{bmatrix}4&5\\4&5\end{bmatrix}\begin{pmatrix}a\\-1\end{pmatrix}=0 \;\Rightarrow\; 4a-5=0. \] Both rows produced the identical equation \(4a-5=0\) — that's not a coincidence, it's guaranteed. Once \(\lambda\) is a genuine eigenvalue, \(A-\lambda I\) is singular by construction, so its two rows must be proportional (here, literally equal). If your two rows give*different*equations for \(a\), you've made an error upstream — either the wrong \(\lambda\) or an arithmetic mistake in \(A-\lambda I\).
 5. Solve the single equation: \(a=5/4=1.25\).
-Why this format is popular with examiners: it's really one skill (eigen-decomposition of a \(2\times2\)) tested twice, so a single slip early — say, computing det as \(1\cdot2+5\cdot4\) instead of \(1\cdot2-5\cdot4\) — silently costs you both sub-question's marks, not just one. Always verify trace/det against the factored roots before you touch the eigenvector step.AnswerQ17: smallest eigenvalue \(\lambda=\)−3. Q18: \(a=5/4=\)1.25(accepted range on the original paper was 1.24–1.26, so don't over-round mid-calculation).
+Why this format is popular with examiners: it's really one skill (eigen-decomposition of a \(2\times2\)) tested twice, so a single slip early — say, computing det as \(1\cdot2+5\cdot4\) instead of \(1\cdot2-5\cdot4\) — silently costs you both sub-question's marks, not just one. Always verify trace/det against the factored roots before you touch the eigenvector step.
+
+!!! success "Answer"
+    Q17: smallest eigenvalue \(\lambda=\)−3. Q18: \(a=5/4=\)1.25(accepted range on the original paper was 1.24–1.26, so don't over-round mid-calculation).
+
 ## 2. Eigenvalue shortcuts
 ### Concept
 Four shortcuts appear again and again. Each one turns a "scary" question into ten seconds of work:
@@ -69,9 +77,13 @@ Four shortcuts appear again and again. Each one turns a "scary" question into te
 - **Matrix polynomial:**if \(A\) has eigenvalue \(\lambda\), then \(B=p(A)\) (any polynomial in \(A\), e.g. \(A^4-3A-2I\)) has eigenvalue \(p(\lambda)\), with the**same**eigenvector. In particular \(A^k\) has eigenvalue \(\lambda^k\) and \(A^{-1}\) has \(1/\lambda\).
 - **Sum-of-columns = 0:**if the columns sum to the zero vector, then \(\lambda=0\) is an eigenvalue, with eigenvector \((1,1,\dots,1)\).
 - **\(A=cI\) type:**if*every*vector is an eigenvector with the same eigenvalue \(\lambda\), the matrix has no choice — it must be \(A=\lambda I\), so \(\det A=\lambda^n\).
-#### Exam Trick
-Don't recompute eigenvalues of \(A^4-3A-2I\) from scratch — plug each eigenvalue of \(A\) into \(f(\lambda)=\lambda^4-3\lambda-2\). A polynomial of a triangular matrix stays triangular, so "B is upper/lower triangular" is usually a free true statement.
-#### Solved PYQ — Oct24 Q3MSQ · 3 marksQuestion (verbatim)Consider a matrix \(B=A^4-3A-2I\), where \(A=\begin{bmatrix}1&1&1\\0&2&1\\0&0&3\end{bmatrix}\). Which of the following options is/are true?Options
+!!! tip "Exam Trick"
+    Don't recompute eigenvalues of \(A^4-3A-2I\) from scratch — plug each eigenvalue of \(A\) into \(f(\lambda)=\lambda^4-3\lambda-2\). A polynomial of a triangular matrix stays triangular, so "B is upper/lower triangular" is usually a free true statement.
+#### Solved PYQ — Oct 2024 (Q3)
+
+**Type:** MSQ · 3 marks  
+**Question (verbatim):** Consider a matrix \(B=A^4-3A-2I\), where \(A=\begin{bmatrix}1&1&1\\0&2&1\\0&0&3\end{bmatrix}\). Which of the following options is/are true?Options
+
 - (A) B has eigenvalues −4, 8, 70.
 - (B) A has eigenvalues 1, 16, 81.
 - (C) B is an upper triangular matrix.
@@ -81,19 +93,39 @@ Don't recompute eigenvalues of \(A^4-3A-2I\) from scratch — plug each eigenval
 3. Option (B) is the trap: it lists \(1,\ 16,\ 81\), which are \(1^4,\ 2^4,\ 3^4\) — the diagonal of \(A^4\), not of \(A\) itself. \(A\)'s own eigenvalues never change; they're always \(1,2,3\). Whoever wrote this option is testing whether you confuse "the eigenvalues of \(A^4\)" with "the eigenvalues of \(A\)" — so (B) is false.
 4. Option (C): a polynomial in a triangular matrix (any sum of powers of \(A\) plus multiples of \(I\)) is always triangular of the same type, because triangular matrices are closed under multiplication and addition — multiplying two upper-triangular matrices keeps every entry below the diagonal at zero. So \(B\) is upper triangular — (C) is true, and you can claim this mark without computing a single entry of \(B\).
 5. Option (D) contradicts (C): \(B\) can't be both upper and lower triangular unless it's diagonal, and nothing here forces that. (D) is false.
-The examiner is really testing one idea from two directions at once: "does a polynomial of \(A\) share \(A\)'s eigenvectors and structure, just with transformed eigenvalues?" Once you internalize that \(p(A)\) has eigenvalues \(p(\lambda_i)\)*and*inherits \(A\)'s triangular shape, both correct options fall out for free — no matrix multiplication of \(A^4\) required, which would otherwise cost several minutes.Answer✔ (A) B has eigenvalues −4, 8, 70·✔ (C) B is upper triangular·✗ (B) "A has eigenvalues 1, 16, 81"— that's \(A^4\)'s diagonal, not \(A\)'s ·✗ (D)contradicts (C).
-#### Solved PYQ — Oct25 Q6SA · 3 marksQuestion (verbatim)Does there exist a matrix \(A\) of shape \(10\times10\) such that every non-zero vector in \(\mathbb R^{10}\) is an eigenvector of \(A\) with eigenvalue 2? If yes, compute the value of \(\det(A)\). If not, enter −1 as the answer.
+The examiner is really testing one idea from two directions at once: "does a polynomial of \(A\) share \(A\)'s eigenvectors and structure, just with transformed eigenvalues?" Once you internalize that \(p(A)\) has eigenvalues \(p(\lambda_i)\)*and*inherits \(A\)'s triangular shape, both correct options fall out for free — no matrix multiplication of \(A^4\) required, which would otherwise cost several minutes.
+
+!!! success "Answer"
+    ✔ (A) B has eigenvalues −4, 8, 70·✔ (C) B is upper triangular·✗ (B) "A has eigenvalues 1, 16, 81"— that's \(A^4\)'s diagonal, not \(A\)'s ·✗ (D)contradicts (C).
+
+#### Solved PYQ — Oct 2025 (Q6)
+
+**Type:** SA · 3 marks  
+**Question (verbatim):** Does there exist a matrix \(A\) of shape \(10\times10\) such that every non-zero vector in \(\mathbb R^{10}\) is an eigenvector of \(A\) with eigenvalue 2? If yes, compute the value of \(\det(A)\). If not, enter −1 as the answer.
+
 1. Translate the wording carefully: "every non-zero vector is an eigenvector with eigenvalue 2" means \(Av=2v\) for*every*\(v\in\mathbb R^{10}\), not just some special direction.
 2. Pick any two vectors that aren't multiples of each other, say \(e_1\) and \(e_2\). Both must satisfy \(Ae_1=2e_1\) and \(Ae_2=2e_2\), which pins down two full columns of \(A\) already. Repeating this for every standard basis vector \(e_1,\dots,e_{10}\) forces every column of \(A\) to be \(2e_i\) — i.e. \(A\) has 2's on the diagonal and 0's everywhere else. There is no freedom left; \(A\) can only be \(2I_{10}\).
 3. So yes, such a matrix exists, and it's unique: \(A=2I_{10}\).
 4. The determinant of a diagonal matrix is the product of its diagonal entries: \(\det(2I_{10})=2^{10}\).
 5. Compute: \(2^{10}=1024\).
-The instinct to reach for "some" matrix with eigenvalue 2 (like a triangular matrix with a 2 somewhere on the diagonal) is the wrong move here — the question says*every*nonzero vector, which is a far stronger condition than "2 is an eigenvalue." Any matrix that isn't exactly \(2I\) will always have at least one direction it treats differently, so as soon as you see "every vector is an eigenvector," your first move should be "this can only be a scalar multiple of the identity" — memorize that trigger phrase.AnswerYes — \(A=2I_{10}\), and \(\det A=\)1024.
-#### Solved PYQ — Oct25 Q7SA · 2 marksQuestion (verbatim)If the sum of the columns of a square matrix \(A\) is equal to the zero vector, then \(\lambda\) is certainly an eigenvalue of \(A\). What is the value of \(\lambda\)?*(Note: "column" here means each column of \(A\) treated as a vector.)*
+The instinct to reach for "some" matrix with eigenvalue 2 (like a triangular matrix with a 2 somewhere on the diagonal) is the wrong move here — the question says*every*nonzero vector, which is a far stronger condition than "2 is an eigenvalue." Any matrix that isn't exactly \(2I\) will always have at least one direction it treats differently, so as soon as you see "every vector is an eigenvector," your first move should be "this can only be a scalar multiple of the identity" — memorize that trigger phrase.
+
+!!! success "Answer"
+    Yes — \(A=2I_{10}\), and \(\det A=\)1024.
+
+#### Solved PYQ — Oct 2025 (Q7)
+
+**Type:** SA · 2 marks  
+**Question (verbatim):** If the sum of the columns of a square matrix \(A\) is equal to the zero vector, then \(\lambda\) is certainly an eigenvalue of \(A\). What is the value of \(\lambda\)?*(Note: "column" here means each column of \(A\) treated as a vector.)*
+
 1. The phrase "sum of the columns" should immediately make you think of matrix–vector multiplication by the all-ones vector, because that's precisely what that operation computes. Write \(\mathbf 1=(1,1,\dots,1)^T\).
 2. Multiply it out by definition of matrix–vector product — each output entry is a row of \(A\) dotted with \(\mathbf1\), which is the same as summing that row's entries across all columns. Do this for every row and you get: \[ A\mathbf1 = \text{(column 1)}+\text{(column 2)}+\dots+\text{(column }n\text{)} = \text{sum of the columns of }A. \]
 3. We're told that sum is the zero vector, so \(A\mathbf1=\mathbf 0\). Rewrite the right-hand side as \(0\cdot\mathbf1\): \[ A\mathbf1=\mathbf0=0\cdot\mathbf1. \] That is*exactly*the defining equation \(Av=\lambda v\) with \(v=\mathbf1\) and \(\lambda=0\) — no extra assumption needed, and it works in any dimension \(n\).
-This is the mirror image of the "eigenvalues on the diagonal for triangular matrices" shortcut from Module 2: instead of reading eigenvalues off a special matrix shape, you're reading one off a special*relationship among the columns*. Whenever a question says "rows sum to zero" or "columns sum to zero," reach immediately for \(\mathbf1=(1,\dots,1)^T\) as your eigenvector candidate — it is one of the fastest guaranteed marks these papers offer, worth memorizing as a standalone fact rather than re-deriving under time pressure.Answer\(\lambda=\)0, with eigenvector \((1,1,\dots,1)\).
+This is the mirror image of the "eigenvalues on the diagonal for triangular matrices" shortcut from Module 2: instead of reading eigenvalues off a special matrix shape, you're reading one off a special*relationship among the columns*. Whenever a question says "rows sum to zero" or "columns sum to zero," reach immediately for \(\mathbf1=(1,\dots,1)^T\) as your eigenvector candidate — it is one of the fastest guaranteed marks these papers offer, worth memorizing as a standalone fact rather than re-deriving under time pressure.
+
+!!! success "Answer"
+    \(\lambda=\)0, with eigenvector \((1,1,\dots,1)\).
+
 ## 3. Diagonalizability
 ### Concept
 \(A\) is**diagonalizable**if \(A=PDP^{-1}\), where \(D\) is diagonal (the eigenvalues) and \(P\)'s columns are the eigenvectors. The only thing that can go wrong: \(A\) doesn't have**enough independent eigenvectors**(it needs a full set of \(n\)).
@@ -104,9 +136,13 @@ This is the mirror image of the "eigenvalues on the diagonal for triangular matr
 - A repeated eigenvalue that is "short" on eigenvectors (like \(\begin{bmatrix}1&1\\0&1\end{bmatrix}\)) makes the matrix**not**diagonalizable.
 - Every real**symmetric**matrix is**orthogonally**diagonalizable (\(P\) can be chosen orthogonal).
 **To build P and D:**eigenvalues go on \(D\)'s diagonal; each eigenvalue's eigenvector goes in the matching column of \(P\) — same order, always.
-#### Exam Trick
-Repeated eigenvalue? Danger. Check whether it still has 2 independent eigenvectors. If a \(2\times2\) has one repeated eigenvalue and isn't already \(\lambda I\), it is**not**diagonalizable. For \(P,D\) MCQs, just verify one option: pick the column order in \(P\) that matches the eigenvalue order in \(D\).
-#### Solved PYQ — Mar26 Q3MCQ · 3 marksQuestion (verbatim)Consider the following matrices: \(A=\begin{bmatrix}1&1\\0&1\end{bmatrix},\quad B=\begin{bmatrix}2&0&0\\0&0&1\\0&1&0\end{bmatrix}\). Which of the following is true?Options
+!!! tip "Exam Trick"
+    Repeated eigenvalue? Danger. Check whether it still has 2 independent eigenvectors. If a \(2\times2\) has one repeated eigenvalue and isn't already \(\lambda I\), it is**not**diagonalizable. For \(P,D\) MCQs, just verify one option: pick the column order in \(P\) that matches the eigenvalue order in \(D\).
+#### Solved PYQ — Mar 2026 (Q3)
+
+**Type:** MCQ · 3 marks  
+**Question (verbatim):** Consider the following matrices: \(A=\begin{bmatrix}1&1\\0&1\end{bmatrix},\quad B=\begin{bmatrix}2&0&0\\0&0&1\\0&1&0\end{bmatrix}\). Which of the following is true?Options
+
 - (A) A is diagonalizable, B is not diagonalizable.
 - (B) A is not diagonalizable, B is diagonalizable.
 - (C) Both A and B are diagonalizable.
@@ -116,12 +152,24 @@ Repeated eigenvalue? Danger. Check whether it still has 2 independent eigenvecto
 3. **Matrix B:**don't expand a \(3\times3\) determinant by hand — spot the block structure instead. The \((1,1)\) corner is isolated (its row and column elsewhere are zero except the diagonal), so it contributes eigenvalue \(2\) on its own with eigenvector \((1,0,0)\). The remaining \(2\times2\) block \(\begin{bmatrix}0&1\\1&0\end{bmatrix}\) (rows/cols 2–3) is the "swap coordinates" matrix, whose eigenvalues solve \(\lambda^2-1=0\), i.e. \(\lambda=\pm1\).
 4. So \(B\) has three eigenvalues \(2,\ 1,\ -1\) — all distinct. Distinct eigenvalues for an \(n\times n\) matrix is a*sufficient*condition for diagonalizability (Module 3's rule), so \(B\) is diagonalizable without needing to write down a single eigenvector.
 5. Combining both results: A is not diagonalizable, B is diagonalizable — that's option (B), and it also eliminates (D) since B*is*diagonalizable.
-Notice the asymmetry in effort: A required an explicit eigenvector computation to rule out diagonalizability (repeated eigenvalues are only ever disqualifying after you check), while B needed zero eigenvector computation — spotting three distinct eigenvalues was enough to conclude diagonalizability instantly. That asymmetry is intentional and general: "distinct eigenvalues ⇒ diagonalizable" is a one-way shortcut you can use freely, but "repeated eigenvalue ⇒ not diagonalizable" is*false*in general (the identity matrix is the standard counterexample) — repeated eigenvalues always require the extra step of checking the eigenspace dimension.Answer(B):A is not diagonalizable;B is diagonalizable.
-#### Solved PYQ — Oct25 Q18–203× True/False MCQ, independent sub-questionsQuestion (verbatim)There is no common data for this question. There are three independent sub-questions for which you have to answer True/False.
+Notice the asymmetry in effort: A required an explicit eigenvector computation to rule out diagonalizability (repeated eigenvalues are only ever disqualifying after you check), while B needed zero eigenvector computation — spotting three distinct eigenvalues was enough to conclude diagonalizability instantly. That asymmetry is intentional and general: "distinct eigenvalues ⇒ diagonalizable" is a one-way shortcut you can use freely, but "repeated eigenvalue ⇒ not diagonalizable" is*false*in general (the identity matrix is the standard counterexample) — repeated eigenvalues always require the extra step of checking the eigenspace dimension.
+
+!!! success "Answer"
+    (B):A is not diagonalizable;B is diagonalizable.
+
+#### Solved PYQ — Oct 2025 (Q18)–20
+
+**Type:** 3× True/False MCQ, independent sub-questions  
+**Question (verbatim):** There is no common data for this question. There are three independent sub-questions for which you have to answer True/False.
+
 1. **"If a square matrix A is diagonalizable, then A is invertible."**Test it against the cheapest possible counterexample rather than trying to prove or disprove it in general: the zero matrix \(0\) is trivially diagonalizable (it's already diagonal — \(P=I,\ D=0\) works), yet it's the least invertible matrix there is (\(\det=0\)). One counterexample is enough to kill a "for all" claim, so this isFalse. Diagonalizability is about having enough eigenvectors; invertibility is about none of the eigenvalues being zero — they're independent properties that happen to both hold for "nice" matrices like the identity, which is why people conflate them.
 2. **"The eigenvalues of a real symmetric matrix are real."**This is the Spectral Theorem, one of the load-bearing facts of this course: for any real symmetric \(A\) (\(A=A^T\)), every eigenvalue is guaranteed real (never complex) and the matrix is always orthogonally diagonalizable. This isTrue— don't try to re-derive it from scratch under time pressure, just recognize the word "symmetric" and recall the theorem.
 3. **"A square matrix A of shape \(n\times n\) is diagonalizable if and only if it has \(n\) distinct eigenvalues."**The word doing all the damage here is "if and only if." Distinct eigenvalues being*sufficient*for diagonalizability is true — but "iff" additionally claims it's*necessary*, and that direction fails: the identity matrix \(I\) has every eigenvalue equal to \(1\) (about as far from "distinct" as possible) yet is diagonalizable trivially (\(P=I,\ D=I\)). So the statement as written isFalse.
-Notice the pattern across all three: two of them are false specifically because of a logical over-reach ("then A is invertible" claims a consequence that doesn't follow; "if and only if" claims a converse that doesn't hold), while the true one is a named theorem you're expected to have memorized rather than proven live. When a True/False statement in this course uses "iff," "always," or "then," your first move should be hunting for the cheapest possible counterexample (zero matrix, identity matrix, and diagonal matrices are the three that break the most claims) before assuming the statement holds.Answer"Diagonalizable ⇒ invertible":False. "Eigenvalues of real symmetric matrix are real":True. "Diagonalizable ⇔ n distinct eigenvalues":False.
+Notice the pattern across all three: two of them are false specifically because of a logical over-reach ("then A is invertible" claims a consequence that doesn't follow; "if and only if" claims a converse that doesn't hold), while the true one is a named theorem you're expected to have memorized rather than proven live. When a True/False statement in this course uses "iff," "always," or "then," your first move should be hunting for the cheapest possible counterexample (zero matrix, identity matrix, and diagonal matrices are the three that break the most claims) before assuming the statement holds.
+
+!!! success "Answer"
+    "Diagonalizable ⇒ invertible":False. "Eigenvalues of real symmetric matrix are real":True. "Diagonalizable ⇔ n distinct eigenvalues":False.
+
 ## 4. The Four Subspaces & Rank–Nullity
 ### Concept
 Any \(m\times n\) matrix \(A\) carries four subspaces around with it:
@@ -131,14 +179,26 @@ Any \(m\times n\) matrix \(A\) carries four subspaces around with it:
 - **Left null space**\(N(A^T)\): all \(y\) with \(A^Ty=0\) (i.e. \(y^TA=0\)).
 **Rank–Nullity Theorem:**\(\text{rank} + \text{nullity} = n\), the number of**columns**. This one line answers a whole class of questions by itself.
 **Finding them fast (rank-1 / rank-2 cases):**if the rows are proportional, rank = 1; the null space is whatever vector kills the columns.
-#### Exam Trick
-"Rank–nullity" questions are pure arithmetic: nullity given → rank = (#columns) − nullity. For "column space = row space", the tell is a**symmetric**matrix — for symmetric \(A\), \(C(A)=C(A^T)\) always.
-#### Solved PYQ — Feb25 Q10SA · 2 marksQuestion (verbatim)Consider a matrix \(A_{20\times25}\). If the nullity of the matrix is 10, then find the rank of the matrix.
+!!! tip "Exam Trick"
+    "Rank–nullity" questions are pure arithmetic: nullity given → rank = (#columns) − nullity. For "column space = row space", the tell is a**symmetric**matrix — for symmetric \(A\), \(C(A)=C(A^T)\) always.
+#### Solved PYQ — Feb 2025 (Q10)
+
+**Type:** SA · 2 marks  
+**Question (verbatim):** Consider a matrix \(A_{20\times25}\). If the nullity of the matrix is 10, then find the rank of the matrix.
+
 1. Recall the Rank–Nullity Theorem precisely: \(\text{rank}+\text{nullity}=n\), where \(n\) is the number of**columns**of \(A\) — because the null space lives in the domain \(\mathbb R^n\) that \(A\) maps*from*, and the columns are what index that domain.
 2. Read the shape carefully: \(A\) is \(20\times25\) means 20 rows, 25 columns, so \(n=25\). The "20" describes the codomain (\(\mathbb R^{20}\), where \(Ax\) lands) and never enters the rank–nullity formula at all — it's there purely to test whether you know which dimension the theorem actually uses.
 3. Plug in: \(\text{rank}=n-\text{nullity}=25-10=15\).
-This question is a pure "do you know which number goes where" check — there's no matrix to compute, only the discipline of matching the theorem's \(n\) to the*column*count, not the row count or some average of the two. Whenever a question hands you an \(m\times n\) matrix's shape and a nullity, resist the urge to compute anything; just identify \(n\) and subtract.Answerrank \(=\)15
-#### Solved PYQ — Feb25 Q9MSQ · 2 marksQuestion (verbatim)Consider a matrix \(A=\begin{bmatrix}2&5\\6&15\end{bmatrix}\). Which of the following options is/are true?Options
+This question is a pure "do you know which number goes where" check — there's no matrix to compute, only the discipline of matching the theorem's \(n\) to the*column*count, not the row count or some average of the two. Whenever a question hands you an \(m\times n\) matrix's shape and a nullity, resist the urge to compute anything; just identify \(n\) and subtract.
+
+!!! success "Answer"
+    rank \(=\)15
+
+#### Solved PYQ — Feb 2025 (Q9)
+
+**Type:** MSQ · 2 marks  
+**Question (verbatim):** Consider a matrix \(A=\begin{bmatrix}2&5\\6&15\end{bmatrix}\). Which of the following options is/are true?Options
+
 - (A) Null space of A is span\(\{(-5,2)\}\).
 - (B) Column space of A is span\(\{(1,3)\}\).
 - (C) Left null space of A is span\(\{(-3,1)\}\).
@@ -148,8 +208,16 @@ This question is a pure "do you know which number goes where" check — there's 
 3. **Column space**(option B): the two columns are \((2,6)\) and \((5,15)\); both are multiples of \((1,3)\) (since \((2,6)=2(1,3)\) and \((5,15)=5(1,3)\)), so the column space is span\(\{(1,3)\}\), matching option (B) →✔ true.
 4. **Left null space**(option C): solve \(A^Ty=0\), i.e. \(y\) with \(2y_1+6y_2=0\). A direction satisfying this is \((-3,1)\), since \(2(-3)+6(1)=-6+6=0\). Matches option (C) →✔ true.
 5. **Row space**(option D): the row space is spanned by the rows themselves — \((2,5)\) and \((6,15)=3(2,5)\) — so it's span\(\{(2,5)\}\),*not*span\(\{(2,-5)\}\). Option (D) has silently flipped the sign of the second coordinate. Since \((2,-5)\) is not a scalar multiple of \((2,5)\) (there is no single \(k\) with \(2k=2\) and \(5k=-5\) simultaneously — that needs \(k=1\) and \(k=-1\) at once), this is a genuinely different line, so (D) is✗ false.
-The examiner is exploiting the fact that row space and column space of a non-symmetric matrix are*not*the same line even when the numbers "look similar" — here \(C(A)=\)span\(\{(1,3)\}\) while \(C(A^T)=\)span\(\{(2,5)\}\), genuinely different directions, and then flips one sign on top of that to catch anyone pattern-matching instead of recomputing. The general lesson: never assume row space and column space coincide unless the matrix is symmetric (recall Module 4's shortcut), and always re-derive the row space from the rows themselves rather than reusing the null-space direction with a sign flipped.Answer✔ (A) Null space·✔ (B) Column space·✔ (C) Left null space·✗ (D) Row space(sign trap).
-#### Solved PYQ — Oct24 Q2MSQ · 3 marksQuestion (verbatim)Which of the following \(3\times3\) matrices have rank 2 with column space equal to row space?Options
+The examiner is exploiting the fact that row space and column space of a non-symmetric matrix are*not*the same line even when the numbers "look similar" — here \(C(A)=\)span\(\{(1,3)\}\) while \(C(A^T)=\)span\(\{(2,5)\}\), genuinely different directions, and then flips one sign on top of that to catch anyone pattern-matching instead of recomputing. The general lesson: never assume row space and column space coincide unless the matrix is symmetric (recall Module 4's shortcut), and always re-derive the row space from the rows themselves rather than reusing the null-space direction with a sign flipped.
+
+!!! success "Answer"
+    ✔ (A) Null space·✔ (B) Column space·✔ (C) Left null space·✗ (D) Row space(sign trap).
+
+#### Solved PYQ — Oct 2024 (Q2)
+
+**Type:** MSQ · 3 marks  
+**Question (verbatim):** Which of the following \(3\times3\) matrices have rank 2 with column space equal to row space?Options
+
 - (A) \(\begin{bmatrix}1&0&0\\0&1&0\\0&0&0\end{bmatrix}\)
 - (B) \(\begin{bmatrix}1&2&3\\2&4&5\\3&5&6\end{bmatrix}\)
 - (C) \(\begin{bmatrix}0&0&0\\0&0&0\\0&0&0\end{bmatrix}\)
@@ -159,16 +227,24 @@ The examiner is exploiting the fact that row space and column space of a non-sym
 3. Option (B): check symmetry directly — the \((1,2)\) entry is \(2\) but the \((2,1)\) entry is also \(2\) here... but check the third row/column: \((1,3)=3,(3,1)=3\) and \((2,3)=5,(3,2)=5\), so this matrix actually*is*symmetric on the surface. The real disqualifier is rank: rows are \((1,2,3),(2,4,5),(3,5,6)\) — row 1 scaled by 2 gives \((2,4,6)\), which is close to but not equal to row 2 \((2,4,5)\), so the rows are independent and this is a full-rank (rank-3) matrix, not rank 2. Fails the rank-2 requirement →✗ false.
 4. Option (C), the zero matrix: trivially symmetric, but its rank is \(0\), not \(2\) — there are no nonzero rows or columns at all. Fails the rank requirement →✗ false.
 5. Option (D), \(\text{diag}(2,0,2)\): symmetric (diagonal), and it has two nonzero diagonal entries (positions 1 and 3), giving rank \(2\). Both conditions hold →✔ true.
-Diagonal matrices are the easiest possible symmetric matrices to reason about — their rank is just "count the nonzero diagonal entries," and symmetry is automatic. The examiner includes one full-rank symmetric decoy (B) specifically to punish anyone who checks only symmetry and stops there without also verifying the rank condition; always treat MSQ conditions as an "AND," and check every clause separately before ticking a box.Answer✔ (A) diag(1,1,0)and✔ (D) diag(2,0,2).
+Diagonal matrices are the easiest possible symmetric matrices to reason about — their rank is just "count the nonzero diagonal entries," and symmetry is automatic. The examiner includes one full-rank symmetric decoy (B) specifically to punish anyone who checks only symmetry and stops there without also verifying the rank condition; always treat MSQ conditions as an "AND," and check every clause separately before ticking a box.
+
+!!! success "Answer"
+    ✔ (A) diag(1,1,0)and✔ (D) diag(2,0,2).
+
 ## 5. Basis, Row/Column space, Row relations
 ### Concept
 A**basis**is a smallest set of independent vectors that spans a space. For a matrix:
 - **Basis of row space:**row-reduce; the nonzero rows form a basis. Number of them = rank.
 - **Basis of column space:**the original columns in the pivot positions.
 - **Row relations:**a nontrivial combination of rows equal to zero exists**only if the matrix is rank-deficient**. If rank = number of rows, the only relation is \(0\cdot R_1+0\cdot R_2+\dots=0\).
-#### Exam Trick
-To pick the correct basis option, count independent rows (the rank). If a \(3\times3\) has rank 3, any correct row-space basis needs exactly 3 vectors, and the only valid "row relation" is the all-zeros one. Eliminate options by that count instantly.
-#### Solved PYQ — Oct25 Q12 & Q13comprehension · 2 MCQ partsQuestion (verbatim, comprehension)Consider the following matrix \(A=\begin{bmatrix}1&0&2\\3&1&5\\2&-1&1\end{bmatrix}\).\n**Q12 (MCQ, 3 marks):**Which of the following sets forms a basis for the row space of A?Q12 options
+!!! tip "Exam Trick"
+    To pick the correct basis option, count independent rows (the rank). If a \(3\times3\) has rank 3, any correct row-space basis needs exactly 3 vectors, and the only valid "row relation" is the all-zeros one. Eliminate options by that count instantly.
+#### Solved PYQ — Oct 2025 (Q12) & (Q13)
+
+**Type:** comprehension · 2 MCQ parts  
+**Question (verbatim):** Consider the following matrix \(A=\begin{bmatrix}1&0&2\\3&1&5\\2&-1&1\end{bmatrix}\).\n**Q12 (MCQ, 3 marks):**Which of the following sets forms a basis for the row space of A?Q12 options
+
 - (A) {(1,0,2), (0,1,−1)}
 - (B) {(1,0,2), (0,1,−1), (0,0,−1)}
 - (C) {(1,0,2), (0,−1,1), (0,−1,−4)}
@@ -182,8 +258,16 @@ To pick the correct basis option, count independent rows (the rank). If a \(3\ti
 2. Eliminate the new second row from the new third row: \((0,-1,-3)+(0,1,-1)=(0,0,-4)\). Three nonzero rows survive after elimination, so rank \(=3\) — the maximum possible for a \(3\times3\) matrix, meaning all three original rows are linearly independent.
 3. **Q12:**the row space is spanned by whatever nonzero rows survive row reduction — here \(\{(1,0,2),\ (0,1,-1),\ (0,0,-4)\}\), and any nonzero scalar multiple of the last vector is an equally valid basis vector, so \((0,0,-1)\) works too. That's exactly option (B). Option (A) only has 2 vectors, which can't span a rank-3 space — too few. Option (C) reuses \((0,-1,1)\) and \((0,-1,-4)\), which are*not*the actual row-reduced vectors and, more importantly, don't even look independent of the eliminated combinations — they don't correctly represent the row space. Option (D) drops the leading row \((1,0,2)\) entirely and only has 2 vectors — again too few for a rank-3 space.
 4. **Q13:**because rank \(=3=\) number of rows, the three rows are linearly independent by definition — no nontrivial combination of them can equal the zero vector. Test each option against this fact rather than doing algebra: options (A), (B), and (D) all claim some nontrivial combination of \(R_1,R_2,R_3\) sums to zero (or that one row equals a combination of the others, which is the same claim rearranged) — every one of these would imply the rows are dependent, contradicting rank 3. Only option (C), the trivial relation \(0\cdot R_1+0\cdot R_2+0\cdot R_3=0\), is actually true — it's true for literally any set of rows, independent or not, which is exactly why it's the only relation guaranteed to hold here.
-Q13 is a conceptual trap disguised as a computation question: once you know the rank equals the number of rows, you don't need to test each option algebraically at all — "rank = number of rows" is logically equivalent to "the only linear relation among the rows is the trivial one," so you can answer instantly. This is the row-space mirror of the eigenvector-independence idea from Module 3: full rank means no redundancy, full stop.AnswerQ12:(B) {(1,0,2), (0,1,−1), (0,0,−1)}. Q13:(C) \(0\cdot R_1+0\cdot R_2+0\cdot R_3=0\)— the rows are independent.
-#### Solved PYQ — Mar26 Q5MCQ · 3 marksQuestion (verbatim)Which of the following is a basis for the column space of the matrix \(A=\begin{bmatrix}1&1&2\\2&-1&1\\1&0&1\end{bmatrix}\)?Options
+Q13 is a conceptual trap disguised as a computation question: once you know the rank equals the number of rows, you don't need to test each option algebraically at all — "rank = number of rows" is logically equivalent to "the only linear relation among the rows is the trivial one," so you can answer instantly. This is the row-space mirror of the eigenvector-independence idea from Module 3: full rank means no redundancy, full stop.
+
+!!! success "Answer"
+    Q12:(B) {(1,0,2), (0,1,−1), (0,0,−1)}. Q13:(C) \(0\cdot R_1+0\cdot R_2+0\cdot R_3=0\)— the rows are independent.
+
+#### Solved PYQ — Mar 2026 (Q5)
+
+**Type:** MCQ · 3 marks  
+**Question (verbatim):** Which of the following is a basis for the column space of the matrix \(A=\begin{bmatrix}1&1&2\\2&-1&1\\1&0&1\end{bmatrix}\)?Options
+
 - (A) {(1,2,1), (1,−1,0)}
 - (B) {(1,0,0), (0,1,0)}
 - (C) {(1,2,1), (1,−1,0), (2,1,1)}
@@ -192,7 +276,11 @@ Q13 is a conceptual trap disguised as a computation question: once you know the 
 2. Check whether \(c_3\) is a combination of \(c_1,c_2\): try \(c_1+c_2=(1+1,\ 2-1,\ 1+0)=(2,1,1)=c_3\). Found it — \(c_3\) contributes nothing new to the span, since anything you can build with \(c_3\) you can already build with \(c_1\) and \(c_2\).
 3. So the column space is spanned by just \(c_1\) and \(c_2\),*provided*they're independent of each other — check that they're not scalar multiples: \((1,2,1)\) vs \((1,-1,0)\) have different ratios between coordinates (e.g. the second coordinates are \(2\) and \(-1\), and \(2/1\ne-1/1\)), so they are independent. Two independent vectors give a rank-2 column space, and \(\{c_1,c_2\}=\{(1,2,1),(1,-1,0)\}\) is a valid basis for it — exactly option (A).
 4. Eliminate the others quickly: option (B) — \((1,0,0)\) and \((0,1,0)\) are not even columns of \(A\) or combinations of them that match \(A\)'s actual column space (that space doesn't contain a vector with a zero third coordinate paired with these values in general); it's a generic-looking decoy, not derived from \(A\) at all. Option (C) lists all three original columns, but since \(c_3=c_1+c_2\), this set is linearly*dependent*— three vectors spanning only a 2-dimensional space can never be a basis (a basis must be a minimal spanning set). Option (D) swaps \((1,2,1)\) for \((1,3,2)\), a vector that isn't a column of \(A\) at all and isn't even in its column space.
-The fast path here — spotting \(c_3=c_1+c_2\) by inspection — only works because the numbers were kept small and clean; if you don't spot it in a few seconds, fall back to row-reducing \(A^T\) (columns of \(A\) = rows of \(A^T\)) to find the pivot columns systematically. Either way, remember a basis must satisfy two separate conditions: it must*span*the space (rules out B and D, which aren't even in the right space) and it must be*linearly independent*(rules out C, which spans correctly but has one redundant vector too many).Answer(A) {(1,2,1), (1,−1,0)}.
+The fast path here — spotting \(c_3=c_1+c_2\) by inspection — only works because the numbers were kept small and clean; if you don't spot it in a few seconds, fall back to row-reducing \(A^T\) (columns of \(A\) = rows of \(A^T\)) to find the pivot columns systematically. Either way, remember a basis must satisfy two separate conditions: it must*span*the space (rules out B and D, which aren't even in the right space) and it must be*linearly independent*(rules out C, which spans correctly but has one redundant vector too many).
+
+!!! success "Answer"
+    (A) {(1,2,1), (1,−1,0)}.
+
 ## 6. Projections (the exam's favourite)
 ### Concept
 To project any vector onto the line through vector \(a\), the**projection matrix**is
@@ -205,9 +293,13 @@ The projection of \(b\) onto \(a\) is \(Pb=\dfrac{a^Tb}{a^Ta}\,a\). Think of it 
 - Orthogonally diagonalizable(it's symmetric). Eigenvalues are only 0 and 1.
 - It isNOT an orthogonal matrix— an orthogonal matrix is invertible; a projection isn't.
 - Projection onto the orthogonal complement / null space is \(I-P\).
-#### Exam Trick
-Memorize \(P=\frac{aa^T}{a^Ta}\). Denominator \(a^Ta\) = (length)². For "is a projection matrix orthogonal?" the answer is always**No**; for symmetric / rank-1 / \(P^2=P\) / orthogonally-diagonalizable the answer is always**Yes**.
-#### Solved PYQ — Feb25 Q7MSQ · 3 marksQuestion (verbatim)Which of the following options is/are true when the vector \((1,2,1)\) is projected onto the vector \((1,-1,0)\)?Options
+!!! tip "Exam Trick"
+    Memorize \(P=\frac{aa^T}{a^Ta}\). Denominator \(a^Ta\) = (length)². For "is a projection matrix orthogonal?" the answer is always**No**; for symmetric / rank-1 / \(P^2=P\) / orthogonally-diagonalizable the answer is always**Yes**.
+#### Solved PYQ — Feb 2025 (Q7)
+
+**Type:** MSQ · 3 marks  
+**Question (verbatim):** Which of the following options is/are true when the vector \((1,2,1)\) is projected onto the vector \((1,-1,0)\)?Options
+
 - (A) The projection matrix is \(\tfrac12\begin{bmatrix}-1&-1&0\\1&1&0\\0&0&0\end{bmatrix}\).
 - (B) The projection matrix is \(\tfrac12\begin{bmatrix}1&-1&0\\-1&1&0\\0&0&0\end{bmatrix}\).
 - (C) Projected vector is \(\tfrac12(-1,1,0)\).
@@ -215,23 +307,43 @@ Memorize \(P=\frac{aa^T}{a^Ta}\). Denominator \(a^Ta\) = (length)². For "is a p
 1. Let \(a=(1,-1,0)\) (the line we're projecting*onto*) and \(b=(1,2,1)\) (the vector being projected). Compute the denominator once, since both the matrix and the vector answer reuse it: \(a^Ta=1^2+(-1)^2+0^2=2\).
 2. Build the projection matrix from the formula \(P=\dfrac{aa^T}{a^Ta}\). First form the outer product \(aa^T\) (a \(3\times3\) matrix, not a number): \[ aa^T=\begin{bmatrix}1\\-1\\0\end{bmatrix}\begin{bmatrix}1&-1&0\end{bmatrix}=\begin{bmatrix}1&-1&0\\-1&1&0\\0&0&0\end{bmatrix}. \] Divide by \(a^Ta=2\): \(P=\tfrac12\begin{bmatrix}1&-1&0\\-1&1&0\\0&0&0\end{bmatrix}\). This matches option (B) exactly — note that \(P\) must be symmetric (Module 6's property list), and option (B) is symmetric while option (A) is*not*(its off-diagonal entries have mismatched signs: \(-1\) above the diagonal but \(1\) below), so (A) can be eliminated on sight without even multiplying anything out.
 3. Get the projected vector either by applying \(P\) to \(b\), or faster, by the shortcut formula \(\dfrac{a^Tb}{a^Ta}a\). Compute \(a^Tb=1(1)+(-1)(2)+0(1)=1-2+0=-1\). \[ Pb=\frac{a^Tb}{a^Ta}\,a=\frac{-1}{2}(1,-1,0)=\tfrac12(-1,1,0). \] This matches option (C). Option (D), \(\tfrac12(1,-1,0)\), is just \(-1\) times the correct answer — the sign flip that happens if you forget the minus sign in \(a^Tb=-1\), or if you accidentally compute \(\frac{a^Tb}{a^Ta}\) with the wrong sign convention.
-Notice the two "twin" wrong options: (A) is (B) with a sign error baked into the matrix, and (D) is (C) with a sign error baked into the vector. This is a deliberate MSQ pattern in these papers — each correct answer usually has a sign-flipped sibling sitting right next to it, so the fastest defense is to check symmetry of \(P\) (always true, instantly disqualifies A) and to double-check the sign of \(a^Tb\) by hand rather than trusting a half-remembered formula.Answer✔ (B)projection matrix \(\tfrac12\begin{bmatrix}1&-1&0\\-1&1&0\\0&0&0\end{bmatrix}\) ·✔ (C)projected vector \(\tfrac12(-1,\,1,\,0)\).
-#### Solved PYQ — Mar26 Q13–15comprehension · 2 SA partsQuestion (verbatim, comprehension)Let \(P=\begin{bmatrix}a&b\\c&d\end{bmatrix}\) be the projection matrix that projects vectors in \(\mathbb R^2\) onto the line \(y=3x\). Let \(A=\begin{bmatrix}e&f\\g&h\end{bmatrix}\) be the matrix that projects vectors in \(\mathbb R^2\) onto the nullspace of P.\n**Q14 (SA, 3 marks):**Find \(10(a+b+c+d)\). Your answer should be an integer.\n**Q15 (SA, 1 mark):**Find \(10(e+f+g+h)\). Your answer should be an integer.
+Notice the two "twin" wrong options: (A) is (B) with a sign error baked into the matrix, and (D) is (C) with a sign error baked into the vector. This is a deliberate MSQ pattern in these papers — each correct answer usually has a sign-flipped sibling sitting right next to it, so the fastest defense is to check symmetry of \(P\) (always true, instantly disqualifies A) and to double-check the sign of \(a^Tb\) by hand rather than trusting a half-remembered formula.
+
+!!! success "Answer"
+    ✔ (B)projection matrix \(\tfrac12\begin{bmatrix}1&-1&0\\-1&1&0\\0&0&0\end{bmatrix}\) ·✔ (C)projected vector \(\tfrac12(-1,\,1,\,0)\).
+
+#### Solved PYQ — Mar 2026 (Q13)–15
+
+**Type:** comprehension · 2 SA parts  
+**Question (verbatim):** Let \(P=\begin{bmatrix}a&b\\c&d\end{bmatrix}\) be the projection matrix that projects vectors in \(\mathbb R^2\) onto the line \(y=3x\). Let \(A=\begin{bmatrix}e&f\\g&h\end{bmatrix}\) be the matrix that projects vectors in \(\mathbb R^2\) onto the nullspace of P.
+
+**Q14 (SA, 3 marks):**Find \(10(a+b+c+d)\). Your answer should be an integer.
+
+**Q15 (SA, 1 mark):**Find \(10(e+f+g+h)\). Your answer should be an integer.
+
 1. First translate "the line \(y=3x\)" into a direction vector, since the projection formula needs a vector, not an equation. Any point on the line works, e.g. \((1,3)\): plug in \(x=1\) and check \(y=3(1)=3\). ✓ So take \(a_{\text{dir}}=(1,3)\) and compute \(a_{\text{dir}}^Ta_{\text{dir}}=1^2+3^2=10\).
 2. Build \(P=\dfrac{a_{\text{dir}}a_{\text{dir}}^T}{a_{\text{dir}}^Ta_{\text{dir}}}\): \[ a_{\text{dir}}a_{\text{dir}}^T=\begin{bmatrix}1\\3\end{bmatrix}\begin{bmatrix}1&3\end{bmatrix}=\begin{bmatrix}1&3\\3&9\end{bmatrix} \;\Rightarrow\; P=\frac1{10}\begin{bmatrix}1&3\\3&9\end{bmatrix}. \] So \(a=0.1,\ b=0.3,\ c=0.3,\ d=0.9\) in the problem's own labeling (unfortunate overlap with the direction vector's name — don't confuse the matrix entry \(a\) with the direction vector I called \(a_{\text{dir}}\) above).
 3. Q14 wants \(10(a+b+c+d)\), so the factor of 10 is there precisely to clear the \(1/10\) out front and hand you an integer: \(10\cdot\frac1{10}(1+3+3+9)=1+3+3+9=16\).
 4. Q15's matrix \(A\) projects onto the*nullspace*of \(P\) — geometrically, the line \(y=3x\) and its nullspace (the perpendicular line through the origin) are orthogonal complements of each other in \(\mathbb R^2\), and projecting onto one versus the other are complementary operations that must add back up to the identity: \(A=I-P\). This is exactly the \(I-P\) fact from Module 6's property list, applied in reverse — instead of being told "find \(I-P\)," you're told "here's the complementary projection" and expected to recognize it as \(I-P\).
 5. Compute: \(A=I-P=\begin{bmatrix}1&0\\0&1\end{bmatrix}-\frac1{10}\begin{bmatrix}1&3\\3&9\end{bmatrix}=\frac1{10}\begin{bmatrix}9&-3\\-3&1\end{bmatrix}\). Then \(10(e+f+g+h)=9-3-3+1=4\).
-Free self-check that costs nothing: since \(P+A=I\), every entry of \(P\) plus the corresponding entry of \(A\) must equal the corresponding entry of \(I\) (1 on the diagonal, 0 off it). Summing all four entries of \(P\) gives \(16/10\) and all four of \(A\) gives \(4/10\); adding them, \(16/10+4/10=20/10=2\), which is exactly the sum of \(I\)'s four entries (\(1+0+0+1=2\)). If your two sub-answers don't satisfy this check, one of them has an arithmetic error — always verify \(P+(I-P)=I\) before submitting comprehension answers like this.AnswerQ14: \(10(a+b+c+d)=\)16. Q15: \(10(e+f+g+h)=\)4.Check: the two matrices sum to \(I\).
+Free self-check that costs nothing: since \(P+A=I\), every entry of \(P\) plus the corresponding entry of \(A\) must equal the corresponding entry of \(I\) (1 on the diagonal, 0 off it). Summing all four entries of \(P\) gives \(16/10\) and all four of \(A\) gives \(4/10\); adding them, \(16/10+4/10=20/10=2\), which is exactly the sum of \(I\)'s four entries (\(1+0+0+1=2\)). If your two sub-answers don't satisfy this check, one of them has an arithmetic error — always verify \(P+(I-P)=I\) before submitting comprehension answers like this.
+
+!!! success "Answer"
+    Q14: \(10(a+b+c+d)=\)16. Q15: \(10(e+f+g+h)=\)4.Check: the two matrices sum to \(I\).
+
 ## 7. Orthogonality, Dot Product, Length
 ### Concept
 - **Dot product:**\(u\cdot v=\sum u_iv_i\). Two vectors are**orthogonal**\(\iff u\cdot v=0\).
 - **Length (norm):**\(\|v\|=\sqrt{v\cdot v}\).
 - If \(u,v\) are orthogonal, the projection of one onto the other is the**zero vector**— there is simply no shadow.
 - Careful with complements: the**rows**of \(A\) are orthogonal to the null space (row space ⊥ null space) — not the columns.
-#### Exam Trick
-"Orthogonal" questions collapse to one dot product = 0. If told \(u\perp v\), immediately write \(u\cdot v=0\) and read off the condition. If asked for a projection between orthogonal vectors, it's the zero vector — no computation.
-#### Solved PYQ — Mar26 Q1MCQ · 2 marksQuestion (verbatim)Let the vectors \(u=(1,a,2),\ v=(2,-1,b)\) be orthogonal. Which of the following must be true?Options
+!!! tip "Exam Trick"
+    "Orthogonal" questions collapse to one dot product = 0. If told \(u\perp v\), immediately write \(u\cdot v=0\) and read off the condition. If asked for a projection between orthogonal vectors, it's the zero vector — no computation.
+#### Solved PYQ — Mar 2026 (Q1)
+
+**Type:** MCQ · 2 marks  
+**Question (verbatim):** Let the vectors \(u=(1,a,2),\ v=(2,-1,b)\) be orthogonal. Which of the following must be true?Options
+
 - (A) \(a-2b=2\)
 - (B) \(a+2=2b\)
 - (C) \(2b-a=2\)
@@ -240,8 +352,16 @@ Free self-check that costs nothing: since \(P+A=I\), every entry of \(P\) plus t
 2. Compute the dot product term by term: \(u\cdot v=(1)(2)+(a)(-1)+(2)(b)=2-a+2b\).
 3. Set it to zero and isolate: \(2-a+2b=0\ \Rightarrow\ -a+2b=-2\ \Rightarrow\ a-2b=2\) (multiplying both sides by \(-1\)). This matches option (A) exactly.
 4. Check the distractors to see what mistake each one encodes: option (D), \(a-2b=0\), is what you'd get if you forgot the constant term \(2\) entirely (i.e. computed \(u\cdot v=-a+2b\) and dropped the leading \(2\) from \((1)(2)\)). Option (B), \(a+2=2b\), rearranges to \(a-2b=-2\) — the same equation as the correct one but with the wrong sign on the constant, the kind of error that comes from a sign slip while isolating \(a\). Option (C), \(2b-a=2\), rearranges to \(a-2b=-2\) as well — same error as (B), just written with the terms swapped.
-All four options are really testing the same single computation from different angles: get the constant term's value and sign right (it comes from \(1\times2=2\)), and get the sign of the rearrangement right when isolating \(a\). The reliable defense is to never rearrange in your head — write \(2-a+2b=0\) explicitly, then perform one algebraic step at a time on paper, because these "which of the following must be true" MCQs are specifically designed so that a single sign error lands you on a real (wrong) option rather than an obviously-nonsensical one.Answer(A) \(a-2b=2\)
-#### Solved PYQ — Oct25 Q4MSQ · 2 marksQuestion (verbatim)Two vectors \(v_1\) and \(v_2\) are such that \(v_1=(1,2,2)^T\) and \(v_2=(2,-1,0)^T\). Which of the following options is/are correct?Options
+All four options are really testing the same single computation from different angles: get the constant term's value and sign right (it comes from \(1\times2=2\)), and get the sign of the rearrangement right when isolating \(a\). The reliable defense is to never rearrange in your head — write \(2-a+2b=0\) explicitly, then perform one algebraic step at a time on paper, because these "which of the following must be true" MCQs are specifically designed so that a single sign error lands you on a real (wrong) option rather than an obviously-nonsensical one)
+
+!!! success "Answer"
+    (A) \(a-2b=2\)
+
+#### Solved PYQ — Oct 2025 (Q4)
+
+**Type:** MSQ · 2 marks  
+**Question (verbatim):** Two vectors \(v_1\) and \(v_2\) are such that \(v_1=(1,2,2)^T\) and \(v_2=(2,-1,0)^T\). Which of the following options is/are correct?Options
+
 - (A) Vectors \(v_1\) and \(v_2\) are parallel to each other.
 - (B) Vectors \(v_1\) and \(v_2\) are orthogonal to each other.
 - (C) Projection of \(v_1\) onto \(v_2\) is the zero vector.
@@ -250,7 +370,11 @@ All four options are really testing the same single computation from different a
 2. A zero dot product means \(v_1\) and \(v_2\) are orthogonal by definition — option (B) is✔ true. This single fact also directly answers (A): two nonzero vectors can't be both parallel*and*perpendicular at the same time (parallel would mean the angle between them is \(0°\) or \(180°\), while orthogonal means exactly \(90°\)), so option (A) is✗ false— no separate check needed.
 3. For the projection options, recall the projection formula \(\text{proj}_a b=\dfrac{a^Tb}{a^Ta}a\) — the entire vector is scaled by the fraction \(\dfrac{a^Tb}{a^Ta}\). Since we already know \(v_1\cdot v_2=v_1^Tv_2=0\), that fraction is \(0/(\text{anything nonzero})=0\) regardless of which vector plays the role of \(a\) and which plays \(b\) — the dot product in the numerator is symmetric (\(v_1^Tv_2=v_2^Tv_1\)), so it vanishes both ways.
 4. So the projection of \(v_1\) onto \(v_2\) is \(0\cdot v_2=\mathbf0\) — option (C) is✔ true— and by the identical argument, the projection of \(v_2\) onto \(v_1\) is \(0\cdot v_1=\mathbf0\) — option (D) is also✔ true.
-This question is a compressed test of the entire orthogonality-projection chain from Module 7 in one shot: one dot-product computation instantly resolves all four options, because "orthogonal" and "zero projection in both directions" are really the*same fact*stated three different ways, and "not parallel" follows as a free corollary. Whenever you see an MSQ with both a parallel/orthogonal option and a pair of projection options on the same two vectors, compute the dot product first — it's rarely a coincidence that it answers everything at once.Answer✔ (B) orthogonal·✔ (C) proj of \(v_1\) on \(v_2\) = 0·✔ (D) proj of \(v_2\) on \(v_1\) = 0·✗ (A) parallel
+This question is a compressed test of the entire orthogonality-projection chain from Module 7 in one shot: one dot-product computation instantly resolves all four options, because "orthogonal" and "zero projection in both directions" are really the*same fact*stated three different ways, and "not parallel" follows as a free corollary. Whenever you see an MSQ with both a parallel/orthogonal option and a pair of projection options on the same two vectors, compute the dot product first — it's rarely a coincidence that it answers everything at once.
+
+!!! success "Answer"
+    ✔ (B) orthogonal·✔ (C) proj of \(v_1\) on \(v_2\) = 0·✔ (D) proj of \(v_2\) on \(v_1\) = 0·✗ (A) parallel
+
 ## 8. Least Squares & Regression
 ### Concept
 Regression fits a model to data by minimizing the**squared error**\(\sum (y_i-\hat y_i)^2\).
@@ -259,9 +383,13 @@ Regression fits a model to data by minimizing the**squared error**\(\sum (y_i-\h
 - If you have \(k\) parameters and \(k\) data points with distinct \(x\), the fit is**exact**(interpolation) — squared loss = 0.
 - If the points aren't collinear, no line gives zero loss. Ever.
 - To pick "smallest squared loss" among given models, just plug in and sum \((y-\hat y)^2\) for each.
-#### Exam Trick
-For a quadratic through 3 points, don't run normal equations —**solve the 3 exact equations**\(\theta_0+\theta_1x+\theta_2x^2=y\) (the curve passes through all 3). For "can squared loss be exactly 0 with a line?" answer**Yes**only if the points are collinear, otherwise**No**.
-#### Solved PYQ — Oct25 Q3 (quadratic fit)MCQ · 3 marksQuestion (verbatim)Consider the dataset \((x,y)\): \((-1,2),\ (0,1),\ (1,2)\). Perform polynomial regression of degree 2 by fitting a quadratic model of the form \(y=\theta_0+\theta_1x+\theta_2x^2\). Using the method of least squares, find the estimates of \(\theta_0,\theta_1,\theta_2\).Options
+!!! tip "Exam Trick"
+    For a quadratic through 3 points, don't run normal equations —**solve the 3 exact equations**\(\theta_0+\theta_1x+\theta_2x^2=y\) (the curve passes through all 3). For "can squared loss be exactly 0 with a line?" answer**Yes**only if the points are collinear, otherwise**No**.
+#### Solved PYQ — Oct 2025 (Q3) (quadratic fit)
+
+**Type:** MCQ · 3 marks  
+**Question (verbatim):** Consider the dataset \((x,y)\): \((-1,2),\ (0,1),\ (1,2)\). Perform polynomial regression of degree 2 by fitting a quadratic model of the form \(y=\theta_0+\theta_1x+\theta_2x^2\). Using the method of least squares, find the estimates of \(\theta_0,\theta_1,\theta_2\).Options
+
 - (A) \(y=x^2+1\)
 - (B) \(y=x^2\)
 - (C) \(y=x^2-1\)
@@ -271,8 +399,14 @@ For a quadratic through 3 points, don't run normal equations —**solve the 3 ex
 3. Substitute the remaining two points: at \(x=1\): \(2=\theta_0+\theta_1+\theta_2=1+\theta_1+\theta_2\Rightarrow\theta_1+\theta_2=1\). At \(x=-1\): \(2=\theta_0-\theta_1+\theta_2=1-\theta_1+\theta_2\Rightarrow-\theta_1+\theta_2=1\).
 4. Add the two equations to eliminate \(\theta_1\): \((\theta_1+\theta_2)+(-\theta_1+\theta_2)=1+1\Rightarrow2\theta_2=2\Rightarrow\theta_2=1\). Substitute back: \(\theta_1+1=1\Rightarrow\theta_1=0\).
 5. Assemble: \(y=\theta_0+\theta_1x+\theta_2x^2=1+0\cdot x+1\cdot x^2=x^2+1\) — option (A). Quick sanity check against all three points: \(x=-1\to1+1=2\)✓, \(x=0\to1\)✓, \(x=1\to1+1=2\)✓ — all match, confirming zero error as expected for an exact fit.
-The distractor options are built by nudging one coefficient at a time: (B) drops the "+1" (forgetting \(\theta_0\)), (C) flips its sign (a sign error in solving for \(\theta_0\)), and (D) is a linear guess that ignores the data's obvious symmetry (the \(y\)-values at \(x=\pm1\) are equal, which should immediately suggest an even function — no odd/linear term). Whenever \(y\)-values are symmetric around \(x=0\) like this, expect \(\theta_1=0\) before you even solve for it; it's a fast built-in check.Answer(A) \(y=x^2+1\)
-#### Solved PYQ — Jul25 Q9 (best-fit line)
+The distractor options are built by nudging one coefficient at a time: (B) drops the "+1" (forgetting \(\theta_0\)), (C) flips its sign (a sign error in solving for \(\theta_0\)), and (D) is a linear guess that ignores the data's obvious symmetry (the \(y\)-values at \(x=\pm1\) are equal, which should immediately suggest an even function — no odd/linear term). Whenever \(y\)-values are symmetric around \(x=0\) like this, expect \(\theta_1=0\) before you even solve for it; it's a fast built-in check)
+
+!!! success "Answer"
+    (A) \(y=x^2+1\)
+
+#### Solved PYQ — Jul 2025 (Q9) (best-fit line)
+
+
 MSQ · 4 marks
 
 Question (verbatim)
@@ -293,8 +427,18 @@ Options
 3. Intercept: \[ a=\frac{\sum y-b\sum x}{n}=\frac{7-\frac{31}{14}(5)}{3}=\frac{\frac{98-155}{14}}{3}=\frac{-57/14}{3}=-\frac{19}{14}. \] So the fitted line is \(\hat y=a+bx=-\dfrac{19}{14}+\dfrac{31}{14}x=\dfrac{31x-19}{14}\), i.e. \(\hat y=\tfrac1{14}(31x-19)\).
 4. Compare against options (A) and (B): option (B), \(\tfrac1{14}(31x-91)\), has the right slope coefficient (31) but the wrong constant — \(91\) instead of \(19\), likely from mis-simplifying \(\sum y-b\sum x\). Option (A), \(\tfrac1{14}(13x-19)\), has the right constant but the wrong slope (13 instead of 31) — a plausible error if you mixed up the numerator terms in the slope formula. Neither survives a careful recomputation, so both (A) and (B) are✗ false.
 5. Now use the*correct*line \(\hat y=\dfrac{31x-19}{14}\) to check the two numeric predictions. At \(x=11\): \(\hat y=\dfrac{31(11)-19}{14}=\dfrac{341-19}{14}=\dfrac{322}{14}=23\) — matches option (C),✔ true. At \(x=7\): \(\hat y=\dfrac{31(7)-19}{14}=\dfrac{217-19}{14}=\dfrac{198}{14}=\dfrac{99}{7}\) — matches option (D),✔ true.
-This MSQ is structured so the two "line equation" options are wrong on purpose (each carries exactly one planted arithmetic slip) while the two "prediction" options are correct — a reminder that in MSQs you can't assume internal consistency between options; you have to verify each one independently against your own from-scratch computation rather than trusting that at least one line-equation option must be right just because two prediction options agree with "a" line.Answer✔ (C)\(\hat y(11)=23\) ·✔ (D)\(\hat y(7)=99/7\) ·✗ (A), (B)both misstate the line itself (true line: \(\hat y=\tfrac1{14}(31x-19)\)).
-#### Solved PYQ — Oct25 Q9/Q10 (smallest loss + can loss be 0?)comprehension · 2 MCQ partsQuestion (verbatim, comprehension)Consider a regression problem with 4 training points, graphed to scale: \((2,0),\ (3,3),\ (5,5),\ (6,8)\).\n**Q9 (MCQ, 3 marks):**Which of these models has the smallest squared loss on this training dataset?Q9 options
+This MSQ is structured so the two "line equation" options are wrong on purpose (each carries exactly one planted arithmetic slip) while the two "prediction" options are correct — a reminder that in MSQs you can't assume internal consistency between options; you have to verify each one independently against your own from-scratch computation rather than trusting that at least one line-equation option must be right just because two prediction options agree with "a" line.
+
+!!! success "Answer"
+    ✔ (C)\(\hat y(11)=23\) ·✔ (D)\(\hat y(7)=99/7\) ·✗ (A), (B)both misstate the line itself (true line: \(\hat y=\tfrac1{14}(31x-19)\)).
+
+#### Solved PYQ — Oct 2025 (Q9)/(Q10) (smallest loss + can loss be 0?)
+
+**Type:** comprehension · 2 MCQ parts  
+**Question (verbatim):** Consider a regression problem with 4 training points, graphed to scale: \((2,0),\ (3,3),\ (5,5),\ (6,8)\).
+
+**Q9 (MCQ, 3 marks):**Which of these models has the smallest squared loss on this training dataset?Q9 options
+
 - (A) \(f(x)=2x-4\)
 - (B) \(f(x)=4\)
 - (C) \(f(x)=8\)
@@ -309,16 +453,24 @@ This MSQ is structured so the two "line equation" options are wrong on purpose (
 4. For (B), \(f(x)=4\) constant: errors are \(0-4=-4,\ 3-4=-1,\ 5-4=1,\ 8-4=4\), SSE \(=16+1+1+16=34\) — dramatically worse. So option (A) with SSE \(=2\) is the smallest —✔ (A).
 5. **Q10:**a line \(f(x)=wx+b\) achieves exactly zero squared loss only if*every*point lies exactly on it — i.e. the four points must be collinear. Test this directly using slopes between consecutive points: from \((2,0)\) to \((3,3)\), slope \(=\dfrac{3-0}{3-2}=3\). From \((3,3)\) to \((5,5)\), slope \(=\dfrac{5-3}{5-3}=1\).
 6. The slopes differ (\(3\ne1\)), so the four points do*not*all lie on a single straight line — no line can pass through all of them exactly, meaning zero squared loss is unreachable by any linear model. Answer:✔ (A) No.
-Q9 rewards pattern-recognition before arithmetic: eliminating the two decreasing/flat-in-the-wrong-place options by eyeballing the data's trend saves you from computing two unnecessary SSE values. Q10 is really just "can least-squares loss ever be exactly zero," and the general rule from the concept box applies directly: with more data points than free parameters (4 points, only 2 parameters \(w,b\)), zero loss is only possible in the special case that the points happen to be exactly collinear — check that with any two slope computations rather than trying to fit an actual line.AnswerQ9: smallest loss =(A) \(f(x)=2x-4\)(SSE = 2). Q10: zero loss possible?(A) No— points aren't collinear (slopes 3 then 1).
+Q9 rewards pattern-recognition before arithmetic: eliminating the two decreasing/flat-in-the-wrong-place options by eyeballing the data's trend saves you from computing two unnecessary SSE values. Q10 is really just "can least-squares loss ever be exactly zero," and the general rule from the concept box applies directly: with more data points than free parameters (4 points, only 2 parameters \(w,b\)), zero loss is only possible in the special case that the points happen to be exactly collinear — check that with any two slope computations rather than trying to fit an actual line.
+
+!!! success "Answer"
+    Q9: smallest loss =(A) \(f(x)=2x-4\)(SSE = 2). Q10: zero loss possible?(A) No— points aren't collinear (slopes 3 then 1).
+
 ## 9. Gradient & Directional Derivative
 ### Concept
 The**gradient**\(\nabla f=(f_{x_1},f_{x_2},\dots)\) is the vector of partial derivatives. At any point it points in the direction of**steepest increase**— think of standing on a hillside: the gradient points straight uphill.
 - **Direction of maximum increase**= \(\dfrac{\nabla f}{\|\nabla f\|}\) (the gradient, made unit length).
 - **Maximum rate of increase**= \(\|\nabla f\|\) (the gradient's length).
 - **Directional derivative**in a unit direction \(u\): \(D_uf=\nabla f\cdot u\) — the rate of change of \(f\) along \(u\).
-#### Exam Trick
-"In which direction is the directional derivative maximum?" = normalize the gradient. "Rate of max increase / gradient length" = \(\|\nabla f\|\). Directional derivative in a given direction = dot the gradient with the (already-unit) direction. Check the direction vector is unit first — they often pre-scale it (e.g. \(\frac13(-2,-1,2)\) has length 1).
-#### Solved PYQ — Oct24 Q11MCQ · 3 marksQuestion (verbatim)Consider the function \(f(x,y)=x^2+3y^2\). In which direction does the maximum directional derivative occur at the point \((1,2)\)?Options
+!!! tip "Exam Trick"
+    "In which direction is the directional derivative maximum?" = normalize the gradient. "Rate of max increase / gradient length" = \(\|\nabla f\|\). Directional derivative in a given direction = dot the gradient with the (already-unit) direction. Check the direction vector is unit first — they often pre-scale it (e.g. \(\frac13(-2,-1,2)\) has length 1).
+#### Solved PYQ — Oct 2024 (Q11)
+
+**Type:** MCQ · 3 marks  
+**Question (verbatim):** Consider the function \(f(x,y)=x^2+3y^2\). In which direction does the maximum directional derivative occur at the point \((1,2)\)?Options
+
 - (A) \(\left(\frac1{\sqrt{10}},\ \frac3{\sqrt{10}}\right)\)
 - (B) \(\left(\frac1{\sqrt{37}},\ \frac6{\sqrt{37}}\right)\)
 - (C) \(\left(\frac2{\sqrt5},\ \frac{24}{\sqrt5}\right)\)
@@ -328,37 +480,69 @@ The**gradient**\(\nabla f=(f_{x_1},f_{x_2},\dots)\) is the vector of partial der
 3. Find its length so it can be normalized: \(\|\nabla f\|=\sqrt{2^2+12^2}=\sqrt{4+144}=\sqrt{148}=2\sqrt{37}\) (pulling out the perfect square \(4\) from \(148=4\cdot37\)).
 4. Normalize by dividing each component by the length: \(\dfrac{(2,12)}{2\sqrt{37}}=\left(\dfrac{2}{2\sqrt{37}},\ \dfrac{12}{2\sqrt{37}}\right)=\left(\dfrac1{\sqrt{37}},\ \dfrac6{\sqrt{37}}\right)\) — matches option (B).
 5. Check the distractors to see what they're testing: option (D), \(\left(\frac1{\sqrt5},\frac2{\sqrt5}\right)\), is the unit vector in the direction of the*point*\((1,2)\) itself, not the gradient — a trap for anyone who normalizes the input coordinates instead of the gradient. Option (A), \(\left(\frac1{\sqrt{10}},\frac3{\sqrt{10}}\right)\), would come from using \(\nabla f=(1,3)\) — i.e. forgetting the factor of 2 and 6 from differentiating \(x^2\) and \(3y^2\) and treating the coefficients as if they were the exponents' outputs directly. Option (C) is the un-normalized gradient itself scaled oddly (\((2,12)\) doesn't reduce to \((2/\sqrt5,24/\sqrt5)\) at all) — it's there to catch anyone who skips normalization altogether and just picks whichever option "looks like" the gradient.
-A useful two-second gut check before you even normalize: the gradient's*ratio*of components must be preserved by the correct answer, since normalizing only rescales, it never changes direction. Here \(\nabla f=(2,12)\) has a component ratio of \(1:6\), and only option (B), \(\left(\frac1{\sqrt{37}},\frac6{\sqrt{37}}\right)\), preserves that \(1:6\) ratio — every other option has a different ratio and can be eliminated without computing a single square root.Answer(B) \(\left(\frac1{\sqrt{37}},\ \frac6{\sqrt{37}}\right)\)
-#### Solved PYQ — Mar26 Q12SA · 3 marksQuestion (verbatim)Find the directional derivative of the function \(f:\mathbb R^3\to\mathbb R\) given by \(f(x,y,z)=x^2y-yz^3+z\) at the point \((1,-2,0)\) in the direction of the vector \(\tfrac13(-2,-1,2)\). Your answer should be an integer.
+A useful two-second gut check before you even normalize: the gradient's*ratio*of components must be preserved by the correct answer, since normalizing only rescales, it never changes direction. Here \(\nabla f=(2,12)\) has a component ratio of \(1:6\), and only option (B), \(\left(\frac1{\sqrt{37}},\frac6{\sqrt{37}}\right)\), preserves that \(1:6\) ratio — every other option has a different ratio and can be eliminated without computing a single square root)
+
+!!! success "Answer"
+    (B) \(\left(\frac1{\sqrt{37}},\ \frac6{\sqrt{37}}\right)\)
+
+#### Solved PYQ — Mar 2026 (Q12)
+
+**Type:** SA · 3 marks  
+**Question (verbatim):** Find the directional derivative of the function \(f:\mathbb R^3\to\mathbb R\) given by \(f(x,y,z)=x^2y-yz^3+z\) at the point \((1,-2,0)\) in the direction of the vector \(\tfrac13(-2,-1,2)\). Your answer should be an integer.
+
 1. Before touching the gradient, verify the given direction \(u=\tfrac13(-2,-1,2)\) is actually a unit vector — the directional-derivative formula \(D_uf=\nabla f\cdot u\) is only valid for*unit*\(u\), and this paper often pre-scales the direction so you're expected to confirm it rather than assume it: \(\|u\|^2=\tfrac19\big((-2)^2+(-1)^2+2^2\big)=\tfrac19(4+1+4)=\tfrac99=1\). ✔ Confirmed unit — this check takes five seconds and protects the whole answer.
 2. Compute all three partial derivatives of \(f\) symbolically first, then plug in the point once — this is safer than substituting early and differentiating a number (which is always zero and a common source of silent errors): \[ f_x=2xy,\qquad f_y=x^2-z^3,\qquad f_z=-3yz^2+1. \]
 3. Evaluate the gradient at \((1,-2,0)\): \(f_x=2(1)(-2)=-4\); \(\ f_y=(1)^2-(0)^3=1\); \(\ f_z=-3(-2)(0)^2+1=0+1=1\). So \(\nabla f(1,-2,0)=(-4,\ 1,\ 1)\).
 4. Take the dot product of the gradient with the (already-unit) direction: \[ D_uf=(-4,1,1)\cdot\tfrac13(-2,-1,2)=\tfrac13\big[(-4)(-2)+(1)(-1)+(1)(2)\big]=\tfrac13(8-1+2)=\tfrac93=3. \]
-The three-term dot product in the last line is where sign errors like to hide — note that \((-4)\times(-2)=+8\) (two negatives), not \(-8\); a single flipped sign there would have silently changed the final answer from \(3\) to \(-1\) or similar. When multiplying two negative numbers under time pressure, it helps to say the rule out loud ("negative times negative is positive") rather than trusting muscle memory.Answer\(D_uf=3\)
-#### Solved PYQ — Feb25 Q11SA · 3 marksQuestion (verbatim)If \(f(x,y,z)=\sin(xy)+e^{yz}+xz^2\), what is the length of the gradient at the point \((1,0,2)\)? Enter the answer correct to two decimal places.
+The three-term dot product in the last line is where sign errors like to hide — note that \((-4)\times(-2)=+8\) (two negatives), not \(-8\); a single flipped sign there would have silently changed the final answer from \(3\) to \(-1\) or similar. When multiplying two negative numbers under time pressure, it helps to say the rule out loud ("negative times negative is positive") rather than trusting muscle memory)
+
+!!! success "Answer"
+    \(D_uf=3\)
+
+#### Solved PYQ — Feb 2025 (Q11)
+
+**Type:** SA · 3 marks  
+**Question (verbatim):** If \(f(x,y,z)=\sin(xy)+e^{yz}+xz^2\), what is the length of the gradient at the point \((1,0,2)\)? Enter the answer correct to two decimal places.
+
 1. This function has three additive terms, each depending on a different mix of variables, so differentiate term by term and use the product/chain rule carefully on each piece rather than trying to do it all at once.
 2. \(f_x\): \(\sin(xy)\) contributes \(y\cos(xy)\) (chain rule, treating \(y\) as constant); \(e^{yz}\) contributes \(0\) (no \(x\)); \(xz^2\) contributes \(z^2\). Total: \(f_x=y\cos(xy)+z^2\).
 3. \(f_y\): \(\sin(xy)\) contributes \(x\cos(xy)\); \(e^{yz}\) contributes \(ze^{yz}\) (chain rule on the exponent); \(xz^2\) contributes \(0\) (no \(y\)). Total: \(f_y=x\cos(xy)+ze^{yz}\).
 4. \(f_z\): \(\sin(xy)\) contributes \(0\); \(e^{yz}\) contributes \(ye^{yz}\); \(xz^2\) contributes \(2xz\). Total: \(f_z=ye^{yz}+2xz\).
 5. Evaluate all three at \((1,0,2)\), one at a time, noting that \(y=0\) kills several terms and simplifies things a lot: \(f_x=0\cdot\cos(0)+2^2=0+4=4\). \(\ f_y=1\cdot\cos(0)+2\cdot e^{0}=1+2(1)=3\) (since \(\cos(0)=1\) and \(e^0=1\)). \(\ f_z=0\cdot e^{0}+2(1)(2)=0+4=4\).
 6. So \(\nabla f(1,0,2)=(4,3,4)\). Its length: \(\|\nabla f\|=\sqrt{4^2+3^2+4^2}=\sqrt{16+9+16}=\sqrt{41}\approx6.40\).
-Plugging in \(y=0\) early (rather than carrying \(y\) symbolically through every term) is what keeps this computation manageable — two of the three gradient components involve a \(\cos(xy)\) or \(e^{yz}\) factor that becomes exactly \(1\) once \(y=0\), and the third term in \(f_x,f_y\) vanishes outright. Whenever a coordinate of the evaluation point is \(0\), scan every product term for that variable first — it's usually the fastest route to the answer, and it's why the accepted range on this question (6.37–6.43) was wide enough to tolerate rounding \(\sqrt{41}\) at different stages.Answer\(\sqrt{41}\approx6.40\)(accepted range 6.37–6.43)
+Plugging in \(y=0\) early (rather than carrying \(y\) symbolically through every term) is what keeps this computation manageable — two of the three gradient components involve a \(\cos(xy)\) or \(e^{yz}\) factor that becomes exactly \(1\) once \(y=0\), and the third term in \(f_x,f_y\) vanishes outright. Whenever a coordinate of the evaluation point is \(0\), scan every product term for that variable first — it's usually the fastest route to the answer, and it's why the accepted range on this question (6.37–6.43) was wide enough to tolerate rounding \(\sqrt{41}\) at different stages)
+
+!!! success "Answer"
+    \(\sqrt{41}\approx6.40\)(accepted range 6.37–6.43)
+
 ## 10. Linear Approximation (tangent plane)
 ### Concept
 Near a point \((a,b)\), a smooth function is approximated by its tangent plane:
 \[ L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b). \]
 Single-variable version: \(L(x)=f(a)+f'(a)(x-a)\). Read it as:**value + slope × step**. That intuition is the entire module.
-#### Exam Trick
-Three-step machine: (1) compute \(f\) at the base point, (2) compute the partials at the base point, (3) plug in the small offsets. Expansion around \((0,0)\) is easiest because \(x-a=x\). The plane \(L\) can be written as \(w^Tx+b=0\) with \(w\) = coefficients — that's how the "normal vector / plane" follow-ups connect.
-#### Solved PYQ — Oct24 Q12SA · 3 marksQuestion (verbatim)Consider the function \(f(x,y)=e^x\cos(y)\). Let \(L(x,y)\) be the linear approximation of \(f(x,y)\) at the point \((0,0)\), then find the value \(L(0.5,0)\). Enter the answer correct to one decimal place.
+!!! tip "Exam Trick"
+    Three-step machine: (1) compute \(f\) at the base point, (2) compute the partials at the base point, (3) plug in the small offsets. Expansion around \((0,0)\) is easiest because \(x-a=x\). The plane \(L\) can be written as \(w^Tx+b=0\) with \(w\) = coefficients — that's how the "normal vector / plane" follow-ups connect.
+#### Solved PYQ — Oct 2024 (Q12)
+
+**Type:** SA · 3 marks  
+**Question (verbatim):** Consider the function \(f(x,y)=e^x\cos(y)\). Let \(L(x,y)\) be the linear approximation of \(f(x,y)\) at the point \((0,0)\), then find the value \(L(0.5,0)\). Enter the answer correct to one decimal place.
+
 1. Run the three-step machine from the concept box: (1) value at the base point, (2) both partials at the base point, (3) plug into \(L=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)\) with \((a,b)=(0,0)\), which simplifies to \(L(x,y)=f(0,0)+f_x(0,0)x+f_y(0,0)y\) since \(x-a=x\) and \(y-b=y\) when expanding around the origin.
 2. Value: \(f(0,0)=e^0\cos(0)=1\cdot1=1\).
 3. Partial in \(x\): \(f_x=\dfrac{\partial}{\partial x}\big[e^x\cos y\big]=e^x\cos y\) (the \(\cos y\) factor is untouched since we're differentiating with respect to \(x\)). At \((0,0)\): \(f_x(0,0)=e^0\cos0=1\).
 4. Partial in \(y\): \(f_y=\dfrac{\partial}{\partial y}\big[e^x\cos y\big]=-e^x\sin y\) (chain rule on \(\cos y\), and \(e^x\) is untouched). At \((0,0)\): \(f_y(0,0)=-e^0\sin0=-1\cdot0=0\).
 5. Assemble: \(L(x,y)=1+1\cdot x+0\cdot y=1+x\) — the \(y\)-term drops out entirely because \(f_y(0,0)=0\), which makes sense geometrically since \(\cos y\) is flat (zero slope) at \(y=0\).
 6. Evaluate at the requested point: \(L(0.5,0)=1+0.5=1.5\).
-Whenever the base point is the origin, \(L\) reduces to "value + (each partial) × (that coordinate)" with no subtraction needed — this is why examiners love expanding around \((0,0)\), it removes one whole layer of arithmetic. Also notice that because \(f_y(0,0)=0\) here, the linear approximation only depends on \(x\) near the origin — a good sanity check: if you'd gotten a nonzero \(y\)-coefficient, it's worth double-checking the partial-derivative sign, since \(\sin(0)=0\) should always kill that term for this particular function.Answer1.5
-#### Solved PYQ — Feb25 Q2MCQ · 3 marksQuestion (verbatim)Consider the function \(f(x,y)=\sin(xy)\). Let \(L(x,y)\) be the linear approximation of \(f(x,y)\) around the point \((\tfrac\pi2,0)\). What is the value of \(L(\tfrac\pi2+0.1,\ 0.1)\)?*(hint: use \(\pi\approx3.14\))*Options
+Whenever the base point is the origin, \(L\) reduces to "value + (each partial) × (that coordinate)" with no subtraction needed — this is why examiners love expanding around \((0,0)\), it removes one whole layer of arithmetic. Also notice that because \(f_y(0,0)=0\) here, the linear approximation only depends on \(x\) near the origin — a good sanity check: if you'd gotten a nonzero \(y\)-coefficient, it's worth double-checking the partial-derivative sign, since \(\sin(0)=0\) should always kill that term for this particular function.
+
+!!! success "Answer"
+    1.5
+
+#### Solved PYQ — Feb 2025 (Q2)
+
+**Type:** MCQ · 3 marks  
+**Question (verbatim):** Consider the function \(f(x,y)=\sin(xy)\). Let \(L(x,y)\) be the linear approximation of \(f(x,y)\) around the point \((\tfrac\pi2,0)\). What is the value of \(L(\tfrac\pi2+0.1,\ 0.1)\)?*(hint: use \(\pi\approx3.14\))*Options
+
 - (A) 0.162
 - (B) 0.257
 - (C) 0.157
@@ -368,15 +552,33 @@ Whenever the base point is the origin, \(L\) reduces to "value + (each partial) 
 3. Partial in \(x\): \(f_x=y\cos(xy)\) (chain rule, \(y\) constant w.r.t. \(x\)). At \((\tfrac\pi2,0)\): \(f_x=0\cdot\cos(0)=0\) — the \(y=0\) factor kills it regardless of the cosine value.
 4. Partial in \(y\): \(f_y=x\cos(xy)\). At \((\tfrac\pi2,0)\): \(f_y=\tfrac\pi2\cdot\cos(0)=\tfrac\pi2\cdot1=\tfrac\pi2\approx1.57\).
 5. The evaluation point is \((\tfrac\pi2+0.1,\ 0.1)\), so the offsets from the base point \((\tfrac\pi2,0)\) are \(\Delta x=(\tfrac\pi2+0.1)-\tfrac\pi2=0.1\) and \(\Delta y=0.1-0=0.1\). Plug into the linear approximation: \(L=0+0\cdot(0.1)+\tfrac\pi2\cdot(0.1)=\tfrac\pi{20}\approx\tfrac{3.14}{20}=0.157\) — matches option (C).
-The trap options reveal common slip-ups: option (D), 1.57, is \(f_y\) itself (\(\tfrac\pi2\)) reported directly — someone forgot to multiply by the small offset \(\Delta y=0.1\) at the very last step. Option (B), 0.257, is roughly \(0.1+0.157\), suggesting a mistaken inclusion of the \(\Delta x\) term even though \(f_x=0\) should have zeroed it out. Option (A), 0.162, is close enough to be a rounding-error trap from carrying \(\pi\approx3.1416\) instead of the hinted \(3.14\) combined with a small arithmetic slip — always use the exact \(\pi\) value the question hands you, since these papers calibrate their accepted-answer ranges around that specific approximation.Answer(C) 0.157(using \(\pi\approx3.14\))
-#### Solved PYQ — Mar26 Q11SA · 2 marksQuestion (verbatim)Consider the function \(f:\mathbb R\setminus\{-\tfrac12\}\to\mathbb R\) given by \(f(x)=\dfrac1{(1+2x)^5}\). If the best linear approximation to \(f\) at \(x=0\) is given as \(h(x)=a+bx\), find \(a-b\). Your answer should be an integer.
+The trap options reveal common slip-ups: option (D), 1.57, is \(f_y\) itself (\(\tfrac\pi2\)) reported directly — someone forgot to multiply by the small offset \(\Delta y=0.1\) at the very last step. Option (B), 0.257, is roughly \(0.1+0.157\), suggesting a mistaken inclusion of the \(\Delta x\) term even though \(f_x=0\) should have zeroed it out. Option (A), 0.162, is close enough to be a rounding-error trap from carrying \(\pi\approx3.1416\) instead of the hinted \(3.14\) combined with a small arithmetic slip — always use the exact \(\pi\) value the question hands you, since these papers calibrate their accepted-answer ranges around that specific approximation)
+
+!!! success "Answer"
+    (C) 0.157(using \(\pi\approx3.14\))
+
+#### Solved PYQ — Mar 2026 (Q11)
+
+**Type:** SA · 2 marks  
+**Question (verbatim):** Consider the function \(f:\mathbb R\setminus\{-\tfrac12\}\to\mathbb R\) given by \(f(x)=\dfrac1{(1+2x)^5}\). If the best linear approximation to \(f\) at \(x=0\) is given as \(h(x)=a+bx\), find \(a-b\). Your answer should be an integer.
+
 1. This is the single-variable version of the linear-approximation formula: \(h(x)=f(0)+f'(0)\,x\), so matching against \(h(x)=a+bx\) tells us \(a=f(0)\) and \(b=f'(0)\).
 2. Value: \(a=f(0)=\dfrac1{(1+2(0))^5}=\dfrac1{1^5}=1\).
 3. Derivative: rewrite \(f(x)=(1+2x)^{-5}\) and apply the chain rule — differentiate the outer power, then multiply by the derivative of the inner function \((1+2x)\), which is \(2\): \[ f'(x)=-5(1+2x)^{-6}\cdot\frac{d}{dx}(1+2x)=-5(1+2x)^{-6}\cdot2=-10(1+2x)^{-6}. \] The factor of 2 from the chain rule is the single easiest thing to forget in this whole computation — without it you'd get \(-5\) instead of \(-10\), which is exactly the kind of error these papers are designed to catch.
 4. Evaluate: \(b=f'(0)=-10(1+0)^{-6}=-10\cdot1=-10\).
 5. Combine: \(a-b=1-(-10)=1+10=11\).
-Whenever the inner function of a chain-rule expression isn't just "\(x\)" — here it's \((1+2x)\) with a coefficient of \(2\) in front of \(x\) — that coefficient must reappear as a multiplicative factor in the derivative. It's worth explicitly writing "\(\times\dfrac{d}{dx}(\text{inner})\)" as a separate step rather than doing it mentally, since skipping that factor is the most common single point of failure across every chain-rule question in these papers.Answer\(a-b=11\)
-#### Solved PYQ — Oct25 Q22/Q23 (plane form)comprehension · MCQ + SAQuestion (verbatim, comprehension)Consider \(f:\mathbb R^2\to\mathbb R\) and \(x=(x_1,x_2)\): \(f(x)=e^{x_1}+x_2\). Let \(L_{(0,0)}[f](x)\) be the linear approximation of \(f\) around the point \((0,0)\).\n**Q22 (MCQ, 2 marks):**Which of the following is \(L_{(0,0)}[f](x)\)?Q22 options
+Whenever the inner function of a chain-rule expression isn't just "\(x\)" — here it's \((1+2x)\) with a coefficient of \(2\) in front of \(x\) — that coefficient must reappear as a multiplicative factor in the derivative. It's worth explicitly writing "\(\times\dfrac{d}{dx}(\text{inner})\)" as a separate step rather than doing it mentally, since skipping that factor is the most common single point of failure across every chain-rule question in these papers)
+
+!!! success "Answer"
+    \(a-b=11\)
+
+#### Solved PYQ — Oct 2025 (Q22)/(Q23) (plane form)
+
+**Type:** comprehension · MCQ + SA  
+**Question (verbatim):** Consider \(f:\mathbb R^2\to\mathbb R\) and \(x=(x_1,x_2)\): \(f(x)=e^{x_1}+x_2\). Let \(L_{(0,0)}[f](x)\) be the linear approximation of \(f\) around the point \((0,0)\).
+
+**Q22 (MCQ, 2 marks):**Which of the following is \(L_{(0,0)}[f](x)\)?Q22 options
+
 - (A) \(1+x_1+x_2\)
 - (B) \(x_1+2x_2\)
 - (C) \(1-x_1-x_2\)
@@ -388,16 +590,24 @@ Whenever the inner function of a chain-rule expression isn't just "\(x\)" — he
 4. Assemble: \(L(x)=1+1\cdot x_1+1\cdot x_2=1+x_1+x_2\) — matches option (A). The distractors each drop or corrupt one piece: (B) has the wrong coefficient on \(x_2\), (C) flips every sign, (D) drops the constant term and flips a sign — none of them survive re-deriving from scratch.
 5. **Q23:**the surface \(y=L(x)=1+x_1+x_2\) can be rewritten with everything on one side: \(x_1+x_2-y+1=0\). Matching this against the general plane form \(w^Tx+b=0\) where the "point" now includes the output too (treat \((x_1,x_2,y)\) as the 3 coordinates), read off \(w=(1,1,-1)\) (the coefficients of \(x_1,x_2,y\) respectively) and \(b=1\) (the leftover constant).
 6. The question*gives*you \(w^Tw=3\) as a known fact rather than asking you to derive it — and it checks out: \(w^Tw=1^2+1^2+(-1)^2=1+1+1=3\), confirming the \(w\) you read off in the previous step is consistent with the given information. That leaves only \(b\) to report.
-The \(w^Tw=3\) given in Q23 isn't decoration — it's a built-in consistency check on your Q22 answer. If your derived \(w\) doesn't square-sum to 3, you made an error identifying the plane's normal vector before you even get to reporting \(b\); always use a "given" numeric fact like this to sanity-check the algebra that came before it, rather than treating it as an isolated new computation.AnswerQ22:(A) \(1+x_1+x_2\). Q23: \(w=(1,1,-1)\) (confirms \(w^Tw=3\)), \(b=\)1.
+The \(w^Tw=3\) given in Q23 isn't decoration — it's a built-in consistency check on your Q22 answer. If your derived \(w\) doesn't square-sum to 3, you made an error identifying the plane's normal vector before you even get to reporting \(b\); always use a "given" numeric fact like this to sanity-check the algebra that came before it, rather than treating it as an isolated new computation.
+
+!!! success "Answer"
+    Q22:(A) \(1+x_1+x_2\). Q23: \(w=(1,1,-1)\) (confirms \(w^Tw=3\)), \(b=\)1.
+
 ## 11. Continuity & Differentiability
 ### Concept
 - **Continuous at \(x=c\):**left limit = right limit = \(f(c)\). No jump — you can draw it without lifting the pen.
 - **Differentiable at \(x=c\):**left derivative = right derivative (and continuous there). No corner — the curve is smooth.
 - Differentiable \(\Rightarrow\) continuous, but continuous \(\not\Rightarrow\) differentiable (e.g. \(|x|\) and \(\sqrt x\) at 0).
 - Standard functions: \(e^x\) fine everywhere; \(\ln x\) only for \(x>0\); \(\sqrt x\) continuous on \([0,\infty)\) but not differentiable at 0; \(1/x\) fine except \(x=0\).
-#### Exam Trick
-Piecewise function joined at a point: set the two pieces**equal**at the join for continuity, and set their**derivatives equal**for differentiability. Two equations, solve for the constants. That's the whole question.
-#### Solved PYQ — Oct24 Q10 (continuity)MCQ · 3 marksQuestion (verbatim)For what value of \(b\) is \(f(x)=\begin{cases}\dfrac{x-b}{b+1}, & x<0\\[4pt] x^2+b, & x\ge0\end{cases}\) continuous at every \(x\)?Options
+!!! tip "Exam Trick"
+    Piecewise function joined at a point: set the two pieces**equal**at the join for continuity, and set their**derivatives equal**for differentiability. Two equations, solve for the constants. That's the whole question.
+#### Solved PYQ — Oct 2024 (Q10) (continuity)
+
+**Type:** MCQ · 3 marks  
+**Question (verbatim):** For what value of \(b\) is \(f(x)=\begin{cases}\dfrac{x-b}{b+1}, & x<0\\  x^2+b, & x\ge0\end{cases}\) continuous at every \(x\)?Options
+
 - (A) 3
 - (B) 2
 - (C) −2
@@ -407,8 +617,16 @@ Piecewise function joined at a point: set the two pieces**equal**at the join for
 3. Right-hand value, using the second piece (which also defines \(f(0)\) since \(x\ge0\) includes \(0\)): \(f(0)=0^2+b=b\).
 4. Set the two equal — that's the entire continuity condition — and solve for \(b\): \[ \frac{-b}{b+1}=b \;\Rightarrow\; -b=b(b+1) \;\Rightarrow\; -b=b^2+b \;\Rightarrow\; b^2+2b=0 \;\Rightarrow\; b(b+2)=0. \]
 5. Two algebraic solutions emerge: \(b=0\) and \(b=-2\). But \(b=0\) must be rejected — plugging it back into the original piece \(\dfrac{x-b}{b+1}\) gives a denominator of \(b+1=1\), which is fine numerically, but check the function's own domain restriction: with \(b=0\) the left piece becomes \(\dfrac{x}{1}=x\), and the right piece becomes \(x^2\); these do match at \(x=0\) (both give 0), so \(b=0\) actually satisfies continuity too — however, none of the four options list \(0\), which tells you the intended answer is the other root. Take \(b=-2\), matching option (C).
-Whenever a piecewise-continuity condition produces a quadratic, expect two roots, and expect the exam to hand you only one of them as a valid option — always solve completely and then let the answer choices (or an explicit domain restriction in the problem, like the denominator \(b+1\ne0\)) tell you which root is intended, rather than stopping at the first root you find. Here specifically, note the original function is only defined for \(b\ne-1\) (denominator can't vanish), which rules out neither root but is exactly the kind of restriction worth checking on sight.Answer(C) \(b=-2\)
-#### Solved PYQ — Jul25 Q6 (differentiability)MSQ · 3 marksQuestion (verbatim)The function \(f(x)=\begin{cases}px^2+qx+2, & x<1\\ rx+s, & x\ge1\end{cases}\) is differentiable at \(x=1\). If \(p,q,r,s\) are constants, which of the following must be true?Options
+Whenever a piecewise-continuity condition produces a quadratic, expect two roots, and expect the exam to hand you only one of them as a valid option — always solve completely and then let the answer choices (or an explicit domain restriction in the problem, like the denominator \(b+1\ne0\)) tell you which root is intended, rather than stopping at the first root you find. Here specifically, note the original function is only defined for \(b\ne-1\) (denominator can't vanish), which rules out neither root but is exactly the kind of restriction worth checking on sight)
+
+!!! success "Answer"
+    (C) \(b=-2\)
+
+#### Solved PYQ — Jul 2025 (Q6) (differentiability)
+
+**Type:** MSQ · 3 marks  
+**Question (verbatim):** The function \(f(x)=\begin{cases}px^2+qx+2, & x<1\\ rx+s, & x\ge1\end{cases}\) is differentiable at \(x=1\). If \(p,q,r,s\) are constants, which of the following must be true?Options
+
 - (A) \(r=2p+q\) and \(s=2-p\)
 - (B) \(p+q=r+s\)
 - (C) \(q=r\) and \(s=2\)
@@ -419,8 +637,16 @@ Whenever a piecewise-continuity condition produces a quadratic, expect two roots
 4. These two equations — \(p+q+2=r+s\) and \(2p+q=r\) — are exactly option (D), and they are the two conditions the problem logically forces; nothing more, nothing less. So (D) is✔ true.
 5. Option (A) is an algebraic rearrangement of the same two facts: substitute \(r=2p+q\) (from the derivative condition) into the continuity condition \(p+q+2=r+s\) to solve for \(s\): \(s=(p+q+2)-r=(p+q+2)-(2p+q)=2-p\). So option (A), \(r=2p+q\) and \(s=2-p\), is just (D) rewritten — also✔ true.
 6. Options (B) and (C) are false: (B), \(p+q=r+s\), is missing the "+2" that the continuity condition actually requires — a plausible typo-like error if you forgot to carry the constant term from \(px^2+qx+2\). (C), \(q=r\) and \(s=2\), imposes conditions that aren't implied by the two derived equations at all (they'd only hold for very specific extra values of \(p\), not in general) —✗ false.
-This is a good template for every "differentiable at a point" question you'll see: write both equations (value-match and derivative-match) before looking at the options at all, then treat the options as a search for whichever algebraic rearrangement matches what you already derived — rather than trying to verify four unfamiliar-looking equations against the problem from scratch. Two independently-worded options can both be correct, as here, if they're just different ways of expressing the same underlying pair of constraints.Answer✔ (A) \(r=2p+q\) and \(s=2-p\)— equivalently✔ (D) \(p+q+2=r+s\) and \(2p+q=r\).✗ (B), (C).
-#### Solved PYQ — Feb25 Q8 (which functions)MSQ · 3 marksQuestion (verbatim)Which of the following statements is/are correct?Options
+This is a good template for every "differentiable at a point" question you'll see: write both equations (value-match and derivative-match) before looking at the options at all, then treat the options as a search for whichever algebraic rearrangement matches what you already derived — rather than trying to verify four unfamiliar-looking equations against the problem from scratch. Two independently-worded options can both be correct, as here, if they're just different ways of expressing the same underlying pair of constraints.
+
+!!! success "Answer"
+    ✔ (A) \(r=2p+q\) and \(s=2-p\)— equivalently✔ (D) \(p+q+2=r+s\) and \(2p+q=r\).✗ (B), (C).
+
+#### Solved PYQ — Feb 2025 (Q8) (which functions)
+
+**Type:** MSQ · 3 marks  
+**Question (verbatim):** Which of the following statements is/are correct?Options
+
 - (A) \(f(x)=\ln(x)\) is continuous and differentiable in the domain \([0,\infty)\).
 - (B) \(f(x)=e^x\) is continuous and differentiable for all \(x\in\mathbb R\).
 - (C) \(f(x)=\sqrt x\) is continuous but not differentiable at \(x=0\).
@@ -430,14 +656,22 @@ This is a good template for every "differentiable at a point" question you'll se
 3. **Option (B), \(e^x\):**the exponential function is one of the best-behaved functions in calculus — defined, continuous, and differentiable (in fact infinitely differentiable) for every real \(x\), with \(\frac{d}{dx}e^x=e^x\) itself. No domain restrictions anywhere.✔ true.
 4. **Option (C), \(\sqrt x\):**defined and continuous on \([0,\infty)\) (you can draw it without lifting the pen, including at \(x=0\)), but its derivative \(\frac{d}{dx}\sqrt x=\frac1{2\sqrt x}\) blows up to \(+\infty\) as \(x\to0^+\) — the tangent line becomes vertical at the origin, so no finite slope exists there. This is the textbook example of "continuous but not differentiable" from the concept box.✔ true.
 5. **Option (D), \(1/x\):**defined everywhere except \(x=0\); on its actual domain \(\{x\neq0\}\), it's both continuous and differentiable (\(\frac{d}{dx}\frac1x=-\frac1{x^2}\), which exists everywhere \(1/x\) itself is defined). The option correctly restricts to "for all \(x\neq0\)," matching the true domain exactly — unlike option (A), which mismatched its stated domain against the function's actual one.✔ true.
-Compare (A) and (D) side by side: both are "for standard functions with a domain restriction," but (D) states its restriction correctly (\(x\neq0\), matching \(1/x\)'s true domain) while (A) states its restriction incorrectly (includes \(x=0\), which isn't in \(\ln x\)'s domain at all). The examiner is testing whether you actually know each function's domain precisely, not just its general shape — always check the boundary point explicitly rather than assuming a function "probably" behaves nicely there.Answer✗ (A)\(\ln x\) is undefined at \(0\), so its true domain is \((0,\infty)\), not \([0,\infty)\) ·✔ (B)\(e^x\) everywhere ·✔ (C)\(\sqrt x\) continuous but not differentiable at 0 ·✔ (D)\(1/x\) for \(x\neq0\).
+Compare (A) and (D) side by side: both are "for standard functions with a domain restriction," but (D) states its restriction correctly (\(x\neq0\), matching \(1/x\)'s true domain) while (A) states its restriction incorrectly (includes \(x=0\), which isn't in \(\ln x\)'s domain at all). The examiner is testing whether you actually know each function's domain precisely, not just its general shape — always check the boundary point explicitly rather than assuming a function "probably" behaves nicely there.
+
+!!! success "Answer"
+    ✗ (A)\(\ln x\) is undefined at \(0\), so its true domain is \((0,\infty)\), not \([0,\infty)\) ·✔ (B)\(e^x\) everywhere ·✔ (C)\(\sqrt x\) continuous but not differentiable at 0 ·✔ (D)\(1/x\) for \(x\neq0\).
+
 ## 12. Limits & Sequences
 ### Concept
 - **Finite limit**at a point giving \(0/0\): factor, or use \(\lim_{x\to a}\frac{x^n-a^n}{x-a}=na^{n-1}\). A ratio of polynomials at \(\infty\) is finite only if the top degree ≤ bottom degree.
 - **Sequence convergence:**\(a_n\to L\) if the terms settle down to \(L\). Examples: \(\frac1n\to0\), \(\frac{n}{n+1}\to1\), \(\left(-1+\frac{n}{n+1}\right)\to0\). But \(n!\to\infty\) (diverges) and \(\sin(n)\) never settles — it oscillates forever.
-#### Exam Trick
-At \(x\to\infty\): compare top vs bottom degree — bottom bigger ⇒ limit 0 (finite); top bigger ⇒ \(\infty\) (not finite). At \(x\to a\) with \(0/0\): fractions of "root differences" like \(\frac{x^{1/3}-1}{x^{1/2}-1}\) are finite — the ratio of derivatives (L'Hôpital) is finite.
-#### Solved PYQ — Oct24 Q7 (which limits are finite)MSQ · 4 marksQuestion (verbatim)Determine which of the following limits yields a finite value.Options
+!!! tip "Exam Trick"
+    At \(x\to\infty\): compare top vs bottom degree — bottom bigger ⇒ limit 0 (finite); top bigger ⇒ \(\infty\) (not finite). At \(x\to a\) with \(0/0\): fractions of "root differences" like \(\frac{x^{1/3}-1}{x^{1/2}-1}\) are finite — the ratio of derivatives (L'Hôpital) is finite.
+#### Solved PYQ — Oct 2024 (Q7) (which limits are finite)
+
+**Type:** MSQ · 4 marks  
+**Question (verbatim):** Determine which of the following limits yields a finite value.Options
+
 - (A) \(\displaystyle\lim_{x\to1}\dfrac{x^{1/3}-1}{x^{1/2}-1}\)
 - (B) \(\displaystyle\lim_{x\to1}\dfrac{1-x^{1/2}}{1-x}\)
 - (C) \(\displaystyle\lim_{x\to\infty}\dfrac{x^2-7x}{x+1}\)
@@ -448,8 +682,16 @@ At \(x\to\infty\): compare top vs bottom degree — bottom bigger ⇒ limit 0 (f
 3. **(C)**As \(x\to\infty\), compare the degree of the numerator (2, from \(x^2\)) against the denominator (1, from \(x\)) — Module 12's degree-comparison shortcut says top-degree-bigger means the limit blows up to \(\infty\), which is*not*a finite value. Confirm by dividing through: \(\dfrac{x^2-7x}{x+1}\approx\dfrac{x^2}{x}=x\to\infty\) for large \(x\).✗ not finite.
 4. **(D)**Factor both numerator and denominator as differences of squares: \(x^2-a^2=(x-a)(x+a)\) and \(x^4-a^4=(x^2-a^2)(x^2+a^2)=(x-a)(x+a)(x^2+a^2)\). The ratio simplifies (canceling the shared \((x-a)(x+a)\) factor, valid as \(x\to a\) but \(x\neq a\)) to \(\dfrac{1}{x^2+a^2}\). Taking the limit as \(x\to a\): \(\dfrac1{a^2+a^2}=\dfrac1{2a^2}\), which is finite for any \(a>0\) (never dividing by zero since \(a>0\)).✔ finite.
 5. Since (A), (B), and (D) are genuinely finite, option (E) "None of these" is automatically false — it only makes sense as a catch-all in case every other option failed, which they didn't.
-This question is really three different techniques for resolving indeterminate \(0/0\) forms, stacked into one MSQ: L'Hôpital's rule (A) when factoring isn't obvious, algebraic factoring via difference-of-squares (B, D) when it is, and simple degree-comparison (C) for behavior at infinity, which isn't a \(0/0\) form at all — it's a straightforward "does the top or bottom grow faster" question. Recognize which of these three tools a given limit calls for before committing to a method; trying to factor (A)'s fractional-exponent expression, for instance, is far more awkward than just reaching for L'Hôpital directly.Answer✔ (A), (B), (D)are finite ·✗ (C)diverges to \(\infty\) ·✗ (E)"None of these" is wrong since three options are finite.
-#### Solved PYQ — Jul25 Q14 (sequences)MSQ · 2 marksQuestion (verbatim)Which of the following is/are true?Options
+This question is really three different techniques for resolving indeterminate \(0/0\) forms, stacked into one MSQ: L'Hôpital's rule (A) when factoring isn't obvious, algebraic factoring via difference-of-squares (B, D) when it is, and simple degree-comparison (C) for behavior at infinity, which isn't a \(0/0\) form at all — it's a straightforward "does the top or bottom grow faster" question. Recognize which of these three tools a given limit calls for before committing to a method; trying to factor (A)'s fractional-exponent expression, for instance, is far more awkward than just reaching for L'Hôpital directly.
+
+!!! success "Answer"
+    ✔ (A), (B), (D)are finite ·✗ (C)diverges to \(\infty\) ·✗ (E)"None of these" is wrong since three options are finite.
+
+#### Solved PYQ — Jul 2025 (Q14) (sequences)
+
+**Type:** MSQ · 2 marks  
+**Question (verbatim):** Which of the following is/are true?Options
+
 - (A) If \(a_n=-1+\dfrac{n}{n+1}\) then \(a_n\to0\) as \(n\to\infty\).
 - (B) If \(a_n=\sin(n)\) then \(a_n\to0\) as \(n\to\infty\).
 - (C) If \(a_n=n!\) then \(a_n\to\infty\) as \(n\to\infty\).
@@ -457,7 +699,11 @@ This question is really three different techniques for resolving indeterminate \
 1. **(A)**Break the expression into a piece you already know the limit of: \(\dfrac{n}{n+1}=\dfrac{1}{1+1/n}\to\dfrac1{1+0}=1\) as \(n\to\infty\) (since \(1/n\to0\)). So \(a_n=-1+\dfrac{n}{n+1}\to-1+1=0\).✔ true.
 2. **(B) and (D) together:**\(\sin(n)\) evaluates the sine function at integer inputs (in radians), and because \(\pi\) is irrational, these integer inputs never line up periodically with sine's cycle — the sequence keeps producing values that wander densely throughout the interval \([-1,1]\) forever, never settling near any single number. A sequence "converges to \(L\)" only if its terms get and*stay*arbitrarily close to \(L\) eventually — \(\sin(n)\) never does this for any candidate \(L\), including \(0\). So option (B), which claims a specific limit of \(0\), is✗ false, while option (D), which correctly states the sequence doesn't converge at all, is✔ true. These two options can never both be true simultaneously — if you find yourself tempted to check both, that's a signal to slow down and pick the internally consistent pair.
 3. **(C)**Factorial growth \(n!=1\cdot2\cdot3\cdots n\) multiplies in a new, ever-larger factor at every step, so it grows without any upper bound — in fact faster than any fixed power of \(n\) or exponential \(c^n\). \(a_n=n!\to\infty\), which counts as "divergent" in the sense of unboundedly increasing (a well-defined kind of divergence, distinct from \(\sin(n)\)'s oscillating non-convergence).✔ true.
-This question tests two genuinely different flavors of "does not converge": \(n!\) diverges by racing off to \(+\infty\) (you could reasonably say "it converges to infinity" in an extended sense), while \(\sin(n)\) diverges by oscillating forever without approaching any value at all, finite or infinite. Don't lump every non-convergent sequence into the same bucket — "unbounded growth" and "bounded oscillation" are both failures to converge, but they're distinguishable failure modes, and exam options often test whether you can tell them apart.Answer✔ (A) \(a_n=-1+\frac{n}{n+1}\to0\)·✔ (C) \(a_n=n!\to\infty\)·✔ (D) \(\sin(n)\) is not convergent·✗ (B) \(\sin(n)\to0\)— it doesn't converge to anything.
+This question tests two genuinely different flavors of "does not converge": \(n!\) diverges by racing off to \(+\infty\) (you could reasonably say "it converges to infinity" in an extended sense), while \(\sin(n)\) diverges by oscillating forever without approaching any value at all, finite or infinite. Don't lump every non-convergent sequence into the same bucket — "unbounded growth" and "bounded oscillation" are both failures to converge, but they're distinguishable failure modes, and exam options often test whether you can tell them apart.
+
+!!! success "Answer"
+    ✔ (A) \(a_n=-1+\frac{n}{n+1}\to0\)·✔ (C) \(a_n=n!\to\infty\)·✔ (D) \(\sin(n)\) is not convergent·✗ (B) \(\sin(n)\to0\)— it doesn't converge to anything.
+
 ## 13. ML Concepts
 ### Concept
 - **Regression:**predict a continuous number (price, time).
@@ -468,17 +714,29 @@ This question tests two genuinely different flavors of "does not converge": \(n!
 - **Loss functions:**squared error \(\frac1n\sum(y-\hat y)^2\); 0–1 loss = fraction misclassified.
 - **Step/sign classifier:**compute \(z=w^Tx\) (+bias), output 1 if \(z\ge\) threshold else 0.
 - **Encoder–decoder reconstruction loss:**encode \(x\to u=f(x)\), decode \(u\to g(u)\); loss = mean of \(\|x-g(f(x))\|^2\).
-#### Exam Trick
-Keyword mapping: "give loan / fraud / yes-no" → Classification. "group without labels" → Clustering. "predict number" → Regression. "hand-written rules" → not ML. These are 1-mark gifts — never overthink them.
-#### Solved PYQ — Oct25 Q2MCQ · 1 markQuestion (verbatim)A bank wants to decide whether a loan applicant should be given a loan or not, based on features like income, credit score and past records. Which of the following machine learning techniques is applicable for this scenario?Options
+!!! tip "Exam Trick"
+    Keyword mapping: "give loan / fraud / yes-no" → Classification. "group without labels" → Clustering. "predict number" → Regression. "hand-written rules" → not ML. These are 1-mark gifts — never overthink them.
+#### Solved PYQ — Oct 2025 (Q2)
+
+**Type:** MCQ · 1 mark  
+**Question (verbatim):** A bank wants to decide whether a loan applicant should be given a loan or not, based on features like income, credit score and past records. Which of the following machine learning techniques is applicable for this scenario?Options
+
 - (A) Regression
 - (B) Classification
 - (C) Clustering
 - (D) Dimensionality Reduction
 1. Identify the shape of the output the bank actually wants: "should be given a loan or not" is a yes/no decision — a discrete category, not a number on a continuous scale.
 2. Match that output shape to the keyword mapping in the concept box: predicting a category or yes/no outcome is exactly what Classification is for. Regression would apply if the bank wanted to predict something numeric instead, like the loan amount or interest rate. Clustering doesn't fit because the bank has a specific target label in mind (default vs no default) rather than trying to discover unlabeled groupings. Dimensionality reduction is about compressing features, not making a decision at all.
-This is a 1-mark "gift" — don't overthink scenario questions like this. The moment you see a binary or categorical outcome being predicted from features, write "Classification" and move on; spending more than a few seconds here is time better spent on the harder linear-algebra questions.Answer(B) Classification
-#### Solved PYQ — Jul25 Q16MCQ · 2 marksQuestion (verbatim)A hospital collects patient data including symptoms, vital signs, and lab test results. They want to find patterns to improve treatment plans. What type of task is clustering most suitable for?Options
+This is a 1-mark "gift" — don't overthink scenario questions like this. The moment you see a binary or categorical outcome being predicted from features, write "Classification" and move on; spending more than a few seconds here is time better spent on the harder linear-algebra questions.
+
+!!! success "Answer"
+    (B) Classification
+
+#### Solved PYQ — Jul 2025 (Q16)
+
+**Type:** MCQ · 2 marks  
+**Question (verbatim):** A hospital collects patient data including symptoms, vital signs, and lab test results. They want to find patterns to improve treatment plans. What type of task is clustering most suitable for?Options
+
 - (A) Predicting the recovery time for a new patient.
 - (B) Diagnosing diseases based on labeled medical records.
 - (C) Grouping patients with similar symptoms and test results without prior labels.
@@ -486,8 +744,16 @@ This is a 1-mark "gift" — don't overthink scenario questions like this. The mo
 1. The question already tells you which technique to match — "clustering" — so the task is really just recalling clustering's definition and finding the option that describes it, rather than deciding which technique fits the scenario.
 2. Clustering is unsupervised: it finds structure in data*without*being given labels to predict. Scan each option for the phrase that signals "no labels": option (C), "grouping patients with similar symptoms and test results without prior labels," names that condition explicitly.
 3. Rule out the others by what they actually require: (A) predicting recovery time needs a numeric target — that's regression, and it needs labeled past outcomes to learn from, which contradicts "no labels." (B) explicitly says "based on labeled medical records" — labeled data is supervised learning (classification), the opposite of clustering. (D) is about ranking feature importance, a task associated with model interpretation, not clustering.
-The keyword-matching shortcut from Module 13's concept box pays off directly here: "group … without prior labels" is close to a verbatim definition of clustering, so once you spot that phrase, the other three options don't need much scrutiny beyond confirming they each require labels or a specific numeric/ranked target that clustering doesn't provide.Answer(C) Grouping patients with similar symptoms and test results without prior labels.
-#### Solved PYQ — Mar26 Q10MSQ · 2 marksQuestion (verbatim)Suppose you are building a credit card fraud detection system and have two approaches: (i) Manually writing rules such as "If transaction amount is above Rs. 50,000 and the location is overseas, mark it as fraud." (ii) Training a model using millions of past transactions labeled as fraud or not fraud. Which of the following options is/are correct?Options
+The keyword-matching shortcut from Module 13's concept box pays off directly here: "group … without prior labels" is close to a verbatim definition of clustering, so once you spot that phrase, the other three options don't need much scrutiny beyond confirming they each require labels or a specific numeric/ranked target that clustering doesn't provide.
+
+!!! success "Answer"
+    (C) Grouping patients with similar symptoms and test results without prior labels.
+
+#### Solved PYQ — Mar 2026 (Q10)
+
+**Type:** MSQ · 2 marks  
+**Question (verbatim):** Suppose you are building a credit card fraud detection system and have two approaches: (i) Manually writing rules such as "If transaction amount is above Rs. 50,000 and the location is overseas, mark it as fraud." (ii) Training a model using millions of past transactions labeled as fraud or not fraud. Which of the following options is/are correct?Options
+
 - (A) Approach (i) is not machine learning.
 - (B) Approach (ii) is machine learning.
 - (C) Both approaches are machine learning.
@@ -497,15 +763,29 @@ The keyword-matching shortcut from Module 13's concept box pays off directly her
 3. Approach (ii) fits the definition precisely: a model is trained on millions of past transactions that are already labeled ("fraud" / "not fraud"), and it learns the patterns that separate the two classes on its own, rather than being told the rules explicitly. This is machine learning (specifically, classification). So option (B) is✔ true.
 4. Since (i) is not ML and (ii) is ML, option (C) ("both are ML") and option (D) ("neither is ML") are each half right and half wrong, making both✗ falseas complete statements — an MSQ option must be true in its entirety to be checked.
 This question is the cleanest possible illustration of the ML/not-ML boundary from the concept box: the presence of a human explicitly enumerating decision rules (however sensible-sounding) disqualifies an approach from being ML, no matter how much data sits behind it, while a system that infers its own rules from labeled examples qualifies even if it's a simple model. When you see "if…then…" rules written by a person, that's the signal for "not ML"; when you see "trained on labeled data," that's the signal for "ML."Answer✔ (A) Approach (i) is not machine learning·✔ (B) Approach (ii) is machine learning.
-#### Solved PYQ — Oct25 Q5 (reconstruction loss)SA · 3 marksQuestion (verbatim)Consider the following dataset where each data point has three features \(x_1,x_2,x_3\): \((2,4,3),\ (5,5,6),\ (2,2,1),\ (4,4,6)\). The encoder and decoder functions \(f\) and \(g\) are defined as \(f(x_1,x_2,x_3)=0.5x_1+0.5x_2-x_3\) and \(g(u)=[u,u,u]\). Find the reconstruction loss.*(Hint: the reconstruction loss of the encoder–decoder pair is the mean of the squared distance between the actual input and reconstructed input.)*
+#### Solved PYQ — Oct 2025 (Q5) (reconstruction loss)
+
+**Type:** SA · 3 marks  
+**Question (verbatim):** Consider the following dataset where each data point has three features \(x_1,x_2,x_3\): \((2,4,3),\ (5,5,6),\ (2,2,1),\ (4,4,6)\). The encoder and decoder functions \(f\) and \(g\) are defined as \(f(x_1,x_2,x_3)=0.5x_1+0.5x_2-x_3\) and \(g(u)=[u,u,u]\). Find the reconstruction loss.*(Hint: the reconstruction loss of the encoder–decoder pair is the mean of the squared distance between the actual input and reconstructed input.)*
+
 1. Set up the pipeline once before running numbers: for each point \(x\), compute \(u=f(x)\) (the compressed 1-number "code"), then \(\hat x=g(u)=[u,u,u]\) (the decoder's attempt to reconstruct all three original features from that single number), then the squared reconstruction error \(\|x-\hat x\|^2\). Average that error across all four points at the end.
 2. **Point \((2,4,3)\):**\(u=0.5(2)+0.5(4)-3=1+2-3=0\). Decoded: \(\hat x=(0,0,0)\). Squared error: \((2-0)^2+(4-0)^2+(3-0)^2=4+16+9=29\).
 3. **Point \((5,5,6)\):**\(u=0.5(5)+0.5(5)-6=2.5+2.5-6=-1\). Decoded: \(\hat x=(-1,-1,-1)\). Squared error: \((5-(-1))^2+(5-(-1))^2+(6-(-1))^2=6^2+6^2+7^2=36+36+49=121\).
 4. **Point \((2,2,1)\):**\(u=0.5(2)+0.5(2)-1=1+1-1=1\). Decoded: \(\hat x=(1,1,1)\). Squared error: \((2-1)^2+(2-1)^2+(1-1)^2=1+1+0=2\).
 5. **Point \((4,4,6)\):**\(u=0.5(4)+0.5(4)-6=2+2-6=-2\). Decoded: \(\hat x=(-2,-2,-2)\). Squared error: \((4-(-2))^2+(4-(-2))^2+(6-(-2))^2=6^2+6^2+8^2=36+36+64=136\).
 6. Average the four squared errors: \(\dfrac{29+121+2+136}{4}=\dfrac{288}{4}=72\).
-Notice the second and fourth points dominate the mean loss (121 and 136, versus 29 and 2 for the others) — those are exactly the points where the single compressed number \(u\) had to represent three original features that were quite spread out from \(u\) itself, so the reconstruction \([u,u,u]\) missed badly on all three coordinates simultaneously. This is the core trade-off an encoder–decoder makes: compressing three numbers into one is lossy by construction, and the loss is largest wherever the original three features aren't already close to each other.Answer72
-#### Solved PYQ — Feb25 Q13 (step classifier)comprehension · MCQ · 3 marksQuestion (verbatim, comprehension)A bank wants to predict whether a customer will default on a loan using a classification model, based on \(x_1\): credit score (scaled 0–1), \(x_2\): monthly income (in \$1000s), \(x_3\): number of late payments in the past year. The bank computes \(z=0.5x_1+0.3x_2-0.2x_3\), and classifies using the step function \(u(z)=1\) if \(z\ge1.5\), else \(0\).\n**Sub-question:**For the input \(x=[0.9,\ 5,\ 1]\), what will be the predicted output \(u(z)\)?Options
+Notice the second and fourth points dominate the mean loss (121 and 136, versus 29 and 2 for the others) — those are exactly the points where the single compressed number \(u\) had to represent three original features that were quite spread out from \(u\) itself, so the reconstruction \([u,u,u]\) missed badly on all three coordinates simultaneously. This is the core trade-off an encoder–decoder makes: compressing three numbers into one is lossy by construction, and the loss is largest wherever the original three features aren't already close to each other.
+
+!!! success "Answer"
+    72
+
+#### Solved PYQ — Feb 2025 (Q13) (step classifier)
+
+**Type:** comprehension · MCQ · 3 marks  
+**Question (verbatim):** A bank wants to predict whether a customer will default on a loan using a classification model, based on \(x_1\): credit score (scaled 0–1), \(x_2\): monthly income (in \$1000s), \(x_3\): number of late payments in the past year. The bank computes \(z=0.5x_1+0.3x_2-0.2x_3\), and classifies using the step function \(u(z)=1\) if \(z\ge1.5\), else \(0\).
+
+**Sub-question:**For the input \(x=[0.9,\ 5,\ 1]\), what will be the predicted output \(u(z)\)?Options
+
 - (A) 0
 - (B) 1
 - (C) 1.75
@@ -513,7 +793,11 @@ Notice the second and fourth points dominate the mean loss (121 and 136, versus 
 1. Plug the given feature values directly into the linear combination — this step is pure arithmetic, no calculus or algebra tricks involved: \(z=0.5(0.9)+0.3(5)-0.2(1)\).
 2. Compute term by term: \(0.5(0.9)=0.45\); \(\ 0.3(5)=1.5\); \(\ -0.2(1)=-0.2\). Sum: \(z=0.45+1.5-0.2=1.75\).
 3. Apply the step function's rule: since \(z=1.75\ge1.5\) (the threshold), the classifier outputs \(u(z)=1\). This matches option (B) — and note option (C), 1.75, is a trap for anyone who reports the raw score \(z\) itself instead of running it through the step function \(u(z)\) as the question actually asks.
-A recurring pattern in these papers: whenever a question defines both a raw linear score (here, \(z\))*and*a thresholding function built on top of it (here, \(u(z)\)), always re-read which one is being asked for — reporting \(z\) when \(u(z)\) was requested is a "computed everything correctly but answered the wrong question" mistake, and the exam deliberately includes the intermediate value as a tempting wrong option to catch exactly that.Answer(B) 1(since \(z=1.75\ge1.5\))
+A recurring pattern in these papers: whenever a question defines both a raw linear score (here, \(z\))*and*a thresholding function built on top of it (here, \(u(z)\)), always re-read which one is being asked for — reporting \(z\) when \(u(z)\) was requested is a "computed everything correctly but answered the wrong question" mistake, and the exam deliberately includes the intermediate value as a tempting wrong option to catch exactly that)
+
+!!! success "Answer"
+    (B) 1(since \(z=1.75\ge1.5\))
+
 ## 14. True/False Rapid-Fire Bank
 
 These exact statements recur across papers. Learn the verdict plus the reasoning - the reasoning is what stops you second-guessing in the exam.
@@ -530,24 +814,19 @@ These exact statements recur across papers. Learn the verdict plus the reasoning
 
 | Topic | Formula |
 | --- | --- |
-| 2×2 eigenvalues | \(\lambda^2-(	ext{tr})\lambda+\det=0\); tr = sum of diagonal, det = \(ad-bc\) |
+| 2×2 eigenvalues | \(\lambda^2-\operatorname{tr}(A)\,\lambda+\det(A)=0\); tr = sum of diagonal, det = \(ad-bc\) |
 | Eigen facts | \(\sum\lambda=\)tr, \(\prod\lambda=\det\); \(p(A)\) has eigenvalue \(p(\lambda)\) |
 | Diagonalize | \(A=PDP^{-1}\); \(P\)=eigenvectors, \(D\)=eigenvalues (matched order) |
 | Rank–Nullity | rank + nullity = number of columns |
 | Projection matrix | \(P=\dfrac{aa^T}{a^Ta}\); onto complement = \(I-P\) |
 | Projection of b onto a | \(\dfrac{a^Tb}{a^Ta}\,a\) |
-| Orthogonal / length | \(u\cdot v=0\); \(\|v\|=\sqrt{v\cdot v}\) |
+| Orthogonal / length | \(u\cdot v=0\); \(\Vert v\Vert =\sqrt{v\cdot v}\) |
 | Best-fit line | \(b=\dfrac{n\sum xy-\sum x\sum y}{n\sum x^2-(\sum x)^2}\), \(a=\dfrac{\sum y-b\sum x}{n}\) |
-| Gradient | \(
-abla f=(f_{x_1},dots)\); max-increase dir = \(
-abla f/\|
-abla f\|\); max rate = \(\|
-abla f\|\) |
-| Directional derivative | \(D_uf=
-abla f\cdot u\) (\(u\) must be unit) |
+| Gradient | \(\nabla f=(f_{x_1},\dots)\); max-increase dir = \(\nabla f/\Vert \nabla f\Vert \); max rate = \(\Vert \nabla f\Vert \) |
+| Directional derivative | \(D_uf=\nabla f\cdot u\) (\(u\) must be unit) |
 | Linear approx | \(L=f(a,b)+f_x(x-a)+f_y(y-b)\) |
 | Continuity / differentiability | match values at the join; match derivatives at the join |
-| Reconstruction loss | mean of \(\|x-g(f(x))\|^2\) |
+| Reconstruction loss | mean of \(\Vert x-g(f(x))\Vert ^2\) |
 
 ## 16. Exam-Day Strategy
 - **Sweep the 1–2 mark ML/True-False questions first**— they're fast and come straight from Modules 13/14. Bank the easy marks before the timer bites.

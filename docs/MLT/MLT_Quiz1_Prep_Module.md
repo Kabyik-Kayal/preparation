@@ -1,29 +1,5 @@
 # MLT Quiz 1 — Smart Preparation Module
 
-Contents
-
-- Exam decode — what actually appears
-
-- Module 1: PCA
-
-- Module 2: Kernels & Kernel PCA
-
-- Module 3: K-means & K-means++
-
-- Module 4: MLE
-
-- Module 5: Bayesian estimation
-
-- Module 6: GMM & EM
-
-- Module 7: Linear regression
-
-- Formula sheet
-
-- 7-day plan & tactics
-
-# MLT Quiz 1 — Smart Preparation Module
-
 *Built from 5 unique past papers: Oct 2024, Feb 2025, Jul 2025, Oct 2025 (two identical forms), Mar 2026. Every solved answer below was cross-checked against the accepted answer in the paper and re-verified numerically.*
 
 **Before we begin.** Here is my promise to you: nothing in this exam requires brilliance. Every question falls into one of about a dozen patterns, and every pattern has a routine. We will learn the idea first — slowly, in plain language — then the shortcut, then we'll solve the actual exam question together. By the end, you won't be *hoping* to recognise questions on exam day; you'll be greeting them like old friends.
@@ -298,16 +274,17 @@ A function \(k\) is a **valid kernel** iff (i) it is symmetric, \(k(x,y)=k(y,x)\
 
 **Trick 1 — the validity checklist.** Memorise this table; it answers every valid-kernel MSQ in the papers:
 
-KernelValid?Why
-\(x^Ty\) (linear)✔\(\phi=\) identity
-\((x^Ty + c)^d\), \(c\ge0\)✔polynomial kernel
-\((x^Ty)^3\) or any power✔product of valid kernels
-\(\exp(-\|x-y\|^2/2\sigma^2)\) (Gaussian/RBF)✔standard
-\(\exp(-\|x-y\|/\sigma)\) (Laplacian)✔standard
-\(\|x-y\|\)✘\(k(x,x)=0\) but off-diagonals > 0 → not PSD
-\(a\,k_1 + b\,k_2\), \(a,b\ge0\)✔conic combinations valid (Mar'26 T/F: \(2k_1+5k_2\) → True)
-\(k_1\cdot k_2\), \(k + c\ (c\ge0)\)✔closure rules
-anything asymmetric in \(x,y\)✘fails symmetry — check this first!
+| Kernel | Valid? | Why |
+| --- | --- | --- |
+| \(x^Ty\) (linear) | ✔ | \(\phi=\) identity |
+| \((x^Ty + c)^d\), \(c\ge0\) | ✔ | polynomial kernel |
+| \((x^Ty)^3\) or any power | ✔ | product of valid kernels |
+| \(\exp(-\|x-y\|^2/2\sigma^2)\) (Gaussian/RBF) | ✔ | standard |
+| \(\exp(-\|x-y\|/\sigma)\) (Laplacian) | ✔ | standard |
+| \(\|x-y\|\) | ✘ | \(k(x,x)=0\) but off-diagonals > 0 → not PSD |
+| \(a\,k_1 + b\,k_2\), \(a,b\ge0\) | ✔ | conic combinations valid (Mar'26 T/F: \(2k_1+5k_2\) → True) |
+| \(k_1\cdot k_2\), \(k + c\ (c\ge0)\) | ✔ | closure rules |
+| anything asymmetric in \(x,y\) | ✘ | fails symmetry — check this first! |
 
 **Trick 2 — building \(\phi\) for polynomial kernels.** For \(x,y\in\mathbb{R}^2\): \((x^Ty)^2 = (x_1y_1+x_2y_2)^2\) expands to \(x_1^2y_1^2 + 2x_1x_2y_1y_2 + x_2^2y_2^2\), so \(\phi(x) = [x_1^2,\ \sqrt2\,x_1x_2,\ x_2^2]\). The \(\sqrt2\) splits the cross-term evenly. A "+ c" in the kernel appends \(\sqrt{c}\) as an extra coordinate: \((x^Ty)^2+1 \Rightarrow \phi(x)=[x_1^2, \sqrt2 x_1x_2, x_2^2, 1]\). *(Exactly Oct 2024 Q3, 4 marks.)*
 
@@ -875,36 +852,38 @@ For the MSQ (Q8), the key structural fact is that the squared-error objective fo
 
 ## 9. One-page formula sheet (rewrite this by hand the night before)
 
-ItemFormula
-Covariance matrix (centred)\(C = \frac1n\sum x_ix_i^T\)
-2×2 shortcut \(\begin{pmatrix}a&b\\b&a\end{pmatrix}\)\(\lambda = a\pm b\); eigvecs \(\frac{1}{\sqrt2}(1,1), \frac{1}{\sqrt2}(1,-1)\)
-Variance along unit \(v\)\(v^TCv\); along PC \(w_k\): \(\lambda_k\)
-% variance, top-\(k\)\((\lambda_1{+}\cdots{+}\lambda_k)/\sum_j\lambda_j\)
-Projection / reconstruction / residue\(t = x^Tw\); \(\hat x = (x^Tw)w\); \(r = x - \hat x \perp w\)
-Compression cost, top-\(k\)\(dk + nk\) vs \(nd\)
-Kernel PCA pairing\(X^TX v = \lambda v \Rightarrow w = Xv/\sqrt\lambda\); \(k>d\) possible
-\(\phi\) for \((x^Ty)^2\) in 2D\([x_1^2, \sqrt2 x_1x_2, x_2^2]\); "+c" appends \(\sqrt c\)
-Poly kernel feature count\(\binom{d+p}{p}\)
-Gaussian kernel\(\exp(-\|x-y\|^2/2\sigma^2)\)
-K-means objective\(F = \sum_i \|x_i - \mu_{z_i}\|^2\)
-K-means++ pick probability\(P(x) = \dfrac{\min_j \|x-\mu_j\|^2}{\sum_{x'}\min_j\|x'-\mu_j\|^2}\) (check: squared or not!)
-MLE: Bernoulli / Gaussian / Pareto\(\hat p = \frac{h}{n}\); \(\hat\mu=\bar x, \hat\sigma^2 = \frac1n\sum(x_i-\bar x)^2\); \(\hat\theta = \frac{n}{\sum\ln x_i}\)
-Beta–Bernoulli posteriorBeta\((a{+}h,\ b{+}t)\); mean \(\frac{a+h}{a+b+n}\)
-EM E-step\(\gamma_i^k = \dfrac{\pi_k f_k(x_i)}{\sum_j \pi_j f_j(x_i)}\)
-EM M-step\(\mu_k = \frac{\sum\gamma_i^k x_i}{\sum\gamma_i^k}\); \(\pi_k = \frac1n\sum_i\gamma_i^k\)
-Standard normal densities\(\phi(0)=0.399,\ \phi(1)=0.242,\ \phi(2)=0.054\)
-Truths that recurLloyd's always converges (local opt); sensitive to init/outliers/k; clusters convex; \(X^TX\) & \(XX^T\): same non-zero eigenvalues, different eigenvectors; conic kernel combos valid
+| Item | Formula |
+| --- | --- |
+| Covariance matrix (centred) | \(C = \frac1n\sum x_ix_i^T\) |
+| 2×2 shortcut \(\begin{pmatrix}a&b\\\\b&a\end{pmatrix}\) | \(\lambda = a\pm b\); eigvecs \(\frac{1}{\sqrt2}(1,1), \frac{1}{\sqrt2}(1,-1)\) |
+| Variance along unit \(v\) | \(v^TCv\); along PC \(w_k\): \(\lambda_k\) |
+| % variance, top-\(k\) | \((\lambda_1{+}\cdots{+}\lambda_k)/\sum_j\lambda_j\) |
+| Projection / reconstruction / residue | \(t = x^Tw\); \(\hat x = (x^Tw)w\); \(r = x - \hat x \perp w\) |
+| Compression cost, top-\(k\) | \(dk + nk\) vs \(nd\) |
+| Kernel PCA pairing | \(X^TX v = \lambda v \Rightarrow w = Xv/\sqrt\lambda\); \(k>d\) possible |
+| \(\phi\) for \((x^Ty)^2\) in 2D | \([x_1^2, \sqrt2 x_1x_2, x_2^2]\); "+c" appends \(\sqrt c\) |
+| Poly kernel feature count | \(\binom{d+p}{p}\) |
+| Gaussian kernel | \(\exp(-\|x-y\|^2/2\sigma^2)\) |
+| K-means objective | \(F = \sum_i \|x_i - \mu_{z_i}\|^2\) |
+| K-means++ pick probability | \(P(x) = \dfrac{\min_j \|x-\mu_j\|^2}{\sum_{x'}\min_j\|x'-\mu_j\|^2}\) (check: squared or not!) |
+| MLE: Bernoulli / Gaussian / Pareto | \(\hat p = \frac{h}{n}\); \(\hat\mu=\bar x, \hat\sigma^2 = \frac1n\sum(x_i-\bar x)^2\); \(\hat\theta = \frac{n}{\sum\ln x_i}\) |
+| Beta–Bernoulli posterior | Beta\((a{+}h,\ b{+}t)\); mean \(\frac{a+h}{a+b+n}\) |
+| EM E-step | \(\gamma_i^k = \dfrac{\pi_k f_k(x_i)}{\sum_j \pi_j f_j(x_i)}\) |
+| EM M-step | \(\mu_k = \frac{\sum\gamma_i^k x_i}{\sum\gamma_i^k}\); \(\pi_k = \frac1n\sum_i\gamma_i^k\) |
+| Standard normal densities | \(\phi(0)=0.399,\ \phi(1)=0.242,\ \phi(2)=0.054\) |
+| Truths that recur | Lloyd's always converges (local opt); sensitive to init/outliers/k; clusters convex; \(X^TX\) & \(XX^T\): same non-zero eigenvalues, different eigenvectors; conic kernel combos valid |
 
 ## 10. 7-day plan & exam-day tactics
 
-DayDo
-**1**Module 1 (PCA) concepts + all its solved examples *by hand*. Re-derive the 2×2 eigenvalue shortcut once so you trust it.
-**2**Module 2 (kernels). Memorise the validity table and the \(\phi\)-construction. Redo Oct'24 Q2–Q3 blind.
-**3**Module 3 (K-means). Hand-simulate two full K-means runs and three K-means++ probability computations.
-**4**Modules 4 + 5 (MLE + Bayesian) — half a day; they're formulaic. Start Module 6 (EM) concepts.
-**5**Module 6 solved examples by hand. Memorise \(\phi(0),\phi(1),\phi(2)\) and both EM formulas cold.
-**6****Mock:** take the Mar 2026 paper (the most recent) untimed but unaided; then the Oct 2025 paper timed. Score, and re-study only what you missed.
-**7**Rewrite the formula sheet from memory. Redo every question you got wrong on day 6. Sleep.
+| Day | Do |
+| --- | --- |
+| **1** | Module 1 (PCA) concepts + all its solved examples *by hand*. Re-derive the 2×2 eigenvalue shortcut once so you trust it. |
+| **2** | Module 2 (kernels). Memorise the validity table and the \(\phi\)-construction. Redo Oct'24 Q2–Q3 blind. |
+| **3** | Module 3 (K-means). Hand-simulate two full K-means runs and three K-means++ probability computations. |
+| **4** | Modules 4 + 5 (MLE + Bayesian) — half a day; they're formulaic. Start Module 6 (EM) concepts. |
+| **5** | Module 6 solved examples by hand. Memorise \(\phi(0),\phi(1),\phi(2)\) and both EM formulas cold. |
+| **6** | **Mock:** take the Mar 2026 paper (the most recent) untimed but unaided; then the Oct 2025 paper timed. Score, and re-study only what you missed. |
+| **7** | Rewrite the formula sheet from memory. Redo every question you got wrong on day 6. Sleep. |
 
 ### Exam-day tactics
 
