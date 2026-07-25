@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kabyik Preparation Hub">
+  <rect width="64" height="64" fill="#000000"/>
+  <rect x="5" y="5" width="54" height="54" fill="none" stroke="#fdfbf7" stroke-width="3"/>
+  <text
+    x="32" y="47"
+    font-family="'Arial Black', 'Helvetica Neue', Impact, sans-serif"
+    font-size="40"
+    font-weight="900"
+    text-anchor="middle"
+    fill="#fdfbf7"
+  >K</text>
+</svg>
