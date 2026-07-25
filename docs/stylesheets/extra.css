@@ -1,0 +1,620 @@
+/* ==========================================================================
+   Kabyik Preparation Hub — neo-brutalist theme
+   Matched to kabyik.dev: cream paper, black ink, condensed display type,
+   hard-edged offset shadows, zero border radius.
+
+   The whole theme pivots on two tokens (--bk-paper / --bk-ink) which swap in
+   dark mode, so every rule below inverts automatically.
+   ========================================================================== */
+
+/* --- Design tokens ------------------------------------------------------- */
+
+:root {
+  --bk-paper: #fdfbf7;
+  --bk-ink: #000000;
+  --bk-muted: #6b6b6b;
+  --bk-rule: #d9d6cf;
+
+  --bk-border: 2px;
+  --bk-border-thick: 3px;
+  --bk-shadow: 4px 4px 0 var(--bk-ink);
+  --bk-shadow-sm: 2px 2px 0 var(--bk-ink);
+  --bk-shadow-lg: 6px 6px 0 var(--bk-ink);
+
+  --bk-display: "Bebas Neue", "Arial Black", Impact, sans-serif;
+  --bk-mono: "JetBrains Mono", "Courier New", Courier, monospace;
+}
+
+/* Light scheme -> Material variable mapping */
+[data-md-color-scheme="default"] {
+  --bk-paper: #fdfbf7;
+  --bk-ink: #000000;
+  --bk-muted: #6b6b6b;
+  --bk-rule: #d9d6cf;
+
+  --md-default-bg-color: var(--bk-paper);
+  --md-default-fg-color: var(--bk-ink);
+  --md-default-fg-color--light: var(--bk-muted);
+  --md-default-fg-color--lighter: #9a9a9a;
+  --md-default-fg-color--lightest: var(--bk-rule);
+
+  --md-primary-fg-color: var(--bk-ink);
+  --md-primary-bg-color: var(--bk-paper);
+  --md-accent-fg-color: var(--bk-ink);
+
+  --md-typeset-color: var(--bk-ink);
+  --md-typeset-a-color: var(--bk-ink);
+  --md-code-bg-color: #f2efe8;
+  --md-code-fg-color: var(--bk-ink);
+  --md-footer-bg-color: var(--bk-ink);
+  --md-footer-fg-color: var(--bk-paper);
+}
+
+/* Dark scheme -> warm near-black paper, cream ink */
+[data-md-color-scheme="slate"] {
+  --bk-paper: #121110;
+  --bk-ink: #fdfbf7;
+  --bk-muted: #a8a49c;
+  --bk-rule: #34322e;
+
+  --md-default-bg-color: var(--bk-paper);
+  --md-default-fg-color: var(--bk-ink);
+  --md-default-fg-color--light: var(--bk-muted);
+  --md-default-fg-color--lighter: #6f6b64;
+  --md-default-fg-color--lightest: var(--bk-rule);
+
+  --md-primary-fg-color: var(--bk-paper);
+  --md-primary-bg-color: var(--bk-ink);
+  --md-accent-fg-color: var(--bk-ink);
+
+  --md-typeset-color: var(--bk-ink);
+  --md-typeset-a-color: var(--bk-ink);
+  --md-code-bg-color: #1c1a18;
+  --md-code-fg-color: var(--bk-ink);
+  --md-footer-bg-color: #0a0a09;
+  --md-footer-fg-color: var(--bk-ink);
+}
+
+/* --- Global: kill every rounded corner ----------------------------------- */
+
+.md-typeset :is(pre, code, table, blockquote, .admonition, details, img),
+.md-search__form,
+.md-search__input,
+.md-search__output,
+.md-search-result__meta,
+.md-clipboard,
+.md-typeset .tabbed-set,
+.md-typeset .tabbed-content,
+.md-dialog,
+.md-top {
+  border-radius: 0 !important;
+}
+
+body {
+  background-color: var(--bk-paper);
+}
+
+::selection {
+  background: var(--bk-ink);
+  color: var(--bk-paper);
+}
+
+/* --- Typography ---------------------------------------------------------- */
+
+.md-typeset {
+  font-size: 0.8rem;
+  line-height: 1.75;
+}
+
+/* Display headings: condensed, uppercase, tight */
+.md-typeset :is(h1, h2) {
+  font-family: var(--bk-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  color: var(--bk-ink);
+}
+
+.md-typeset h1 {
+  font-size: 3.4rem;
+  margin: 0 0 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 6px solid var(--bk-ink);
+}
+
+.md-typeset h2 {
+  font-size: 2.1rem;
+  margin: 2.6rem 0 1rem;
+  padding-left: 0.6rem;
+  border-left: 10px solid var(--bk-ink);
+}
+
+/* Sub-headings stay mono for that terminal/label feel */
+.md-typeset :is(h3, h4, h5, h6) {
+  font-family: var(--bk-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bk-ink);
+}
+
+.md-typeset h3 { font-size: 1rem; margin-top: 2rem; }
+.md-typeset h4 { font-size: 0.85rem; }
+
+/* Links: brutalist thick underline that fills on hover */
+.md-typeset a {
+  color: var(--bk-ink);
+  text-decoration: none;
+  border-bottom: var(--bk-border) solid var(--bk-ink);
+  font-weight: 600;
+  transition: background 0.12s, color 0.12s;
+}
+
+.md-typeset a:hover,
+.md-typeset a:focus-visible {
+  background: var(--bk-ink);
+  color: var(--bk-paper);
+  outline: none;
+}
+
+/* Headline anchor links shouldn't get the underline treatment */
+.md-typeset :is(h1, h2, h3, h4, h5, h6) a,
+.md-typeset .headerlink {
+  border-bottom: none !important;
+  background: none !important;
+  color: inherit !important;
+}
+
+.md-typeset blockquote {
+  border-left: 10px solid var(--bk-ink);
+  padding: 0.4rem 0 0.4rem 1rem;
+  margin-left: 0;
+  color: var(--bk-ink);
+  font-family: var(--bk-mono);
+  font-size: 0.78rem;
+  background: transparent;
+}
+
+.md-typeset hr {
+  border-bottom: var(--bk-border-thick) solid var(--bk-ink);
+  margin: 2.4rem 0;
+}
+
+/* --- Header: solid slab, mono uppercase --------------------------------- */
+
+.md-header {
+  background-color: var(--bk-ink);
+  color: var(--bk-paper);
+  border-bottom: var(--bk-border-thick) solid var(--bk-ink);
+  box-shadow: none;
+}
+
+.md-header__title {
+  font-family: var(--bk-display);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  border-bottom-color: var(--bk-ink);
+}
+
+/* Top-level nav tabs */
+.md-tabs {
+  background-color: var(--bk-ink);
+  border-bottom: var(--bk-border-thick) solid var(--bk-ink);
+}
+
+.md-tabs__link {
+  font-family: var(--bk-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  opacity: 1;
+  margin-top: 0;
+  padding: 0.3rem 0;
+}
+
+.md-tabs__item {
+  height: auto;
+  padding: 0.5rem 0.9rem;
+}
+
+.md-tabs__link--active {
+  border-bottom: 3px solid currentColor;
+}
+
+/* --- Search: squared, hard-bordered ------------------------------------- */
+
+.md-search__form {
+  background-color: rgba(253, 251, 247, 0.14);
+  border: var(--bk-border) solid var(--bk-paper);
+}
+
+.md-search__form:hover {
+  background-color: rgba(253, 251, 247, 0.24);
+}
+
+.md-search__input {
+  font-family: var(--bk-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.md-search__input::placeholder {
+  text-transform: uppercase;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+}
+
+[data-md-toggle="search"]:checked ~ .md-header .md-search__output {
+  border: var(--bk-border-thick) solid var(--bk-ink);
+}
+
+.md-search-result__meta {
+  font-family: var(--bk-mono);
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  border-bottom: var(--bk-border) solid var(--bk-ink);
+}
+
+.md-search-result__link {
+  border-bottom: 1px solid var(--bk-rule);
+}
+
+.md-search-result__link:focus,
+.md-search-result__link:hover {
+  background-color: var(--bk-rule);
+}
+
+/* --- Sidebars: mono labels, hard rules ---------------------------------- */
+
+.md-nav {
+  font-size: 0.7rem;
+}
+
+.md-nav__title {
+  font-family: var(--bk-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 0.64rem;
+  color: var(--bk-ink);
+}
+
+.md-nav__link {
+  font-family: var(--bk-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.01em;
+}
+
+.md-nav__link--active,
+.md-nav__link[data-md-state="blur"]:hover {
+  font-weight: 700;
+}
+
+.md-nav__item .md-nav__link--active {
+  background: var(--bk-ink);
+  color: var(--bk-paper);
+  padding-left: 0.3rem;
+  margin-left: -0.3rem;
+}
+
+/* Right-hand TOC gets a vertical rule */
+.md-sidebar--secondary .md-nav {
+  border-left: var(--bk-border) solid var(--bk-ink);
+  padding-left: 0.6rem;
+}
+
+/* --- Code: bordered slab with offset shadow ----------------------------- */
+
+.md-typeset pre > code {
+  border: var(--bk-border) solid var(--bk-ink);
+}
+
+.md-typeset .highlight,
+.md-typeset pre {
+  box-shadow: var(--bk-shadow);
+}
+
+.md-typeset code {
+  font-size: 0.74em;
+  border: 1px solid var(--bk-ink);
+  padding: 0.1em 0.35em;
+}
+
+.md-typeset pre > code {
+  padding: 0.8rem;
+}
+
+/* Inline code inside a hovered link shouldn't double-invert */
+.md-typeset a:hover code {
+  background: var(--bk-paper);
+  color: var(--bk-ink);
+}
+
+.md-clipboard {
+  color: var(--bk-muted);
+}
+
+.md-clipboard:hover {
+  color: var(--bk-ink);
+}
+
+/* Filename / language label above a fence */
+.md-typeset .highlight span.filename {
+  font-family: var(--bk-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  background: var(--bk-ink);
+  color: var(--bk-paper);
+  border: var(--bk-border) solid var(--bk-ink);
+  border-bottom: none;
+}
+
+/* --- Tables: black header row, thick grid ------------------------------- */
+
+.md-typeset table:not([class]) {
+  border: var(--bk-border-thick) solid var(--bk-ink);
+  box-shadow: var(--bk-shadow);
+  font-size: 0.72rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--bk-ink);
+  color: var(--bk-paper);
+  font-family: var(--bk-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.64rem;
+  font-weight: 700;
+  border: none;
+}
+
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--bk-rule);
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: var(--bk-rule);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:hover {
+  background: #1f1d1a;
+}
+
+/* --- Admonitions: black title bar, hard shadow -------------------------- */
+
+.md-typeset :is(.admonition, details) {
+  border: var(--bk-border-thick) solid var(--bk-ink);
+  border-left-width: var(--bk-border-thick);
+  box-shadow: var(--bk-shadow);
+  background: var(--bk-paper);
+  font-size: 0.75rem;
+}
+
+.md-typeset :is(.admonition-title, summary) {
+  background: var(--bk-ink) !important;
+  color: var(--bk-paper) !important;
+  font-family: var(--bk-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 0.68rem;
+  border: none !important;
+  margin: 0;
+  padding: 0.5rem 0.8rem 0.5rem 2.2rem;
+}
+
+/* Recolor the admonition icon to sit on the black bar */
+.md-typeset :is(.admonition-title, summary)::before {
+  background-color: var(--bk-paper) !important;
+  left: 0.7rem;
+  top: 0.55rem;
+}
+
+.md-typeset :is(.admonition-title, summary)::after {
+  color: var(--bk-paper) !important;
+  top: 0.55rem;
+}
+
+/* --- Tabbed blocks ------------------------------------------------------ */
+
+.md-typeset .tabbed-set > input:checked + label {
+  background: var(--bk-ink);
+  color: var(--bk-paper);
+  border-color: var(--bk-ink);
+}
+
+.md-typeset .tabbed-labels > label {
+  font-family: var(--bk-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.64rem;
+  font-weight: 700;
+  border: var(--bk-border) solid var(--bk-ink);
+  margin-right: 0.3rem;
+  padding: 0.3rem 0.7rem;
+}
+
+.md-typeset .tabbed-labels {
+  box-shadow: none;
+}
+
+.md-typeset .tabbed-content {
+  border: var(--bk-border) solid var(--bk-ink);
+  border-top: none;
+  padding: 0.8rem;
+}
+
+/* --- Homepage grid cards: offset shadow + press interaction ------------- */
+
+.md-typeset .grid.cards > :is(ul, ol) > li,
+.md-typeset .grid > .card {
+  border: var(--bk-border-thick) solid var(--bk-ink);
+  border-radius: 0;
+  box-shadow: var(--bk-shadow);
+  background: var(--bk-paper);
+  padding: 1rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.md-typeset .grid.cards > :is(ul, ol) > li:hover,
+.md-typeset .grid > .card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--bk-shadow-lg);
+  border-color: var(--bk-ink);
+}
+
+.md-typeset .grid.cards > :is(ul, ol) > li > hr {
+  border-bottom-width: var(--bk-border);
+  margin: 0.6rem 0;
+}
+
+.md-typeset .grid.cards strong {
+  font-family: var(--bk-display);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+/* --- Task lists / checkboxes ------------------------------------------- */
+
+.md-typeset .task-list-control .task-list-indicator::before {
+  background-color: var(--bk-muted);
+  border-radius: 0;
+}
+
+.md-typeset .task-list-control [type="checkbox"]:checked + .task-list-indicator::before {
+  background-color: var(--bk-ink);
+}
+
+/* --- Footer ------------------------------------------------------------- */
+
+.md-footer-meta {
+  border-top: var(--bk-border-thick) solid var(--bk-ink);
+}
+
+.md-footer__inner {
+  font-family: var(--bk-mono);
+}
+
+.md-footer-copyright,
+.md-footer__title,
+.md-footer__direction {
+  font-family: var(--bk-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.64rem;
+}
+
+.md-footer__link {
+  border: var(--bk-border) solid transparent;
+  transition: border-color 0.12s;
+}
+
+.md-footer__link:hover {
+  opacity: 1;
+  border-color: currentColor;
+}
+
+/* --- Back-to-top button: square slab ----------------------------------- */
+
+.md-top {
+  background: var(--bk-ink);
+  color: var(--bk-paper);
+  border: var(--bk-border) solid var(--bk-ink);
+  box-shadow: var(--bk-shadow-sm);
+  font-family: var(--bk-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.md-top:hover {
+  background: var(--bk-ink);
+  color: var(--bk-paper);
+  transform: translate(-1px, -1px);
+  box-shadow: var(--bk-shadow);
+}
+
+/* --- Edit-this-page button --------------------------------------------- */
+
+.md-content__button {
+  color: var(--bk-ink);
+}
+
+/* --- Decorative dotted squares (desktop only, like kabyik.dev) ---------- */
+
+@media screen and (min-width: 76.25em) {
+  .md-main::before,
+  .md-main::after {
+    content: "";
+    position: fixed;
+    border: var(--bk-border) dashed var(--bk-ink);
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .md-main::before {
+    width: 120px;
+    height: 120px;
+    top: 22vh;
+    left: 1.2vw;
+    transform: rotate(-12deg);
+  }
+
+  .md-main::after {
+    width: 90px;
+    height: 90px;
+    bottom: 12vh;
+    right: 1.2vw;
+    transform: rotate(9deg);
+  }
+}
+
+/* --- Mobile: tone down the display type -------------------------------- */
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset h1 {
+    font-size: 2.2rem;
+    border-bottom-width: 4px;
+  }
+
+  .md-typeset h2 {
+    font-size: 1.5rem;
+    border-left-width: 6px;
+  }
+
+  .md-typeset :is(.admonition, details),
+  .md-typeset table:not([class]),
+  .md-typeset .highlight,
+  .md-typeset .grid.cards > :is(ul, ol) > li {
+    box-shadow: var(--bk-shadow-sm);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .grid.cards > :is(ul, ol) > li,
+  .md-typeset .grid > .card,
+  .md-top,
+  .md-typeset a {
+    transition: none;
+  }
+
+  .md-typeset .grid.cards > :is(ul, ol) > li:hover,
+  .md-typeset .grid > .card:hover,
+  .md-top:hover {
+    transform: none;
+  }
+}
