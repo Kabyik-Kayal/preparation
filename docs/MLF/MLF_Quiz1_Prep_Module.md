@@ -1,15 +1,47 @@
 # MLF Quiz 1 — Smart Prep Module
 Built from your 6 past papers (Oct24, Feb25, Jul25, Oct25 ×2, Mar26). Every concept → the exam trick → a solved question straight from your PYQs, worked out step by step. Start from zero, finish exam-ready.
 ### How to use this in one week
-- **Day 1–2:**Modules 1–4 (eigenvalues, diagonalizability, subspaces). This is~55% of marks.
-- **Day 3:**Modules 5–7 (projections, orthogonality, least squares).
-- **Day 4:**Modules 8–9 (gradient/directional derivative, linear approximation).
-- **Day 5:**Modules 10–12 (continuity, limits, ML concepts).
-- **Day 6:**Module 13 (True/False bank) + Module 14 (cheat sheet). Memorize.
-- **Day 7:**Re-solve every "Solved PYQ" here with the page covered. If you can reproduce the steps, you're ready.
+
+- **Day 1–2:** Modules 1–4 (eigenvalues, diagonalizability, subspaces). This is ~55% of marks.
+- **Day 3:** Modules 5–7 (projections, orthogonality, least squares).
+- **Day 4:** Modules 8–9 (gradient/directional derivative, linear approximation).
+- **Day 5:** Modules 10–12 (continuity, limits, ML concepts).
+- **Day 6:** Module 13 (True/False bank) + Module 14 (cheat sheet). Memorize.
+- **Day 7:** Re-solve every "Solved PYQ" here with the page covered. If you can reproduce the steps, you're ready.
+
 ## The Blueprint (what actually gets tested)
-Across all 6 papers the same skeleton repeats. Marks are ~40 total, mostly Linear Algebra.| Cluster | Weight | What they ask | | --- | --- | --- | --- | | Eigenvalues / eigenvectors / diagonalizability | ~35% | eigenvalues of triangular & transformed matrices, is-it-diagonalizable, find P & D, complex eigenvalues | | Four subspaces, rank, basis | ~20% | null/column/row/left-null space, rank–nullity, basis of row/col space, row relations | | Projections & orthogonality | ~12% | projection matrix onto a line, its properties, dot product = 0, vector length | | Gradient / directional deriv / linear approx | ~12% | direction of max increase, gradient length, tangent-plane estimate | | Least squares / regression | ~10% | best-fit line, quadratic fit, smallest squared loss, "can loss be 0?" | | Continuity / differentiability / limits | ~6% | piecewise continuity/differentiability, finite limits, sequence convergence | | ML concepts | ~5% | classification vs clustering, is-it-ML, loss, encoder–decoder, step classifier |
-> Reality check: if you master eigenvalues + subspaces + projections, you already clear the pass mark. Everything else is bonus.OutlineOn this page✕1. Eigenvalues & Eigenvectors2. Eigenvalue shortcuts3. Diagonalizability4. Four Subspaces & Rank–Nullity5. Basis / Row / Column space6. Projections7. Orthogonality & Dot Product8. Least Squares & Regression9. Gradient & Directional Deriv.10. Linear Approximation11. Continuity & Differentiability12. Limits & Sequences13. ML Concepts14. True/False Rapid-Fire Bank15. Formula Cheat Sheet16. Exam-Day Strategy
+Across all 6 papers the same skeleton repeats. Marks are ~40 total, mostly Linear Algebra.
+
+| Cluster | Weight | What they ask |
+| --- | --- | --- |
+| Eigenvalues / eigenvectors / diagonalizability | ~35% | eigenvalues of triangular & transformed matrices, is-it-diagonalizable, find P & D, complex eigenvalues |
+| Four subspaces, rank, basis | ~20% | null/column/row/left-null space, rank–nullity, basis of row/col space, row relations |
+| Projections & orthogonality | ~12% | projection matrix onto a line, its properties, dot product = 0, vector length |
+| Gradient / directional deriv / linear approx | ~12% | direction of max increase, gradient length, tangent-plane estimate |
+| Least squares / regression | ~10% | best-fit line, quadratic fit, smallest squared loss, "can loss be 0?" |
+| Continuity / differentiability / limits | ~6% | piecewise continuity/differentiability, finite limits, sequence convergence |
+| ML concepts | ~5% | classification vs clustering, is-it-ML, loss, encoder–decoder, step classifier |
+
+> Reality check: if you master eigenvalues + subspaces + projections, you already clear the pass mark. Everything else is bonus.
+
+## Outline on this page
+1. Eigenvalues & Eigenvectors
+2. Eigenvalue shortcuts
+3. Diagonalizability
+4. Four Subspaces & Rank–Nullity
+5. Basis / Row / Column space
+6. Projections
+7. Orthogonality & Dot Product
+8. Least Squares & Regression
+9. Gradient & Directional Deriv.
+10. Linear Approximation
+11. Continuity & Differentiability
+12. Limits & Sequences
+13. ML Concepts
+14. True/False Rapid-Fire Bank
+15. Formula Cheat Sheet
+16. Exam-Day Strategy
+
 ## 1. Eigenvalues & Eigenvectors — the core
 ### Concept (from zero)
 For a square matrix \(A\), a nonzero vector \(v\) is an**eigenvector**if \(Av = \lambda v\). In plain words: multiplying by \(A\) just stretches \(v\) by a number \(\lambda\) — the**eigenvalue**. The vector never turns; it only scales. That's the entire idea. Everything else in this module is bookkeeping.
@@ -240,7 +272,18 @@ For a quadratic through 3 points, don't run normal equations —**solve the 3 ex
 4. Add the two equations to eliminate \(\theta_1\): \((\theta_1+\theta_2)+(-\theta_1+\theta_2)=1+1\Rightarrow2\theta_2=2\Rightarrow\theta_2=1\). Substitute back: \(\theta_1+1=1\Rightarrow\theta_1=0\).
 5. Assemble: \(y=\theta_0+\theta_1x+\theta_2x^2=1+0\cdot x+1\cdot x^2=x^2+1\) — option (A). Quick sanity check against all three points: \(x=-1\to1+1=2\)✓, \(x=0\to1\)✓, \(x=1\to1+1=2\)✓ — all match, confirming zero error as expected for an exact fit.
 The distractor options are built by nudging one coefficient at a time: (B) drops the "+1" (forgetting \(\theta_0\)), (C) flips its sign (a sign error in solving for \(\theta_0\)), and (D) is a linear guess that ignores the data's obvious symmetry (the \(y\)-values at \(x=\pm1\) are equal, which should immediately suggest an even function — no odd/linear term). Whenever \(y\)-values are symmetric around \(x=0\) like this, expect \(\theta_1=0\) before you even solve for it; it's a fast built-in check.Answer(A) \(y=x^2+1\)
-#### Solved PYQ — Jul25 Q9 (best-fit line)MSQ · 4 marksQuestion (verbatim)Let \(\hat y\) be the regression line (the best fit line) for the dataset below using the least squares method. Which of the following options is/are true?| x | 0 | 2 | 3 | | --- | --- | --- | --- | --- | | y | −2 | 5 | 4 |Options
+#### Solved PYQ — Jul25 Q9 (best-fit line)
+MSQ · 4 marks
+
+Question (verbatim)
+
+Let \(\hat y\) be the regression line (the best fit line) for the dataset below using the least squares method. Which of the following options is/are true?
+
+| x | 0 | 2 | 3 |
+| --- | --- | --- | --- |
+| y | −2 | 5 | 4 |
+
+Options
 - (A) \(\hat y=\tfrac1{14}(13x-19)\)
 - (B) \(\hat y=\tfrac1{14}(31x-91)\)
 - (C) If \(x=11\), predicted value of \(y\) is 23.
@@ -471,9 +514,41 @@ Notice the second and fourth points dominate the mean loss (121 and 136, versus 
 2. Compute term by term: \(0.5(0.9)=0.45\); \(\ 0.3(5)=1.5\); \(\ -0.2(1)=-0.2\). Sum: \(z=0.45+1.5-0.2=1.75\).
 3. Apply the step function's rule: since \(z=1.75\ge1.5\) (the threshold), the classifier outputs \(u(z)=1\). This matches option (B) — and note option (C), 1.75, is a trap for anyone who reports the raw score \(z\) itself instead of running it through the step function \(u(z)\) as the question actually asks.
 A recurring pattern in these papers: whenever a question defines both a raw linear score (here, \(z\))*and*a thresholding function built on top of it (here, \(u(z)\)), always re-read which one is being asked for — reporting \(z\) when \(u(z)\) was requested is a "computed everything correctly but answered the wrong question" mistake, and the exam deliberately includes the intermediate value as a tempting wrong option to catch exactly that.Answer(B) 1(since \(z=1.75\ge1.5\))
-## 14. True/False Rapid-Fire Bankmemorize
-These exact statements recur across papers. Learn the verdict plus the reasoning — the reasoning is what stops you second-guessing in the exam, because you can re-derive the verdict from the argument instead of trying to recall it from memory alone.| Statement | Verdict | Why | | --- | --- | --- | --- | | Diagonalizable ⇒ invertible | False | The zero matrix is a ready-made counterexample: it's already diagonal (so trivially diagonalizable, \(P=I,D=0\)), yet \(\det=0\) makes it the least invertible matrix possible. Diagonalizability is about having a full set of independent eigenvectors; invertibility is about no eigenvalue being zero — two unrelated conditions that only happen to coincide for "generic" matrices. | | Diagonalizable ⇔ n distinct eigenvalues | False | The forward direction (distinct ⇒ diagonalizable) is true and useful as a shortcut, but "⇔" also claims the reverse, which fails: the identity matrix \(I\) has every eigenvalue equal to 1 (as repeated as possible) yet is diagonalizable trivially. Distinct eigenvalues are sufficient for diagonalizability, never necessary. | | Eigenvalues of real symmetric matrix are real | True | This is the Spectral Theorem — for any real symmetric \(A\) (\(A=A^T\)), every eigenvalue is guaranteed real and \(A\) is always orthogonally diagonalizable. Treat this as a memorized fact rather than something to re-derive under time pressure. | | A not invertible ⇔ 0 is an eigenvalue | True | Since \(\det A\) equals the product of all the eigenvalues, if any single eigenvalue is 0 the whole product collapses to 0, forcing \(\det A=0\) and hence non-invertibility — and the converse holds too, since \(\det A=0\) forces at least one eigenvalue to be exactly 0. | | Every real square matrix has ≥ 1 real eigenvalue | False | A 2D rotation matrix \(\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}\) (for \(0<\theta<180°\)) rotates every nonzero vector by angle \(\theta\), so no real vector is ever just scaled — its eigenvalues are the complex pair \(e^{\pm i\theta}\), with no real eigenvalue at all. Real matrices can absolutely have purely complex eigenvalues. | | Two eigenvectors of the same eigenvalue must be linearly dependent | False | An eigenspace (all eigenvectors for one eigenvalue, plus the zero vector) can have dimension 2 or higher — for instance, the identity matrix's eigenspace for \(\lambda=1\) is all of \(\mathbb R^n\), so you can pick as many independent eigenvectors sharing that eigenvalue as the space allows. | | Eigenvectors of λ + zero vector form a subspace (eigenspace) | True | This set is closed under addition and scalar multiplication (if \(Av=\lambda v\) and \(Aw=\lambda w\), then \(A(v+w)=\lambda(v+w)\) and \(A(cv)=\lambda(cv)\) for any scalar \(c\)), and it contains the zero vector by construction — exactly the three requirements for a subspace, which is why it's formally called the eigenspace. | | rank(A+B) = rank(A) + rank(B) | False | Rank is not additive in general — the correct relationship is only an inequality, \(\text{rank}(A+B)\le\text{rank}(A)+\text{rank}(B)\), and it can be far from equality; e.g. \(B=-A\) gives \(A+B=0\) with rank 0, even though \(\text{rank}(A)+\text{rank}(B)\) could be large. | | rank = number of non-zero rows | False | This only holds once a matrix has been fully row-reduced to echelon form — in a general (un-reduced) matrix, rows can be nonzero yet still linearly dependent on each other, so counting raw nonzero rows overstates the rank. Always reduce first, then count. | | Permutation of rows of \(I_{5\times5}\) has rank 5 | True | Shuffling the rows of the identity matrix just reorders which standard basis vector sits in which row — it doesn't create any new linear dependency between rows, so all 5 rows stay independent and the matrix remains full rank. | | For nonzero \(u\in\mathbb{R}^{10}\), rank\((uu^T)=1\) | True | Every column of the outer product \(uu^T\) is \(u\) scaled by one entry of \(u^T\), so all ten columns are scalar multiples of the single vector \(u\) — meaning the column space is just the line span\(\{u\}\), which is 1-dimensional, giving rank exactly 1 (never 0, since \(u\) is nonzero). | | Projection matrix is symmetric / \(P^2=P\) / rank 1 (onto a line) / orthogonally diagonalizable | True | These are the four core properties from Module 6: \(P=\frac{aa^T}{a^Ta}\) is symmetric by construction (an outer product divided by a scalar is always symmetric); applying it twice does nothing new since the "shadow of a shadow is the same shadow" (\(P^2=P\)); projecting onto a single line collapses everything to that one direction (rank 1); and because \(P\) is symmetric, the Spectral Theorem guarantees it's orthogonally diagonalizable. | | Projection matrix is an orthogonal matrix | False | An orthogonal matrix must be invertible (its columns form an orthonormal basis, and \(Q^TQ=I\)), but a projection matrix (except the trivial case \(P=I\)) is never invertible — it squashes the orthogonal-complement direction down to zero, and any matrix that sends a nonzero vector to zero cannot have an inverse. | | Rotation matrix \(\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}\) (0<θ<180°): orthogonal & invertible, not symmetric, no real eigenvalues | True | Its columns are orthonormal (each has length 1 and they're perpendicular), which makes it orthogonal and automatically invertible; its off-diagonal entries \(-\sin\theta\) and \(\sin\theta\) differ in sign, so it's not symmetric unless \(\sin\theta=0\); and solving its characteristic equation gives the complex pair \(e^{\pm i\theta}=\cos\theta\pm i\sin\theta\), which are genuinely non-real whenever \(0<\theta<180°\). | | \(\ln x\) is differentiable on \([0,\infty)\) | False | \(\ln x\) is undefined at \(x=0\) (it diverges to \(-\infty\) as \(x\to0^+\)), so it can't be continuous or differentiable at a point outside its own domain — the true domain is the open interval \((0,\infty)\), never including 0. | | \(\sqrt x\) differentiable at 0 | False | The function is continuous at 0 (you can draw it through the origin without lifting the pen), but its derivative \(\frac1{2\sqrt x}\) blows up to \(+\infty\) as \(x\to0^+\) — the tangent line becomes vertical, so no finite slope exists there. This is the standard example of "continuous but not differentiable." |
-## 15. One-Page Formula Cheat Sheet| Topic | Formula | | --- | --- | --- | | 2×2 eigenvalues | \(\lambda^2-(\text{tr})\lambda+\det=0\); tr = sum of diagonal, det = \(ad-bc\) | | Eigen facts | \(\sum\lambda=\)tr, \(\prod\lambda=\det\); \(p(A)\) has eigenvalue \(p(\lambda)\) | | Diagonalize | \(A=PDP^{-1}\); \(P\)=eigenvectors, \(D\)=eigenvalues (matched order) | | Rank–Nullity | rank + nullity = number of columns | | Projection matrix | \(P=\dfrac{aa^T}{a^Ta}\); onto complement = \(I-P\) | | Projection of b onto a | \(\dfrac{a^Tb}{a^Ta}\,a\) | | Orthogonal / length | \(u\cdot v=0\); \(\|v\|=\sqrt{v\cdot v}\) | | Best-fit line | \(b=\dfrac{n\sum xy-\sum x\sum y}{n\sum x^2-(\sum x)^2}\), \(a=\dfrac{\sum y-b\sum x}{n}\) | | Gradient | \(\nabla f=(f_{x_1},\dots)\); max-increase dir = \(\nabla f/\|\nabla f\|\); max rate = \(\|\nabla f\|\) | | Directional derivative | \(D_uf=\nabla f\cdot u\) (\(u\) must be unit) | | Linear approx | \(L=f(a,b)+f_x(x-a)+f_y(y-b)\) | | Continuity / differentiability | match values at the join; match derivatives at the join | | Reconstruction loss | mean of \(\|x-g(f(x))\|^2\) |
+## 14. True/False Rapid-Fire Bank
+
+These exact statements recur across papers. Learn the verdict plus the reasoning - the reasoning is what stops you second-guessing in the exam.
+
+| Statement | Verdict | Why |
+| --- | --- | --- |
+| Diagonalizable ⇒ invertible | False | The zero matrix is a counterexample: it is already diagonal, yet it has determinant 0. |
+| Diagonalizable ⇔ n distinct eigenvalues | False | Distinct eigenvalues are sufficient, not necessary; the identity matrix is the standard counterexample. |
+| Eigenvalues of a real symmetric matrix are real | True | This is the Spectral Theorem. |
+| A not invertible ⇔ 0 is an eigenvalue | True | Zero determinant and zero eigenvalue are equivalent. |
+| Every real square matrix has ≥ 1 real eigenvalue | False | A 2D rotation matrix can have no real eigenvalues. |
+
+## 15. One-Page Formula Cheat Sheet
+
+| Topic | Formula |
+| --- | --- |
+| 2×2 eigenvalues | \(\lambda^2-(	ext{tr})\lambda+\det=0\); tr = sum of diagonal, det = \(ad-bc\) |
+| Eigen facts | \(\sum\lambda=\)tr, \(\prod\lambda=\det\); \(p(A)\) has eigenvalue \(p(\lambda)\) |
+| Diagonalize | \(A=PDP^{-1}\); \(P\)=eigenvectors, \(D\)=eigenvalues (matched order) |
+| Rank–Nullity | rank + nullity = number of columns |
+| Projection matrix | \(P=\dfrac{aa^T}{a^Ta}\); onto complement = \(I-P\) |
+| Projection of b onto a | \(\dfrac{a^Tb}{a^Ta}\,a\) |
+| Orthogonal / length | \(u\cdot v=0\); \(\|v\|=\sqrt{v\cdot v}\) |
+| Best-fit line | \(b=\dfrac{n\sum xy-\sum x\sum y}{n\sum x^2-(\sum x)^2}\), \(a=\dfrac{\sum y-b\sum x}{n}\) |
+| Gradient | \(
+abla f=(f_{x_1},dots)\); max-increase dir = \(
+abla f/\|
+abla f\|\); max rate = \(\|
+abla f\|\) |
+| Directional derivative | \(D_uf=
+abla f\cdot u\) (\(u\) must be unit) |
+| Linear approx | \(L=f(a,b)+f_x(x-a)+f_y(y-b)\) |
+| Continuity / differentiability | match values at the join; match derivatives at the join |
+| Reconstruction loss | mean of \(\|x-g(f(x))\|^2\) |
+
 ## 16. Exam-Day Strategy
 - **Sweep the 1–2 mark ML/True-False questions first**— they're fast and come straight from Modules 13/14. Bank the easy marks before the timer bites.
 - **MSQ = partial credit, so mark every option you're confident about.**Don't leave an MSQ blank because you're unsure of one option.

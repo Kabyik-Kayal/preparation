@@ -34,32 +34,34 @@ Contents
 
 **Topic weights across the 5 papers** (approximate marks per paper):
 
-TopicOct'24Feb'25Jul'25Oct'25Mar'26Verdict
-PCA (covariance, variance, projections, residues, compression)1414121415**~30% — highest priority**
-Kernels + Kernel PCA1178310**~20%**
-K-means / Lloyd's / K-means++14741212**~20%**
-MLE123300~7%, easy marks
-Bayesian (Beta posterior)04040~4%, formulaic
-GMM + EM746910**~15%**
-Linear regression00700rare, know basics
+| Topic | Oct'24 | Feb'25 | Jul'25 | Oct'25 | Mar'26 | Verdict |
+| --- | --- | --- | --- | --- | --- | --- |
+| PCA (covariance, variance, projections, residues, compression) | 14 | 14 | 12 | 14 | 15 | ~30% - highest priority |
+| Kernels + Kernel PCA | 11 | 7 | 8 | 3 | 10 | ~20% |
+| K-means / Lloyd's / K-means++ | 14 | 7 | 4 | 12 | 12 | ~20% |
+| MLE | 12 | 3 | 3 | 0 | 0 | ~7%, easy marks |
+| Bayesian (Beta posterior) | 0 | 4 | 0 | 4 | 0 | ~4%, formulaic |
+| GMM + EM | 7 | 4 | 6 | 9 | 10 | ~15% |
+| Linear regression | 0 | 0 | 7 | 0 | 0 | rare, know basics |
 
 **The single most valuable finding:** questions repeat *verbatim* across papers. The Oct 2025 paper reused the Lloyd's-algorithm MSQ, the "5000 points in \(\mathbb{R}^{50}\)" question, the valid-kernels MSQ, and the Beta-posterior question — all from earlier papers, word for word. The two Oct 2025 forms (QDD4/QDF4) are 100% identical. If you can independently solve every question in these 5 papers, you have likely seen 40–60% of your actual exam already.
 
 **Recurring question archetypes** (each appears in 3+ papers):
 
-#ArchetypeWhere it appeared
-1Compute covariance matrix of 3–8 small 2D points, then variance along PC1/PC2Jul'25, Oct'25, Mar'26
-2Project a point onto a given PC direction; find projection length / residueOct'24, Feb'25, Mar'26
-3% variance captured by top-k PCs from a list of eigenvaluesOct'24, Oct'25
-4Storage saved by keeping k PCs (compression arithmetic)Feb'25, Jul'25
-5Which functions are valid kernels? (MSQ)Oct'24, Feb'25, Oct'25, Mar'26
-6Find the feature map \(\phi\) for a given kernelOct'24, Jul'25
-7K-means++: probability a point is picked as next centreOct'24, Feb'25, Oct'25, Mar'26
-8Lloyd's algorithm true/false properties (MSQ)Feb'25, Jul'25, Oct'25
-9Run 1–2 iterations of K-means by hand on 4–7 pointsOct'24, Oct'25, Mar'26
-10MLE for a named distribution (Bernoulli, Pareto, coin tosses)Oct'24, Feb'25, Jul'25
-11Beta prior + observed defectives → posterior & posterior meanFeb'25, Oct'25
-12EM: E-step responsibility computation / M-step updateOct'24, Feb'25, Oct'25, Mar'26
+| # | Archetype | Where it appeared |
+| --- | --- | --- |
+| 1 | Compute covariance matrix of 3–8 small 2D points, then variance along PC1/PC2 | Jul'25, Oct'25, Mar'26 |
+| 2 | Project a point onto a given PC direction; find projection length / residue | Oct'24, Feb'25, Mar'26 |
+| 3 | % variance captured by top-k PCs from a list of eigenvalues | Oct'24, Oct'25 |
+| 4 | Storage saved by keeping k PCs (compression arithmetic) | Feb'25, Jul'25 |
+| 5 | Which functions are valid kernels? (MSQ) | Oct'24, Feb'25, Oct'25, Mar'26 |
+| 6 | Find the feature map \(\phi\) for a given kernel | Oct'24, Jul'25 |
+| 7 | K-means++: probability a point is picked as next centre | Oct'24, Feb'25, Oct'25, Mar'26 |
+| 8 | Lloyd's algorithm true/false properties (MSQ) | Feb'25, Jul'25, Oct'25 |
+| 9 | Run 1–2 iterations of K-means by hand on 4–7 points | Oct'24, Oct'25, Mar'26 |
+| 10 | MLE for a named distribution (Bernoulli, Pareto, coin tosses) | Oct'24, Feb'25, Jul'25 |
+| 11 | Beta prior + observed defectives -> posterior & posterior mean | Feb'25, Oct'25 |
+| 12 | EM: E-step responsibility computation / M-step update | Oct'24, Feb'25, Oct'25, Mar'26 |
 
 ## 2. Module 1: PCA — the biggest scorer (~30% of the paper)
 
