@@ -3,17 +3,25 @@
    Matched to kabyik.dev: cream paper, black ink, condensed display type,
    hard-edged offset shadows, zero border radius.
 
-   The whole theme pivots on two tokens (--bk-paper / --bk-ink) which swap in
-   dark mode, so every rule below inverts automatically.
+   Tuned for long reading sessions. The brutalist chrome (hard borders, offset
+   shadows, slab headers, display type) is structural and stays; the *reading
+   surface* is deliberately quieter — softened ink, larger body copy, roman
+   lowercase for anything you actually read a sentence of, and a capped measure.
+
+   Three tokens drive everything and swap wholesale in dark mode:
+     --bk-ink   structural black (borders, slabs, display headings)
+     --bk-text  body copy — pulled off pure black/white to stop halation
+     --bk-paper the surface
    ========================================================================== */
 
 /* --- Design tokens ------------------------------------------------------- */
 
 :root {
-  --bk-paper: #fdfbf7;
-  --bk-ink: #000000;
-  --bk-muted: #6b6b6b;
-  --bk-rule: #d9d6cf;
+  --bk-paper: #faf8f3;
+  --bk-ink: #111110;
+  --bk-text: #26241e;
+  --bk-muted: #5f5c55;
+  --bk-rule: #dcd8d0;
 
   --bk-border: 2px;
   --bk-border-thick: 3px;
@@ -23,42 +31,52 @@
 
   --bk-display: "Bebas Neue", "Arial Black", Impact, sans-serif;
   --bk-mono: "JetBrains Mono", "Courier New", Courier, monospace;
+
+  /* Comfortable line length for body copy — ~70 characters. Everything you
+     read a full sentence of is capped here; tables, code fences and display
+     math stay full-width. (`ch` is the width of "0", which in Inter runs
+     wider than the average glyph, so 58ch lands around 70 real characters.) */
+  --bk-measure: 58ch;
 }
 
 /* Light scheme -> Material variable mapping */
 [data-md-color-scheme="default"] {
-  --bk-paper: #fdfbf7;
-  --bk-ink: #000000;
-  --bk-muted: #6b6b6b;
-  --bk-rule: #d9d6cf;
+  --bk-paper: #faf8f3;
+  --bk-ink: #111110;
+  --bk-text: #26241e;
+  --bk-muted: #5f5c55;
+  --bk-rule: #dcd8d0;
 
   --md-default-bg-color: var(--bk-paper);
-  --md-default-fg-color: var(--bk-ink);
+  --md-default-fg-color: var(--bk-text);
   --md-default-fg-color--light: var(--bk-muted);
-  --md-default-fg-color--lighter: #9a9a9a;
+  --md-default-fg-color--lighter: #8d8981;
   --md-default-fg-color--lightest: var(--bk-rule);
 
   --md-primary-fg-color: var(--bk-ink);
   --md-primary-bg-color: var(--bk-paper);
   --md-accent-fg-color: var(--bk-ink);
 
-  --md-typeset-color: var(--bk-ink);
-  --md-typeset-a-color: var(--bk-ink);
-  --md-code-bg-color: #f2efe8;
-  --md-code-fg-color: var(--bk-ink);
+  --md-typeset-color: var(--bk-text);
+  --md-typeset-a-color: var(--bk-text);
+  --md-code-bg-color: #f1ede4;
+  --md-code-fg-color: var(--bk-text);
   --md-footer-bg-color: var(--bk-ink);
   --md-footer-fg-color: var(--bk-paper);
 }
 
-/* Dark scheme -> warm near-black paper, cream ink */
+/* Dark scheme -> warm near-black paper, dimmed cream ink.
+   Text is intentionally *not* #fff — full-brightness cream on near-black
+   blooms badly and is the single worst thing for a two-hour revision run. */
 [data-md-color-scheme="slate"] {
-  --bk-paper: #121110;
-  --bk-ink: #fdfbf7;
-  --bk-muted: #a8a49c;
-  --bk-rule: #34322e;
+  --bk-paper: #151412;
+  --bk-ink: #f0ece2;
+  --bk-text: #ddd8cd;
+  --bk-muted: #a09b92;
+  --bk-rule: #33312c;
 
   --md-default-bg-color: var(--bk-paper);
-  --md-default-fg-color: var(--bk-ink);
+  --md-default-fg-color: var(--bk-text);
   --md-default-fg-color--light: var(--bk-muted);
   --md-default-fg-color--lighter: #6f6b64;
   --md-default-fg-color--lightest: var(--bk-rule);
@@ -67,12 +85,12 @@
   --md-primary-bg-color: var(--bk-ink);
   --md-accent-fg-color: var(--bk-ink);
 
-  --md-typeset-color: var(--bk-ink);
-  --md-typeset-a-color: var(--bk-ink);
-  --md-code-bg-color: #1c1a18;
-  --md-code-fg-color: var(--bk-ink);
-  --md-footer-bg-color: #0a0a09;
-  --md-footer-fg-color: var(--bk-ink);
+  --md-typeset-color: var(--bk-text);
+  --md-typeset-a-color: var(--bk-text);
+  --md-code-bg-color: #1e1c19;
+  --md-code-fg-color: var(--bk-text);
+  --md-footer-bg-color: #0c0b0a;
+  --md-footer-fg-color: var(--bk-text);
 }
 
 /* --- Global: kill every rounded corner ----------------------------------- */
@@ -99,11 +117,47 @@ body {
   color: var(--bk-paper);
 }
 
+/* Visible keyboard focus everywhere — you tab through a lot of PYQ links. */
+:focus-visible {
+  outline: var(--bk-border-thick) solid var(--bk-ink);
+  outline-offset: 2px;
+}
+
 /* --- Typography ---------------------------------------------------------- */
 
 .md-typeset {
-  font-size: 0.8rem;
-  line-height: 1.75;
+  font-size: 0.85rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+}
+
+/* Cap the measure on everything you read as prose. Tables, code fences and
+   display math are deliberately exempt — they need the full column. */
+.md-typeset > :is(p, ul, ol, dl, blockquote, h3, h4, h5, h6),
+.md-typeset > :is(.admonition, details) {
+  max-width: var(--bk-measure);
+}
+
+.md-typeset p {
+  margin: 0 0 1.05em;
+}
+
+.md-typeset :is(ul, ol) > li {
+  margin-bottom: 0.4em;
+}
+
+/* MCQ option lists carry inline matrices and long inline math that cannot
+   wrap. Material sets html{overflow-x:hidden}, so on a phone the tail of an
+   option was silently cut off rather than reachable. Let the list itself
+   scroll. Scoped to top-level lists so the homepage card grid — which relies
+   on its hover transform and offset shadow escaping the box — is untouched. */
+.md-typeset > :is(ul, ol) {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.md-typeset :is(ul, ol) > li:last-child {
+  margin-bottom: 0;
 }
 
 /* Display headings: condensed, uppercase, tight */
@@ -117,45 +171,80 @@ body {
 }
 
 .md-typeset h1 {
-  font-size: 3.4rem;
+  font-size: 3.2rem;
   margin: 0 0 1.2rem;
   padding-bottom: 0.5rem;
   border-bottom: 6px solid var(--bk-ink);
 }
 
 .md-typeset h2 {
-  font-size: 2.1rem;
-  margin: 2.6rem 0 1rem;
+  font-size: 2rem;
+  margin: 3rem 0 1rem;
   padding-left: 0.6rem;
   border-left: 10px solid var(--bk-ink);
 }
 
-/* Sub-headings stay mono for that terminal/label feel */
-.md-typeset :is(h3, h4, h5, h6) {
+/* h3 keeps the mono/uppercase label feel — it's a section marker you scan.
+   h4–h6 sit inside the reading flow, so they stay roman and lowercase;
+   uppercase mono at paragraph level is what makes a long page tiring. */
+.md-typeset h3 {
   font-family: var(--bk-mono);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
+  font-size: 0.92rem;
+  margin-top: 2.2rem;
   color: var(--bk-ink);
 }
 
-.md-typeset h3 { font-size: 1rem; margin-top: 2rem; }
-.md-typeset h4 { font-size: 0.85rem; }
-
-/* Links: brutalist thick underline that fills on hover */
-.md-typeset a {
+.md-typeset :is(h4, h5, h6) {
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--bk-ink);
+}
+
+.md-typeset h4 {
+  font-size: 0.92rem;
+  margin-top: 1.9rem;
+}
+
+.md-typeset :is(h5, h6) {
+  font-size: 0.85rem;
+}
+
+/* Headings shouldn't be split from the text they introduce */
+.md-typeset :is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: 3.6rem;
+  break-after: avoid;
+}
+
+/* Links: a single hairline rule instead of a 2px slab at normal weight.
+   On a page with 200+ inline links, the old bold + 2px treatment turned
+   every paragraph into stripes. */
+.md-typeset a {
+  color: var(--bk-text);
   text-decoration: none;
-  border-bottom: var(--bk-border) solid var(--bk-ink);
-  font-weight: 600;
-  transition: background 0.12s, color 0.12s;
+  border-bottom: 1px solid var(--bk-muted);
+  font-weight: inherit;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
 }
 
 .md-typeset a:hover,
 .md-typeset a:focus-visible {
   background: var(--bk-ink);
   color: var(--bk-paper);
+  border-bottom-color: var(--bk-ink);
   outline: none;
+}
+
+/* Navigational links (cards, TOC arrows) keep the emphatic treatment */
+.md-typeset .grid.cards a,
+.md-typeset .md-button {
+  font-weight: 600;
+  border-bottom-width: var(--bk-border);
+  border-bottom-color: var(--bk-ink);
 }
 
 /* Headline anchor links shouldn't get the underline treatment */
@@ -166,19 +255,78 @@ body {
   color: inherit !important;
 }
 
+/* Blockquotes read as prose, so roman — not mono uppercase */
 .md-typeset blockquote {
   border-left: 10px solid var(--bk-ink);
-  padding: 0.4rem 0 0.4rem 1rem;
+  padding: 0.3rem 0 0.3rem 1rem;
   margin-left: 0;
-  color: var(--bk-ink);
-  font-family: var(--bk-mono);
-  font-size: 0.78rem;
+  color: var(--bk-text);
+  font-size: 0.85rem;
+  font-style: normal;
   background: transparent;
 }
 
 .md-typeset hr {
   border-bottom: var(--bk-border-thick) solid var(--bk-ink);
   margin: 2.4rem 0;
+}
+
+/* --- Math (MathJax / arithmatex) ---------------------------------------- */
+
+/* Inline math must not stretch the line box, or every paragraph containing a
+   \(\lambda\) gets its own leading and the text starts to shimmer. */
+mjx-container[jax="CHTML"] {
+  font-size: 1.03em;
+  line-height: 0;
+}
+
+.md-typeset mjx-container[jax="CHTML"]:not([display="true"]) {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+/* Display math: its own band, and scrollable so a wide bmatrix never forces
+   the whole page to scroll sideways on a phone. */
+.md-typeset mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  margin: 1.1em 0;
+  padding: 0.15rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+.md-typeset div.arithmatex {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* MathJax mirrors every expression into a hidden <math> element for screen
+   readers, but ships it at its natural width — on these pages that pushed the
+   document 125px wide and left the whole page scrolling sideways. Collapse it
+   with the standard visually-hidden pattern; it stays in the a11y tree. */
+mjx-assistive-mml,
+mjx-assistive-mml math {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* Before MathJax has run (or if the CDN is blocked) the raw \(...\) source is
+   what the reader sees — at least keep it monospaced and unobtrusive. */
+.md-typeset .arithmatex {
+  font-family: var(--bk-mono);
+}
+
+mjx-container .arithmatex,
+mjx-container {
+  font-family: inherit;
 }
 
 /* --- Header: solid slab, mono uppercase --------------------------------- */
@@ -230,12 +378,12 @@ body {
 /* --- Search: squared, hard-bordered ------------------------------------- */
 
 .md-search__form {
-  background-color: rgba(253, 251, 247, 0.14);
+  background-color: rgba(250, 248, 243, 0.14);
   border: var(--bk-border) solid var(--bk-paper);
 }
 
 .md-search__form:hover {
-  background-color: rgba(253, 251, 247, 0.24);
+  background-color: rgba(250, 248, 243, 0.24);
 }
 
 .md-search__input {
@@ -274,7 +422,7 @@ body {
 /* --- Sidebars: mono labels, hard rules ---------------------------------- */
 
 .md-nav {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
 }
 
 .md-nav__title {
@@ -286,10 +434,13 @@ body {
   color: var(--bk-ink);
 }
 
+/* Nav and TOC entries are sentences you scan repeatedly while revising —
+   roman, sentence case, and a touch more leading beats mono all-caps. */
 .md-nav__link {
-  font-family: var(--bk-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.01em;
+  font-family: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  line-height: 1.45;
 }
 
 .md-nav__link--active,
@@ -310,6 +461,11 @@ body {
   padding-left: 0.6rem;
 }
 
+/* The TOC on these pages is long — let it scroll independently and stay put */
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  scrollbar-width: thin;
+}
+
 /* --- Code: bordered slab with offset shadow ----------------------------- */
 
 .md-typeset pre > code {
@@ -322,13 +478,15 @@ body {
 }
 
 .md-typeset code {
-  font-size: 0.74em;
-  border: 1px solid var(--bk-ink);
+  font-size: 0.8em;
+  border: 1px solid var(--bk-rule);
   padding: 0.1em 0.35em;
 }
 
 .md-typeset pre > code {
   padding: 0.8rem;
+  line-height: 1.6;
+  border-color: var(--bk-ink);
 }
 
 /* Inline code inside a hovered link shouldn't double-invert */
@@ -360,10 +518,17 @@ body {
 
 /* --- Tables: black header row, thick grid ------------------------------- */
 
+/* Wide formula tables must scroll inside themselves, never the page */
+.md-typeset .md-typeset__table,
+.md-typeset .md-typeset__scrollwrap {
+  max-width: 100%;
+}
+
 .md-typeset table:not([class]) {
   border: var(--bk-border-thick) solid var(--bk-ink);
   box-shadow: var(--bk-shadow);
-  font-size: 0.72rem;
+  font-size: 0.79rem;
+  line-height: 1.6;
 }
 
 .md-typeset table:not([class]) th {
@@ -372,21 +537,24 @@ body {
   font-family: var(--bk-mono);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 0.64rem;
+  font-size: 0.68rem;
   font-weight: 700;
   border: none;
 }
 
 .md-typeset table:not([class]) td {
   border-top: 1px solid var(--bk-rule);
+  padding: 0.6em 0.8em;
+}
+
+/* Zebra striping: on a 20-row formula sheet, row tracking matters more than
+   the purity of the flat surface. */
+.md-typeset table:not([class]) tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--bk-ink) 4%, transparent);
 }
 
 .md-typeset table:not([class]) tr:hover {
-  background: var(--bk-rule);
-}
-
-[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:hover {
-  background: #1f1d1a;
+  background: color-mix(in srgb, var(--bk-ink) 9%, transparent);
 }
 
 /* --- Admonitions: black title bar, hard shadow -------------------------- */
@@ -396,7 +564,9 @@ body {
   border-left-width: var(--bk-border-thick);
   box-shadow: var(--bk-shadow);
   background: var(--bk-paper);
-  font-size: 0.75rem;
+  font-size: 0.83rem;
+  line-height: 1.7;
+  margin: 1.4em 0;
 }
 
 .md-typeset :is(.admonition-title, summary) {
@@ -406,7 +576,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 700;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   border: none !important;
   margin: 0;
   padding: 0.5rem 0.8rem 0.5rem 2.2rem;
@@ -552,15 +722,22 @@ body {
   color: var(--bk-ink);
 }
 
-/* --- Decorative dotted squares (desktop only, like kabyik.dev) ---------- */
+/* --- Decorative dotted squares (desktop only, like kabyik.dev) ----------
+   These were position:fixed, which parked them in peripheral vision for the
+   entire scroll of an 800-line page. Now absolute: they mark the top of the
+   article and scroll away once you're actually reading. */
 
 @media screen and (min-width: 76.25em) {
+  .md-main {
+    position: relative;
+  }
+
   .md-main::before,
   .md-main::after {
     content: "";
-    position: fixed;
+    position: absolute;
     border: var(--bk-border) dashed var(--bk-ink);
-    opacity: 0.22;
+    opacity: 0.16;
     pointer-events: none;
     z-index: 0;
   }
@@ -568,7 +745,7 @@ body {
   .md-main::before {
     width: 120px;
     height: 120px;
-    top: 22vh;
+    top: 4vh;
     left: 1.2vw;
     transform: rotate(-12deg);
   }
@@ -576,7 +753,7 @@ body {
   .md-main::after {
     width: 90px;
     height: 90px;
-    bottom: 12vh;
+    top: 34vh;
     right: 1.2vw;
     transform: rotate(9deg);
   }
@@ -616,5 +793,21 @@ body {
   .md-typeset .grid > .card:hover,
   .md-top:hover {
     transform: none;
+  }
+}
+
+/* --- Print: the revision sheet you actually take to the exam ------------ */
+
+@media print {
+  .md-typeset :is(.admonition, details, table:not([class]), .highlight) {
+    box-shadow: none;
+  }
+
+  .md-typeset :is(h1, h2, h3) {
+    break-after: avoid;
+  }
+
+  .md-typeset :is(.admonition, details, table:not([class])) {
+    break-inside: avoid;
   }
 }

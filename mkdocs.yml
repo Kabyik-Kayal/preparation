@@ -101,7 +101,10 @@ extra_css:
 
 extra_javascript:
   - javascripts/mathjax.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  # tex-chtml, not tex-mml-chtml: the pages only ever author TeX, and leaving
+  # the MathML *input* jax out keeps a re-typeset from picking up the assistive
+  # MathML that MathJax emits itself (which rendered every equation twice).
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
 
 extra:
   social:

@@ -20,29 +20,29 @@ current content already lives under the subject folders below.
 
     ---
 
-  TrekStar viva prep, module notes, and the Vue Router coding task guide.
+    TrekStar viva prep, module notes, and the Vue Router coding task guide.
 
-  [:octicons-arrow-right-24: Viva preparation guide](MAD2-Project/preparation.md)
+    [:octicons-arrow-right-24: Viva preparation guide](MAD2-Project/preparation.md)
 
-  [:octicons-arrow-right-24: Viva module notes](MAD2-Project/Viva-Preparation-Module.md)
+    [:octicons-arrow-right-24: Viva module notes](MAD2-Project/Viva-Preparation-Module.md)
 
-  [:octicons-arrow-right-24: Vue Router coding task](MAD2-Project/Viva-Coding-Task-VueRouter-Users.md)
+    [:octicons-arrow-right-24: Vue Router coding task](MAD2-Project/Viva-Coding-Task-VueRouter-Users.md)
 
 -   :material-function-variant:{ .lg .middle } __MLF__
 
     ---
 
-  Linear algebra quiz preparation built from the past papers.
+    Linear algebra quiz preparation built from the past papers.
 
-  [:octicons-arrow-right-24: MLF Quiz 1 prep module](MLF/MLF_Quiz1_Prep_Module.md)
+    [:octicons-arrow-right-24: MLF Quiz 1 prep module](MLF/MLF_Quiz1_Prep_Module.md)
 
 -   :material-function-variant:{ .lg .middle } __MLT__
 
-  ---
+    ---
 
-  Generated quiz prep module available as the published HTML page.
+    Machine learning techniques — PCA, clustering, EM, and regression prep.
 
-  [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1_Prep_Module.md)
+    [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1_Prep_Module.md)
 
 </div>
 
