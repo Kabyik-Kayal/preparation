@@ -1,4 +1,4 @@
-# Kabyik Preparation Hub
+# Prep Hub
 
 A documentation-style knowledge base for exam and interview preparation, built
 with [MkDocs](https://www.mkdocs.org/) and

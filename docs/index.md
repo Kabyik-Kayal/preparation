@@ -1,9 +1,9 @@
 ---
-title: Kabyik Preparation Hub
+title: Prep Hub
 description: A searchable knowledge and exam-preparation hub.
 ---
 
-# Kabyik Preparation Hub
+# Prep Hub
 
 > A searchable, always-current knowledge base for viva questions, revision notes,
 > interview prep, and technical cheat sheets.
