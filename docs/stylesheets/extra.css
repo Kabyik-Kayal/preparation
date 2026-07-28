@@ -559,9 +559,14 @@ mjx-container {
 
 /* --- Admonitions: black title bar, hard shadow -------------------------- */
 
+/* !important on the border: Material gives each admonition type (tip,
+   success, warning, ...) its own colored border at higher specificity
+   (`.admonition.tip`) than this generic rule, so without it every typed
+   admonition reverted to Material's stock teal/green/orange instead of the
+   flat ink border the brutalist look depends on. */
 .md-typeset :is(.admonition, details) {
-  border: var(--bk-border-thick) solid var(--bk-ink);
-  border-left-width: var(--bk-border-thick);
+  border: var(--bk-border-thick) solid var(--bk-ink) !important;
+  border-left-width: var(--bk-border-thick) !important;
   box-shadow: var(--bk-shadow);
   background: var(--bk-paper);
   font-size: 0.83rem;

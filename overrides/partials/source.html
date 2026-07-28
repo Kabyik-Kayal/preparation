@@ -1,0 +1,18 @@
+<!--
+  Material's stock partial ships `data-md-component="source"`, which makes
+  the theme JS call api.github.com/repos/... on every fresh session to show
+  live star/fork counts next to the repo link. That call was measured at
+  ~1.1s on the deployed site (unauthenticated GitHub API, rate-limited and
+  slow from shared/campus networks) — the single biggest contributor to a
+  slow-feeling page load. Dropping the data attribute keeps the plain repo
+  link but stops the theme from wiring up that fetch.
+-->
+<a href="{{ config.repo_url }}" title="{{ lang.t('source') }}" class="md-source">
+  <div class="md-source__icon md-icon">
+    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}
+  </div>
+  <div class="md-source__repository">
+    {{ config.repo_name }}
+  </div>
+</a>

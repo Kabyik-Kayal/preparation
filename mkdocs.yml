@@ -56,6 +56,11 @@ theme:
 
 plugins:
   - search
+  # Downloads external assets (Google Fonts, the MathJax CDN script) at build
+  # time and rewrites pages to serve them from this origin. Removes the
+  # render-blocking fonts.googleapis.com / cdn.jsdelivr.net round trips that
+  # were adding real latency to first paint, especially on slower networks.
+  - privacy
 
 markdown_extensions:
   # Core niceties

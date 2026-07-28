@@ -1,6 +1,9 @@
 # MkDocs build output
 site/
 
+# mkdocs-material plugin caches (e.g. privacy plugin's downloaded external assets)
+.cache/
+
 # Python virtual environments
 .venv/
 venv/
