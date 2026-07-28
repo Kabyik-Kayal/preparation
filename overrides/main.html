@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
+  {# Material's instant-loading click handler only intercepts a link once it
+     has fetched and parsed sitemap.xml (used as the allow-list of internal
+     pages); a click before that resolves silently falls through to a real
+     full-page navigation instead of an instant swap. That fallback reloads
+     every asset from scratch, which is what shows up as the page going
+     briefly still right after a click. Firing this fetch from <head>, in
+     parallel with the render-blocking CSS/JS, gives it the best chance of
+     finishing before any click is physically possible. #}
+  <link rel="preload" href="{{ 'sitemap.xml' | url }}" as="fetch" crossorigin>
+
   <!-- Social preview metadata -->
   {% set page_title = page.meta.title if page and page.meta and page.meta.title
      else (page.title if page and page.title else config.site_name) %}

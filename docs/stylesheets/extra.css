@@ -94,6 +94,20 @@
   --md-footer-fg-color: var(--bk-text);
 }
 
+/* --- Layout: use the whole viewport on desktop -------------------------- */
+
+/* Material caps every row -- header, tabs bar, the three-column main grid,
+   footer -- at 61rem, which on anything wider than a laptop leaves large
+   empty margins either side while code fences, tables and the TOC are
+   squeezed into the middle. The prose measure is already independently
+   capped via --bk-measure above, so letting the outer grid go fluid doesn't
+   hurt reading -- it just gives everything else the width of the window. */
+@media screen and (min-width: 76.25em) {
+  .md-grid {
+    max-width: 100%;
+  }
+}
+
 /* --- Global: kill every rounded corner ----------------------------------- */
 
 .md-typeset :is(pre, code, table, blockquote, .admonition, details, img),
@@ -323,6 +337,24 @@ mjx-assistive-mml math {
    what the reader sees — at least keep it monospaced and unobtrusive. */
 .md-typeset .arithmatex {
   font-family: var(--bk-mono);
+}
+
+/* Typesetting ~1-2k equations on the bigger quiz pages is not instant, and on
+   `navigation.instant` swaps (and on a first navigation that races MathJax's
+   own load, see javascripts/mathjax.js) that gap was spent showing raw
+   \(...\) source, which reads as "the math is broken" until the reader
+   refreshes and happens to catch a warmer cache. Hide an arithmatex span
+   until it actually holds a rendered <mjx-container>, so the reader sees a
+   brief blank beat instead of LaTeX soup.
+
+   Gated on :has() support and on a JS-set timeout class so a MathJax failure
+   (offline, the font CDN blocked, script error) can never leave content
+   permanently invisible -- worst case, the reader still sees raw LaTeX after
+   a few seconds, exactly as they would without this rule at all. */
+@supports selector(:has(*)) {
+  html:not(.mjx-timeout) .md-typeset .arithmatex:not(:has(mjx-container)) {
+    visibility: hidden;
+  }
 }
 
 mjx-container .arithmatex,
