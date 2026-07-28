@@ -29,13 +29,14 @@
   --bk-shadow-sm: 2px 2px 0 var(--bk-ink);
   --bk-shadow-lg: 6px 6px 0 var(--bk-ink);
 
-  --bk-display: "Bebas Neue", "Arial Black", Impact, sans-serif;
-  --bk-mono: "JetBrains Mono", "Courier New", Courier, monospace;
+  --bk-display: "Arial Narrow", "Arial Black", Impact, sans-serif;
+  --bk-mono: "Courier New", Courier, monospace;
 
   /* Comfortable line length for body copy — ~70 characters. Everything you
      read a full sentence of is capped here; tables, code fences and display
-     math stay full-width. (`ch` is the width of "0", which in Inter runs
-     wider than the average glyph, so 58ch lands around 70 real characters.) */
+     math stay full-width. (`ch` is the width of "0", which in common UI
+     sans faces runs wider than the average glyph, so 58ch lands around 70
+     real characters.) */
   --bk-measure: 58ch;
 }
 

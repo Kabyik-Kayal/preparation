@@ -33,9 +33,8 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-  font:
-    text: Inter
-    code: JetBrains Mono
+  # Disable Material's Google Fonts fetches so strict builds stay offline-safe.
+  font: false
   features:
     - navigation.instant
     - navigation.instant.progress

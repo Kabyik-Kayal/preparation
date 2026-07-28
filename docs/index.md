@@ -34,7 +34,7 @@ current content already lives under the subject folders below.
 
     Linear algebra quiz preparation built from the past papers.
 
-    [:octicons-arrow-right-24: MLF Quiz 1 prep module](MLF/MLF_Quiz1_Prep_Module.md)
+    [:octicons-arrow-right-24: MLF Quiz 1 prep module](MLF/MLF_Quiz1.md)
 
 -   :material-function-variant:{ .lg .middle } __MLT__
 
@@ -42,7 +42,7 @@ current content already lives under the subject folders below.
 
     Machine learning techniques — PCA, clustering, EM, and regression prep.
 
-    [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1_Prep_Module.md)
+    [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1.md)
 
 </div>
 

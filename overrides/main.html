@@ -1,13 +1,6 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
-  <!-- Display face for headings (body/code faces come from theme.font) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-  >
-
   <!-- Social preview metadata -->
   {% set page_title = page.meta.title if page and page.meta and page.meta.title
      else (page.title if page and page.title else config.site_name) %}

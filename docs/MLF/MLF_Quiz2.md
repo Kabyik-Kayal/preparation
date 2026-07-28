@@ -1812,7 +1812,7 @@ Why does anyone care? Because diagonalisation can fail, but Schur triangularisat
 
 A Taylor series replaces a complicated function near a point by a polynomial that matches its value, its slope, its curvature, and so on. Around the point a, the expansion is
 
-**f(x) approximately equals f(a) + f prime(a)(x - a) + [f double prime(a) / 2!](x - a) squared + [f triple prime(a) / 3!](x - a) cubed + and so on.**
+**$f(x) \approx f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots$**
 
 For machine learning this is not decoration. It is the justification for gradient descent, which uses the first order term, and for Newton's method, which uses the second order term.
 
