@@ -31,13 +31,6 @@
 
   --bk-display: "Arial Narrow", "Arial Black", Impact, sans-serif;
   --bk-mono: "Courier New", Courier, monospace;
-
-  /* Comfortable line length for body copy — ~70 characters. Everything you
-     read a full sentence of is capped here; tables, code fences and display
-     math stay full-width. (`ch` is the width of "0", which in common UI
-     sans faces runs wider than the average glyph, so 58ch lands around 70
-     real characters.) */
-  --bk-measure: 58ch;
 }
 
 /* Light scheme -> Material variable mapping */
@@ -98,10 +91,9 @@
 
 /* Material caps every row -- header, tabs bar, the three-column main grid,
    footer -- at 61rem, which on anything wider than a laptop leaves large
-   empty margins either side while code fences, tables and the TOC are
-   squeezed into the middle. The prose measure is already independently
-   capped via --bk-measure above, so letting the outer grid go fluid doesn't
-   hurt reading -- it just gives everything else the width of the window. */
+   empty margins either side while headings, code fences, tables and the TOC
+   are squeezed into the middle. Let the outer grid go fluid so body copy
+   gets the same width as the headings instead of sitting narrower. */
 @media screen and (min-width: 76.25em) {
   .md-grid {
     max-width: 100%;
@@ -146,12 +138,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Cap the measure on everything you read as prose. Tables, code fences and
-   display math are deliberately exempt — they need the full column. */
-.md-typeset > :is(p, ul, ol, dl, blockquote, h3, h4, h5, h6),
-.md-typeset > :is(.admonition, details) {
-  max-width: var(--bk-measure);
-}
+/* Body copy stretches to the full article width, matching the headings —
+   see the layout comment above on letting the desktop grid go fluid. */
 
 .md-typeset p {
   margin: 0 0 1.05em;
