@@ -56,8 +56,44 @@ window.MathJax = {
     return readyPromise;
   }
 
+  // Quiz pages carry 1000-1800+ inline equations each. Handing all of them
+  // to typesetPromise in one call blocks the main thread for the better
+  // part of a second (measured ~730ms for MLF_Quiz2's 1854 equations) before
+  // the page you just clicked into feels ready -- most of that time spent on
+  // equations far below the fold. Typeset what's on screen first so the page
+  // feels instant, then finish the rest in idle-time chunks in the
+  // background so scrolling down still finds live math.
+  var navGeneration = 0;
+
+  // Without a `timeout`, requestIdleCallback can legitimately wait forever if
+  // the browser never reports a genuine idle period (observed: a backgrounded
+  // or non-compositing tab never fired it at all). Force it to run within
+  // 200ms regardless, same as the browser would with a busy main thread.
+  function typesetInIdleChunks(nodes, generation) {
+    if (!nodes.length || generation !== navGeneration) return;
+    var idle = window.requestIdleCallback
+      ? function (fn) { requestIdleCallback(fn, { timeout: 200 }); }
+      : function (fn) { setTimeout(fn, 32); };
+    idle(function () {
+      if (generation !== navGeneration) return;
+      var chunk = nodes.splice(0, 40).filter(function (el) {
+        return document.body.contains(el);
+      });
+      (chunk.length ? MathJax.typesetPromise(chunk) : Promise.resolve())
+        .then(function () {
+          typesetInIdleChunks(nodes, generation);
+        })
+        .catch(function (err) {
+          console.error("MathJax typeset failed:", err);
+        });
+    });
+  }
+
   document$.subscribe(function () {
+    var generation = ++navGeneration;
     whenMathJaxReady().then(function () {
+      if (generation !== navGeneration) return;
+
       var pending = Array.prototype.filter.call(
         document.querySelectorAll(".arithmatex"),
         function (el) {
@@ -66,13 +102,23 @@ window.MathJax = {
       );
       if (!pending.length) return;
 
+      var viewportBottom = window.innerHeight * 1.5;
+      var visible = [];
+      var rest = [];
+      pending.forEach(function (el) {
+        (el.getBoundingClientRect().top < viewportBottom ? visible : rest).push(el);
+      });
+
       MathJax.startup.promise = MathJax.startup.promise
         .then(function () {
           // Drop the previous page's math items so they don't accumulate across
           // a long browsing session, then reset equation numbering and labels.
           MathJax.typesetClear();
           MathJax.texReset();
-          return MathJax.typesetPromise(pending);
+          return MathJax.typesetPromise(visible);
+        })
+        .then(function () {
+          if (generation === navGeneration) typesetInIdleChunks(rest, generation);
         })
         .catch(function (err) {
           console.error("MathJax typeset failed:", err);
