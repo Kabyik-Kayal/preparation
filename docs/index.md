@@ -44,6 +44,14 @@ current content already lives under the subject folders below.
 
     [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1.md)
 
+-   :material-shield-lock:{ .lg .middle } __NPTEL Ethical Hacking__
+
+    ---
+
+    Ethical hacking notes — PDF download.
+
+    [:octicons-arrow-right-24: NPTEL Ethical Hacking (PDF, downloads)](NPTEL-Ethical-Hacking/NPTEL-Ethical-Hacking.pdf){ download }
+
 </div>
 
 ## How to use this site
