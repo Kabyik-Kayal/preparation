@@ -1,3 +1,12 @@
+---
+title: MLT Quiz 2 — Complete Preparation Module
+description: Linear regression and gradient descent prep from 6 papers, 122 questions.
+tags:
+  - mlt
+  - machine-learning
+  - quiz
+---
+
 # MLT Quiz 2: The Complete Preparation Module
 
 ### Built from six real question papers (Aug 2024, Dec 2024, Mar 2024, Mar 2025, Aug 2025, Apr 2026)

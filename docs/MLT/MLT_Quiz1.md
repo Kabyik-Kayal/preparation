@@ -1,3 +1,12 @@
+---
+title: MLT Quiz 1 — Smart Preparation Module
+description: PCA, kernels, K-means and EM prep from 5 past papers with solved PYQs.
+tags:
+  - mlt
+  - machine-learning
+  - quiz
+---
+
 # MLT Quiz 1 — Smart Preparation Module
 
 *Built from 5 unique past papers: Oct 2024, Feb 2025, Jul 2025, Oct 2025 (two identical forms), Mar 2026. Every solved answer below was cross-checked against the accepted answer in the paper and re-verified numerically.*

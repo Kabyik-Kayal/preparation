@@ -1,18 +1,41 @@
 ---
 title: Prep Hub
-description: A searchable knowledge and exam-preparation hub.
+description: My notes for vivas and quizzes, written from past papers.
 ---
 
 # Prep Hub
 
-> A searchable, always-current knowledge base for viva questions, revision notes,
-> interview prep, and technical cheat sheets.
+> My prep notes. I write them from past papers so I can revise fast before the exam.
 
-Adding a page here is as simple as dropping a Markdown file into `docs/` and
-pushing to `main`. The site rebuilds and redeploys automatically, and the
-current content already lives under the subject folders below.
+This covers MAD 2, MLF, MLT, and one NPTEL PDF. Nothing here is polished. It is just what actually helped me.
 
-## Browse by subject
+## If your exam is this week
+
+<div class="grid cards" markdown>
+
+-   :material-target:{ .lg .middle } __Quiz coming up__
+
+    ---
+
+    Pick your quiz. Each module goes topic by topic with solved paper questions.
+
+    [:octicons-arrow-right-24: MLT Quiz 1 - PCA, kernels, clustering](MLT/MLT_Quiz1.md)
+
+    [:octicons-arrow-right-24: MLF Quiz 1 - linear algebra](MLF/MLF_Quiz1.md)
+
+-   :material-microphone:{ .lg .middle } __Viva coming up__
+
+    ---
+
+    Answers written the way I would say them, with file references for TrekStar.
+
+    [:octicons-arrow-right-24: Viva preparation guide](MAD2-Project/preparation.md)
+
+    [:octicons-arrow-right-24: Vue Router coding task](MAD2-Project/Viva-Coding-Task-VueRouter-Users.md)
+
+</div>
+
+## All notes
 
 <div class="grid cards" markdown>
 
@@ -20,7 +43,7 @@ current content already lives under the subject folders below.
 
     ---
 
-    TrekStar viva prep, module notes, and the Vue Router coding task guide.
+    TrekStar viva questions, module notes, and the Vue Router task.
 
     [:octicons-arrow-right-24: Viva preparation guide](MAD2-Project/preparation.md)
 
@@ -32,39 +55,43 @@ current content already lives under the subject folders below.
 
     ---
 
-    Linear algebra quiz preparation built from the past papers.
+    Linear algebra quizzes. Made from 12 papers.
 
-    [:octicons-arrow-right-24: MLF Quiz 1 prep module](MLF/MLF_Quiz1.md)
+    [:octicons-arrow-right-24: MLF Quiz 1](MLF/MLF_Quiz1.md)
+
+    [:octicons-arrow-right-24: MLF Quiz 2](MLF/MLF_Quiz2.md)
 
 -   :material-function-variant:{ .lg .middle } __MLT__
 
     ---
 
-    Machine learning techniques — PCA, clustering, EM, and regression prep.
+    PCA, clustering, EM, regression. Made from 11 papers.
 
-    [:octicons-arrow-right-24: MLT Quiz 1 prep module](MLT/MLT_Quiz1.md)
+    [:octicons-arrow-right-24: MLT Quiz 1](MLT/MLT_Quiz1.md)
+
+    [:octicons-arrow-right-24: MLT Quiz 2](MLT/MLT_Quiz2.md)
 
 -   :material-shield-lock:{ .lg .middle } __NPTEL Ethical Hacking__
 
     ---
 
-    Ethical hacking notes — PDF download.
+    Notes as PDF (0.7 MB). Click to download.
 
-    [:octicons-arrow-right-24: NPTEL Ethical Hacking (PDF, downloads)](NPTEL-Ethical-Hacking/NPTEL-Ethical-Hacking.pdf){ download }
+    [:octicons-arrow-right-24: NPTEL Ethical Hacking PDF](NPTEL-Ethical-Hacking/NPTEL-Ethical-Hacking.pdf){ download }
+
+-   :material-tag-multiple:{ .lg .middle } __Topics__
+
+    ---
+
+    Everything grouped by tag.
+
+    [:octicons-arrow-right-24: All tags](tags.md)
 
 </div>
 
 ## How to use this site
 
-- **Search** — press ++slash++ (or click the search icon) to full-text search
-  every page, heading, and paragraph.
-- **Dark mode** — toggle light/dark from the header.
-- **Navigation** — browse the left sidebar; the table of contents on the right
-  tracks your position within long pages.
-
-!!! tip "Publishing a new note"
-    ```bash
-    cp ~/notes/some-topic.md docs/
-    git add docs/ && git commit -m "Add some-topic" && git push
-    ```
-    Result: `https://preparation.kabyik.dev/some-topic/`
+- Press ++slash++ to search. It searches everything.
+- Toggle light/dark from the header.
+- Left sidebar is pages, right side is headings in the page you are on.
+- Print works if you want a paper copy.

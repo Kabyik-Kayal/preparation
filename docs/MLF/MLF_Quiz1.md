@@ -1,3 +1,12 @@
+---
+title: MLF Quiz 1 — Smart Prep Module
+description: Linear algebra quiz prep from 6 past papers. Eigenvalues, subspaces, projections.
+tags:
+  - mlf
+  - linear-algebra
+  - quiz
+---
+
 # MLF Quiz 1 — Smart Prep Module
 Built from your 6 past papers (Oct24, Feb25, Jul25, Oct25 ×2, Mar26). Every concept → the exam trick → a solved question straight from your PYQs, worked out step by step. Start from zero, finish exam-ready.
 

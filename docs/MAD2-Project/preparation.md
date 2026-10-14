@@ -1,3 +1,12 @@
+---
+title: TrekStar Viva Preparation Guide
+description: Full viva Q and A for TrekStar with code references.
+tags:
+  - mad2
+  - viva
+  - trekstar
+---
+
 # TrekStar Viva Preparation Guide
 
 **Trekking Management Application V2, full viva Q&A with code references**

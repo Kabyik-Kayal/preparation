@@ -1,3 +1,12 @@
+---
+title: TrekStar Viva Preparation Module
+description: Topic grouped viva revision with file and line references.
+tags:
+  - mad2
+  - viva
+  - revision
+---
+
 # TrekStar Viva Preparation Module
 
 Prepared from the past viva question sheet in this folder, with every answer tied back to my own code in this project (TrekStar, the Trekking Management Application V2).

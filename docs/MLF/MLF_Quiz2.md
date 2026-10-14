@@ -1,3 +1,12 @@
+---
+title: MLF Quiz 2 — Complete Preparation Module
+description: MLF Quiz 2 prep from 6 papers with official keys checked.
+tags:
+  - mlf
+  - linear-algebra
+  - quiz
+---
+
 # MLF Quiz 2: The Complete Preparation Module
 
 **Built from six actual Quiz 2 papers:** 2024 Mar 24 (QDD3), 2024 Aug 04 (QDF2), 2024 Dec 01 (QDF3), 2025 Mar 16 (QDD4), 2025 Aug 03 (QDF4), 2026 Apr 06.

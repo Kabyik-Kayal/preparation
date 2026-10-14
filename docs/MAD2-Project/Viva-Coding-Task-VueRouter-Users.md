@@ -1,3 +1,12 @@
+---
+title: Vue Router Coding Task — Users List and Detail
+description: Vue Router users guide with viva script and single file version.
+tags:
+  - mad2
+  - vue
+  - coding-task
+---
+
 # Viva Coding Task Guide: Vue Router Users List and Detail
 
 This is a step by step guide for the coding task that came up in a level1 viva:

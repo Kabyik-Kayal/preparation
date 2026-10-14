@@ -16,6 +16,8 @@ theme:
   name: material
   custom_dir: overrides
   language: en
+  favicon: assets/favicon.svg
+  logo: assets/favicon.svg
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
@@ -43,6 +45,8 @@ theme:
     - navigation.top
     - navigation.footer
     - navigation.indexes
+    - navigation.sections
+    - navigation.path
     - toc.follow
     - search.suggest
     - search.highlight
@@ -56,6 +60,7 @@ theme:
 
 plugins:
   - search
+  - tags
   # Downloads external assets (Google Fonts, the MathJax CDN script) at build
   # time and rewrites pages to serve them from this origin. Removes the
   # render-blocking fonts.googleapis.com / cdn.jsdelivr.net round trips that
@@ -117,3 +122,21 @@ extra:
       link: https://github.com/Kabyik-Kayal
     - icon: fontawesome/solid/globe
       link: https://kabyik.dev
+
+nav:
+  - Home: index.md
+  - MAD 2 Project:
+    - MAD2-Project/index.md
+    - Viva preparation guide: MAD2-Project/preparation.md
+    - Viva module notes: MAD2-Project/Viva-Preparation-Module.md
+    - Vue Router coding task: MAD2-Project/Viva-Coding-Task-VueRouter-Users.md
+  - MLF:
+    - MLF/index.md
+    - MLF Quiz 1: MLF/MLF_Quiz1.md
+    - MLF Quiz 2: MLF/MLF_Quiz2.md
+  - MLT:
+    - MLT/index.md
+    - MLT Quiz 1: MLT/MLT_Quiz1.md
+    - MLT Quiz 2: MLT/MLT_Quiz2.md
+  - NPTEL Ethical Hacking: NPTEL-Ethical-Hacking/index.md
+  - Tags: tags.md
