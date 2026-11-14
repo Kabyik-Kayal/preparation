@@ -7,7 +7,7 @@ description: My notes for vivas and quizzes, written from past papers.
 
 > My prep notes. I write them from past papers so I can revise fast before the exam.
 
-This covers MAD 2, MLF, MLT, and one NPTEL PDF. Nothing here is polished. It is just what actually helped me.
+This covers MAD 2, MLF, MLT, BDM, and one NPTEL PDF. Nothing here is polished. It is just what actually helped me.
 
 ## If your exam is this week
 
@@ -70,6 +70,14 @@ This covers MAD 2, MLF, MLT, and one NPTEL PDF. Nothing here is polished. It is 
     [:octicons-arrow-right-24: MLT Quiz 1](MLT/MLT_Quiz1.md)
 
     [:octicons-arrow-right-24: MLT Quiz 2](MLT/MLT_Quiz2.md)
+
+-   :material-chart-box-outline:{ .lg .middle } __BDM__
+
+    ---
+
+    Business Data Management Quiz 1 master preparation module as a PDF.
+
+    [:octicons-arrow-right-24: BDM Quiz 1 PDF](BDM/BDM_Quiz1_Dialogue.pdf){ download }
 
 -   :material-shield-lock:{ .lg .middle } __NPTEL Ethical Hacking__
 
