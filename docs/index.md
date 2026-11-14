@@ -75,9 +75,9 @@ This covers MAD 2, MLF, MLT, BDM, and one NPTEL PDF. Nothing here is polished. I
 
     ---
 
-    Business Data Management Quiz 1 master preparation module as a PDF.
+    Business Data Management Quiz 1 preparation module as a PDF.
 
-    [:octicons-arrow-right-24: BDM Quiz 1 PDF](BDM/BDM_Quiz1_Dialogue.pdf){ download }
+    [:octicons-arrow-right-24: BDM Quiz 1 PDF](BDM/BDM_Quiz1_Precise.pdf){ download }
 
 -   :material-shield-lock:{ .lg .middle } __NPTEL Ethical Hacking__
 

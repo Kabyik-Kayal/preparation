@@ -14,4 +14,6 @@ tags:
 
 ## Download
 
-[BDM Quiz 1 master preparation module (PDF, 4.1 MB)](BDM_Quiz1_Dialogue.pdf){ download }
+[BDM Quiz 1 Dialogue module (PDF, 4.1 MB)](BDM_Quiz1_Dialogue.pdf){ download }
+
+[BDM Quiz 1 Precise module (PDF, 3.8 MB)](BDM_Quiz1_Precise.pdf){ download }
