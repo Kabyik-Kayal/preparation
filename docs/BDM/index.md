@@ -1,0 +1,17 @@
+---
+title: BDM Quiz 1
+description: Business Data Management Quiz 1 master preparation module as a PDF.
+tags:
+  - bdm
+  - business-data-management
+  - quiz
+  - pdf
+---
+
+# BDM Quiz 1
+
+> Business Data Management Quiz 1 preparation covering economics, organizational buying, data management, Excel, and financial liquidity.
+
+## Download
+
+[BDM Quiz 1 master preparation module (PDF, 4.1 MB)](BDM_Quiz1_Dialogue.pdf){ download }
