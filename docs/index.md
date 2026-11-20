@@ -7,7 +7,7 @@ description: My notes for vivas and quizzes, written from past papers.
 
 > My prep notes. I write them from past papers so I can revise fast before the exam.
 
-This covers MAD 2, MLF, MLT, BDM, and one NPTEL PDF. Nothing here is polished. It is just what actually helped me.
+This covers MAD 2, MLF, MLT, MLP, BDM, and one NPTEL PDF. Nothing here is polished. It is just what actually helped me.
 
 ## If your exam is this week
 
@@ -70,6 +70,14 @@ This covers MAD 2, MLF, MLT, BDM, and one NPTEL PDF. Nothing here is polished. I
     [:octicons-arrow-right-24: MLT Quiz 1](MLT/MLT_Quiz1.md)
 
     [:octicons-arrow-right-24: MLT Quiz 2](MLT/MLT_Quiz2.md)
+
+-   :material-chart-line:{ .lg .middle } __MLP__
+
+    ---
+
+    Machine Learning Practice OPPE1 preparation module.
+
+    [:octicons-arrow-right-24: MLP OPPE1 PDF](MLP/MLP_OPPE1.pdf){ download }
 
 -   :material-chart-box-outline:{ .lg .middle } __BDM__
 

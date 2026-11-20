@@ -19,6 +19,7 @@ clean, searchable page — no per-page frontend work.
 | `MAD2-Project/` | TrekStar viva prep, module notes, Vue Router coding task guide |
 | `MLF/` | Linear algebra quiz prep (Quiz 1, Quiz 2) |
 | `MLT/` | Machine learning techniques — PCA, clustering, EM, regression (Quiz 1, Quiz 2) |
+| `MLP/` | Machine Learning Practice OPPE1 preparation module (PDF) |
 | `BDM/` | Business Data Management Quiz 1 master preparation module (PDF) |
 | `NPTEL-Ethical-Hacking/` | Ethical hacking notes (PDF download) |
 
@@ -132,6 +133,7 @@ preparation/
 │   ├── MAD2-Project/              # Viva prep, module notes, Vue Router task
 │   ├── MLF/                       # Quiz 1, Quiz 2
 │   ├── MLT/                       # Quiz 1, Quiz 2
+│   ├── MLP/                       # OPPE1 preparation module PDF
 │   ├── BDM/                       # Quiz 1 master preparation PDF
 │   ├── NPTEL-Ethical-Hacking/     # index.md wrapper + downloadable PDF
 │   ├── assets/images/             # Compressed images with alt text
