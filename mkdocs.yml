@@ -132,7 +132,10 @@ nav:
     - Viva preparation guide: MAD2-Project/preparation.md
     - Viva module notes: MAD2-Project/Viva-Preparation-Module.md
     - Vue Router coding task: MAD2-Project/Viva-Coding-Task-VueRouter-Users.md
-  - Scripts: Scripts/index.md
+  - Scripts:
+    - Scripts/index.md
+    - IITM Extraction Script: Scripts/IITM_Extraction_Script.md
+    - QuizSpace Extraction Script: Scripts/QuizSpace_Extraction_Script.md
   - MLF:
     - MLF/index.md
     - MLF Quiz 1: MLF/MLF_Quiz1.md

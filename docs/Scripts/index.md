@@ -1,20 +1,11 @@
 ---
-title: Extraction Scripts
-description: JavaScript scripts for extracting quiz questions.
+title: Scripts
+description: JavaScript extraction scripts.
 ---
 
-# Extraction Scripts
+# Scripts
 
-Each script is shown in a code block. Use its copy button to copy the full source.
+Choose a script to view its full source and copy it from the code block.
 
-## IITM Extraction Script
-
-```js title="IITM_Extraction_Script.js"
---8<-- "Scripts/IITM_Extraction_Script.js"
-```
-
-## QuizSpace Extraction Script
-
-```js title="QuizSpace_Extraction_Script.js"
---8<-- "Scripts/QuizSpace_Extraction_Script.js"
-```
+- [IITM Extraction Script](IITM_Extraction_Script.md)
+- [QuizSpace Extraction Script](QuizSpace_Extraction_Script.md)
