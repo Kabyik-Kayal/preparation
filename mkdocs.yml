@@ -92,7 +92,9 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: docs
+      check_paths: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -130,6 +132,7 @@ nav:
     - Viva preparation guide: MAD2-Project/preparation.md
     - Viva module notes: MAD2-Project/Viva-Preparation-Module.md
     - Vue Router coding task: MAD2-Project/Viva-Coding-Task-VueRouter-Users.md
+  - Scripts: Scripts/index.md
   - MLF:
     - MLF/index.md
     - MLF Quiz 1: MLF/MLF_Quiz1.md

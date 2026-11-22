@@ -33,6 +33,8 @@ This covers MAD 2, MLF, MLT, MLP, BDM, and one NPTEL PDF. Nothing here is polish
 
     [:octicons-arrow-right-24: Vue Router coding task](MAD2-Project/Viva-Coding-Task-VueRouter-Users.md)
 
+    [:octicons-arrow-right-24: Extraction scripts](Scripts/index.md)
+
 </div>
 
 ## All notes
