@@ -5,7 +5,7 @@ description: JavaScript extraction scripts.
 
 # Scripts
 
-Choose a script to view its full source and copy it from the code block.
+Useful scripts for extracting IITM Questions in a single HTML page.
 
 - [IITM Extraction Script](IITM_Extraction_Script.md)
 - [QuizSpace Extraction Script](QuizSpace_Extraction_Script.md)
